@@ -1,0 +1,25 @@
+#using ExpressEMF.*
+#using AttrCondDefLibrary.*
+
+#rule SchemaToPackage #with ExpressEMF
+
+#source { 
+	++s:SchemaDecl 
+}
+
+#target {
+	++p:EPackage
+}
+
+#correspondence {
+	++ s2p:SchemaToPackage{
+		#src->s
+		#trg->p	
+	}		
+}
+
+#attributeConditions {
+	// concat(" ", s.schemaId, s.schemaVersionId, p.name)
+	eq_string(s.schemaId, p.name)
+}
+

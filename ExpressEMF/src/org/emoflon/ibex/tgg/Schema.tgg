@@ -1,0 +1,39 @@
+#import "platform:/resource/ExpressParser/model/generated/Express.ecore"
+#import "platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore"
+
+#schema ExpressEMF
+	
+#source {
+	express
+}
+
+#target {
+	ecore 
+} 
+
+#correspondence {
+	SchemaToPackage{
+		#src->SchemaDecl
+		#trg->EPackage
+	}
+	EntityToClass{
+		#src->EntityDecl // NamedTypeDecl
+		#trg->EClass     // EClassifier
+	}
+	SimpleTypeToDataType{
+		#src->SimpleTypes
+		#trg->EDataType
+	}
+	AttributeDeclToStructuralFeature{
+		#src->AttributeDecl
+		#trg->EStructuralFeature
+	}
+}
+
+#attributeConditions { 
+    #userDefined 
+    eq_booleanPrimitive(param1: EBoolean, param2: EBoolean) { 
+        #sync: [B B], [B F], [F B] 
+        #gen:  [B B], [B F], [F B], [F F] 
+    } 
+}

@@ -1,0 +1,81 @@
+#using ExpressEMF.*
+#using AttrCondDefLibrary.*
+
+#rule SuperTypeToSuperType #with ExpressEMF
+
+#source {
+	eSup:EntityDecl 
+	eSub:EntityDecl {
+		++ -superType->eSup
+	}
+}
+
+#target {
+	cSup:EClass
+	cSub:EClass {
+		++ -eSuperTypes->cSup
+	}
+}
+
+#correspondence {
+	e2cSup:EntityToClass {
+		#src->eSup
+		#trg->cSup		
+	}
+	e2cSub:EntityToClass {
+		#src->eSub
+		#trg->cSub		
+	}
+	
+}
+
+#abstract #rule SubType #with ExpressEMF
+
+#source {
+	eSub:EntityDecl{
+		-superType->eSup
+	}
+	eSup:EntityDecl
+} 
+
+#rule FirstSubType #extends SubType #with ExpressEMF
+// can also extend SuperTypeToSuperType (abstract!) to make the inverse mandatory in fwd transf 
+#source {
+	eSup:EntityDecl{
+		++ -subTypes->subAlt
+	}
+	++ subAlt:OneOf{
+		++ -subTypes->eSub
+	}
+}
+
+#rule NextSubType #extends SubType  #with ExpressEMF 
+// can also extend SuperTypeToSuperType (abstract!) to make the inverse mandatory in fwd transf
+#source {
+	eSup:EntityDecl{
+		-subTypes->subAlt
+	}
+	subAlt:OneOf{
+		++ -subTypes->eSub
+	}
+}
+
+#nac SingeInheritance #for SuperTypeToSuperType
+
+#target {
+	cSup:EClass
+	cSub:EClass {
+		-eSuperTypes->cSup
+	}
+}
+
+
+
+#nac IsFirstSubType #for FirstSubType
+
+#source {
+	eSup:EntityDecl{
+		-subTypes->subAltOther
+	}
+	subAltOther:OneOf
+}

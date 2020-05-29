@@ -1,0 +1,54 @@
+#using ExpressEMF.*
+#using AttrCondDefLibrary.*
+
+#rule FirstStringDataType #with ExpressEMF
+#source {
+	++is:StringType
+}
+#target {
+	package:EPackage{
+	  ++-eClassifiers-> es
+	}
+	++es:EDataType // dunno
+}
+#correspondence {
+	++ is2es:SimpleTypeToDataType{
+		#src->is
+		#trg->es
+	}
+}
+#attributeConditions {
+	eq_string(es.name, "EString")
+	eq_string(es.instanceClassName, "java.lang.String")
+}
+
+
+#rule SubsequentStringDataType #with ExpressEMF
+#source {
+	++is:StringType
+}
+#target {
+	es:EDataType // dunno
+}
+#correspondence {
+	++ s2es:SimpleTypeToDataType{
+		#src->is
+		#trg->es
+	}
+}
+#attributeConditions {
+	eq_string(es.name, "EString")
+	eq_string(es.instanceClassName, "java.lang.String")
+}
+
+
+#nac StringSingleton #for FirstStringDataType 
+
+#target{
+	package:EPackage{
+		-eClassifiers->es
+	}
+	es:EDataType
+}
+
+
