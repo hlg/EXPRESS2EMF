@@ -1,0 +1,20 @@
+SCHEMA Simple;
+
+ENTITY Type1;
+	stringAttr: STRING;
+	shortStringAttr: STRING(256);
+	realAttr: REAL;
+	bool1,bool2: BOOLEAN;
+	optionalNumber: OPTIONAL NUMBER;
+END_ENTITY;
+
+ENTITY Type2;
+	type1Attr: Type1;
+	setOfType1Attr: SET OF Type1;
+	boundSetOfType1Attr: SET [1:?] OF Type1;
+END_ENTITY;
+
+ENTITY Programmatic;
+END_ENTITY;
+
+END_SCHEMA;

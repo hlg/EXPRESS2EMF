@@ -1,0 +1,510 @@
+grammar de.htwdd.expressEMF.Express hidden (WS, Comment)
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+generate express "http://www.htw-dresden.de/expressEMF/Express"
+
+
+SchemaDecl: 'SCHEMA' schemaId=SimpleId schemaVersionId=SimpleStringLiteral? ';' declarations+=Declaration* 'END_SCHEMA;';
+Declaration: TypeDecl | EntityDecl | FunctionDecl | RuleDecl;
+
+TypeDecl: 'TYPE' name=SimpleId '=' underlying=UnderlyingType ';' ('WHERE' where=Anything)? 'END_TYPE;';
+EntityDecl: 'ENTITY' name=SimpleId
+	(abstract?='ABSTRACT')?
+	('SUPERTYPE' 'OF' '(' subTypes=SuperTypeTerm ')')?
+	('SUBTYPE' 'OF' '(' superType=[EntityDecl|SimpleId] ')')? ';' // SubtypeDeclaration: no multiple inheritance
+	attrs+=ExplicitAttr* ('DERIVE' derive=Anything)? ('INVERSE' inverse+=InverseAttr*)? ('UNIQUE' unique=Anything)? ('WHERE' where=Anything)?  // Derive_clause? Unique_clause? Where_clause? ;
+	'END_ENTITY;'
+;
+SuperTypeTerm: OneOf | subTypes+=[EntityDecl|SimpleId] ;
+OneOf: 'ONEOF' '(' subTypes+=[EntityDecl|SimpleId] ( ',' subTypes+=[EntityDecl|SimpleId] )* ')' ;
+ExplicitAttr: attrs+=AttributeDecl (',' attrs+=AttributeDecl)* ":" (optional?='OPTIONAL')? type=ParameterType ';' ; // ParameterType
+InverseAttr: attr=AttributeDecl ':' (aggrType=('SET'|'BAG') bounds=BoundSpec? 'OF')? type=[EntityDecl|SimpleId] 'FOR' ('.' invertedType=[EntityDecl|SimpleId])? invertedAttr=[AttributeDecl|SimpleId] ';' ; // better refer to generalSetType and check for entity on validation?
+AttributeDecl: name=SimpleId;
+
+Attribute: ExplicitAttr | InverseAttr;
+NamedTypeDecl: EntityDecl | TypeDecl ;
+NamedTypes: decl=[NamedTypeDecl|SimpleId];
+DeclaredType: decl=[TypeDecl|SimpleId];
+EntityType: decl=[EntityDecl|SimpleId];
+
+// ========== Temporary ====== //
+FunctionDecl: 'FUNCTION' name=SimpleId functionHead=Header ';' functionDef=Anything 'END_FUNCTION;';
+RuleDecl: 'RULE' name=SimpleId ruleHead=Header ';' ruleDef=Anything 'WHERE' where=Anything 'END_RULE;';
+
+TempCatchAll: BuiltInConstant | Literal | SimpleId | SpecialCore | '(' | ')' | ':' | '[' | ']'  | 'BOOLEAN' | 'REAL' | 'BINARY' |'INTEGER' | 'NUMBER' | 'STRING' | 'LOGICAL' | 'FIXED' | 'LIST' | 'SET' | 'ARRAY' | 'BAG' | 'FOR' | '.' ;  
+Header:	(TempCatchAll | 'OF' | ',' |'UNIQUE' )* ;
+Anything: (TempCatchAll |'=' | ';' | "'" | 'OF' | ',' )* ;
+// ========== Temporary ====== //
+
+ParameterType: SimpleTypes | NamedTypes | GeneralizedTypes ; 
+SimpleTypes: BinaryType | BooleanType | IntegerType | LogicalType | NumberType | RealType | StringType ;
+BinaryType: {BinaryType} 'BINARY' ('(' widthSpec=WidthSpec')' )? ;
+BooleanType: {BooleanType} 'BOOLEAN' ;
+LogicalType: {LogicalType} 'LOGICAL' ;
+NumberType: {NumberType} 'NUMBER' ;
+StringType: {StringType} 'STRING' (widthSpec=WidthSpec)? ;
+RealType: {RealType} 'REAL' ( '(' precision=NumericExpression ')' )? ;
+IntegerType: {IntegerType} 'INTEGER' ;
+WidthSpec: '(' width=NumericExpression ')' (fixed?='FIXED')?;
+
+GeneralizedTypes:  GeneralAggregationTypes; // AggregateType | GenericEntityType | GenericType
+GeneralAggregationTypes: GeneralArrayType | GeneralBagType | GeneralListType | GeneralSetType ;
+GeneralArrayType: 'ARRAY' (bounds=BoundSpec)? 'OF' (optional?='OPTIONAL')? (unique?='UNIQUE')? type=ParameterType ;
+GeneralBagType: 'BAG' (bounds=BoundSpec)? 'OF' type=ParameterType
+;
+GeneralListType: 'LIST' (bounds=BoundSpec)? 'OF' (unique?='UNIQUE')? type=ParameterType ;
+GeneralSetType: 'SET' (bounds=BoundSpec)? 'OF' type=ParameterType ;
+BoundSpec: '[' bound1=NumericExpression":" bound2=NumericExpression ']' ;
+
+InstantiableType: AggregationTypes | SimpleTypes | NamedTypes ;
+UnderlyingType: EnumerationType | SelectType | AggregationTypes | SimpleTypes | DeclaredType ;
+AggregationTypes: ArrayType | BagType | ListType | SetType ; // Instantiable versions
+
+ArrayType: 'ARRAY' (bounds=BoundSpec)? 'OF' (optional?='OPTIONAL')? (unique?='UNIQUE')? type=InstantiableType ;
+BagType: 'BAG' (bounds=BoundSpec)? 'OF' type=InstantiableType;
+ListType: 'LIST' (bounds=BoundSpec)? 'OF' (unique?='UNIQUE')? type=InstantiableType ;
+SetType: 'SET' (bounds=BoundSpec)? 'OF' type=InstantiableType ;
+
+EnumerationType: (extensible?='EXTENSIBLE')? 'ENUMERATION' (
+	( 'OF' '(' items+=SimpleId ( "," items+=SimpleId )* ')' ) | 
+	'BASED_ON' baseType=[TypeDecl|SimpleId] ( 'WITH' '(' items+=SimpleId ( "," items+=SimpleId )* ')' )?
+)?;
+
+SelectType: (extensible?='EXTENSIBLE')? 'SELECT' (
+	'(' types+=NamedTypes ( ',' types+=NamedTypes)* ')' |
+	'BASED_ON' baseType=DeclaredType ('WITH' '(' types+=NamedTypes ( ',' types+=NamedTypes)* ')')?  
+)? ;
+
+
+NumericExpression: Literal | BuiltInConstant;  // TODO remainder
+Literal: BinaryLiteral | LogicalLiteral | RealLiteral | StringLiteral ;
+RealLiteral: RealLiteralTerm | IntegerLiteral;
+StringLiteral: SimpleStringLiteral; // | EncodedStringLiteral ;
+
+
+// String first, it may contain anything
+terminal SimpleStringLiteral: "'" ( "''"  | Digit | SimpleId | SpecialCore | '=' | ';' | WS )* "'" ;
+terminal LogicalLiteral: 'FALSE' | 'TRUE' | 'UNKNOWN' ; // TODO enum?
+terminal SimpleId: Letter (Letter | Digit | "_")* ; /* no leading underscore */
+terminal BuiltInConstant: 'CONST_E' | 'PI' | 'SELF' | '?' ;
+terminal Letter: ('a'..'z'|'A'..'Z');
+terminal BinaryLiteral: "%" ('0'|'1')+;
+terminal RealLiteralTerm: ( Digit+ '.' Digit* ('e' ('+'|'-')? Digit*)?) ;
+terminal IntegerLiteral: Digit+;
+terminal fragment Digit: ('0'..'9');
+terminal Comment: ('(*' -> '*)' | '//' !('\n'|'\r')* ('\r'? '\n')?); /* remark tags and balanced parentheses omitted */
+terminal SpecialCore: "!" | '"' | "#" | "$" | "%" | "&" | "+" | "," | "-" | "." | 
+                      "/" | ":" | "<" | ">" | "?" | "@" | "[" | "\\" | "]" | "^" |
+                      "_" | "{" | "|" | "}" | "~" | "(" | ")" | "*"; // excluding ";" "=" "'"
+terminal WS: (' '|'\t'|'\r'|'\n')+;
+
+
+
+/*
+==== Used =======
+Schema_decl: SCHEMA Schema_id Schema_version_id? ";" Schema_body END_SCHEMA ";" ;
+Schema_body: Interface_specification* Constant_decl? (Declaration | Rule_decl)* ;
+Schema_id: Simple_id ;
+Schema_version_id: String_literal;
+Declaration: Entity_decl | Function_decl | Procedure_decl | Subtype_constraint_decl | Type_decl ;
+Rule_decl: Rule_head Algorithm_head Stmt* Where_clause END_RULE ";" ;
+
+
+Simple_id: Letter (Letter | Digit | "_")* ;
+Digit: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+Letter: "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | 
+        "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" |
+        "u" | "v" | "w" | "x" | "y" | "z" ;
+Not_paren_star_quote_special: "!" | '"' | "#" | "$" | "%" | "&" | "+" | "," | "-" | "." |
+                              "/" | ":" | ";" | "<" | "=" | ">" | "?" | "@" | "[" | "\\" |
+                              "]" | "^" | "_" | "{" | "|" | "}" | "~" ;
+Not_quote: Not_paren_star_quote_special | Letter | Digit | "(" | ")" | "*" ;
+
+
+Entity_decl: Entity_head Entity_body END_ENTITY ";" ;
+Entity_head: ENTITY Entity_id Subsuper ";" ;
+Entity_body: Explicit_attr* Derive_clause? Inverse_clause? Unique_clause? Where_clause? ;
+
+Subsuper: Supertype_constraint? Subtype_declaration? ;
+Supertype_constraint: Abstract_supertype_declaration | Abstract_entity_declaration | Supertype_rule ;
+Subtype_declaration: SUBTYPE OF "(" Entity_ref ( "," Entity_ref )* ")";
+
+Abstract_supertype_declaration: ABSTRACT SUPERTYPE Subtype_constraint? ;
+Subtype_constraint: OF "(" Supertype_expression ")" ;
+Supertype_term: One_of | "(" Supertype_expression ")" | Entity_ref ;
+One_of: ONEOF "(" Supertype_expression ( "," Supertype_expression )* ")" ;
+Abstract_entity_declaration: ABSTRACT;
+Supertype_rule: SUPERTYPE Subtype_constraint ;
+
+Explicit_attr: Attribute_decl ( "," Attribute_decl )* ":" OPTIONAL? Parameter_type ";" ;
+Inverse_attr: Attribute_decl ":" ( ( SET | BAG ) Bound_spec? OF )? Entity_ref FOR ( Entity_ref "." )? Attribute_ref ";" ;
+
+Attribute_decl: Redeclared_attribute | Attribute_id ;
+Attribute_id: Simple_id ;
+Parameter_type: Generalized_types | Simple_types | Named_types ;
+Named_types: Entity_ref | Type_ref ;
+Simple_types: Binary_type | Boolean_type | Integer_type | Logical_type | Number_type | Real_type | String_type ;
+Binary_type: BINARY Width_spec? ;
+Boolean_type: BOOLEAN ;
+Logical_type: LOGICAL ;
+Number_type: NUMBER ;
+String_type: STRING Width_spec? ;
+Real_type: REAL ( "(" Precision_spec ")" )? ;
+Integer_type: INTEGER ;
+Width_spec: "(" Width ")" FIXED?;
+Width: Numeric_expression ; // no numeric expressions in IFC width specs
+Precision_spec: Numeric_expression ; // no precision specs in IFC
+
+Generalized_types: Aggregate_type | General_aggregation_types | Generic_entity_type | Generic_type ;
+General_aggregation_types: General_array_type | General_bag_type | General_list_type | General_set_type ;
+General_array_type: ARRAY Bound_spec? OF OPTIONAL? UNIQUE? Parameter_type ;
+General_bag_type: BAG Bound_spec? OF Parameter_type ;
+General_list_type: LIST Bound_spec? OF UNIQUE? Parameter_type ;
+General_set_type: SET Bound_spec? OF Parameter_type ;
+Bound_spec: "[" Bound_1 ":" Bound_2 "]" ;
+Bound_1: Numeric_expression ;
+Bound_2: Numeric_expression ;
+
+Instantiable_type: Concrete_types | Entity_ref ;
+Underlying_type: Constructed_types | Concrete_types ;
+Constructed_types: Enumeration_type | Select_type ;
+Concrete_types: Aggregation_types | Simple_types | Type_ref ;
+Aggregation_types: Array_type | Bag_type | List_type | Set_type ; // Instantiable versions
+Array_type: ARRAY Bound_spec OF OPTIONAL? UNIQUE? Instantiable_type ;
+Bag_type: BAG Bound_spec? OF Instantiable_type ;
+List_type: LIST Bound_spec? OF UNIQUE? Instantiable_type ;
+Set_type: SET Bound_spec? OF Instantiable_type ;
+
+Enumeration_type: EXTENSIBLE? ENUMERATION (( OF Enumeration_items ) | Enumeration_extension )? ;
+Enumeration_items: "(" Enumeration_id ( "," Enumeration_id )* ")" ;
+Enumeration_extension: BASED_ON Type_ref ( WITH Enumeration_items )? ;
+
+Select_extension: BASED_ON Type_ref (WITH Select_list)? ;
+Select_list: "(" Named_types ( "," Named_types)* ")" ;
+Select_type: (EXTENSIBLE GENERIC_ENTITY? )? SELECT (select_list | select_extension)? ; // withou GENERIC_ENTITY?
+
+Bit: "0" | "1";
+Digits: Digit+;
+Binary_literal: "%" Bit+ ;
+Integer_literal: Digits ;
+Real_literal: ( Digits "." Digits? ("e" Sign? Digits)? ) | Integer_literal ;
+Logical_literal: FALSE | TRUE | UNKNOWN ;
+Simple_string_literal: "'" (( "'" "'" ) | Not_quote )* "'" ;
+String_literal: Simple_string_literal | Encoded_string_literal ;
+Literal: Binary_literal | Logical_literal | Real_literal | String_literal ;
+Sign: "+" | "-" ;
+Built_in_constant: 'CONST_E' | 'PI' | 'SELF' | '?' ;
+
+
+Derive_clause: DERIVE Derived_attr+ ;
+Inverse_clause: INVERSE Inverse_attr+ ;
+Unique_clause: UNIQUE (Unique_rule ";" )+ ;
+Where_clause: WHERE (Domain_rule ";")+ ;
+
+
+=== Unused ====
+
+// only one Schema per file in IFC 
+Syntax: Schema_decl+ ;
+Interface_specification: Reference_clause | Use_clause ;
+
+// no procedures in IFC
+Procedure_decl: Procedure_head Algorithm_head Stmt* END_PROCEDURE ";" ;
+Procedure_head: PROCEDURE Procedure_id ( "(" VAR? Formal_parameter ( ";" VAR? Formal_parameter )* ")")? ";" ;
+Procedure_id: Simple_id ;
+
+// no global subtype constraints in IFC (only local)
+subtype_constraint_body: Abstract_supertype? Total_over? (Supertype_expression ";")? ;
+Subtype_constraint_decl: Subtype_constraint_head Subtype_constraint_body END_SUBTYPE_CONSTRAINT ";" ;
+Subtype_constraint_head: SUBTYPE_CONSTRAINT Subtype_constraint_id FOR Entity_ref ";" ;
+Subtype_constraint_id: Simple_id ;
+Abstract_supertype: ABSTRACT SUPERTYPE ";" ;
+
+// no multiple inheritance in IFC
+Supertype_expression: Supertype_factor ( ANDOR Supertype_factor )* ;
+Supertype_factor: Supertype_term ( AND Supertype_term )* ;
+
+// remark tags are cool, but not used in IFC, tail remarks are used in one place, but seem wrong (the tag misses quotes, IfcMirroredProfileDef)
+embedded_remark = "(*" [ remark_tag ] { ( not_paren_star { not_paren_star } ) | lparen_then_not_lparen_star | ( "*" { "*" } ) | not_rparen_star_then_rparen | embedded_remark } "*)" .
+remark = embedded_remark | tail_remark .
+remark_tag = "\"" remark_ref { "." remark_ref } "\"" .
+remark_ref = attribute_ref | constant_ref | entity_ref | enumeration_ref | function_ref | parameter_ref | procedure_ref | rule_label_ref | rule_ref | schema_ref | subtype_constraint_ref | type_label_ref | type_ref | variable_ref .
+tail_remark = "--" [ remark_tag ] .
+Special: Not_paren_star_quote_special | "(" | ")" | "*" | "'" ;
+
+// these are only for nested embedded remarks and parenthesis balance inside nested remarks 
+Lparen_then_not_lparen_star: "("+ Not_lparen_star+ ;
+Not_lparen_star: Not_paren_star | ")" ;
+Not_paren_star: Letter | Digit | Not_paren_star_special;
+Not_paren_star_special: Not_paren_star_quote_special | "'" ;
+Not_rparen_star: Not_paren_star | "(" ;
+Not_rparen_star_then_rparen: Not_rparen_star+ ")"+;
+
+// no encoded strings in IFC
+Encoded_string_literal: "\"" Encoded_character+ "\"" ;
+Encoded_character: Octet Octet Octet Octet;
+Octet: Hex_digit Hex_digit ;
+Hex_digit: Digit | "a" | "b" | "c" | "d" | "e" | "f" ;
+
+// no redeclared attrs in IFC, but we will need the qualified_attribute anyway for rules later on, then we can bring it back
+Redeclared_attribute: qualified_attribute [ RENAMED attribute_id ] ; 
+
+
+// no aggregate and generics
+Aggregate_type: AGGREGATE ( ":" Type_label )? OF Parameter_type ;
+Generic_entity_type: GENERIC_ENTITY (":" Type_label )? ;
+Generic_type: GENERIC ( ":" Type_label)? ;
+Type_label: Type_label_id | Type_label_ref ;
+Type_label_id: Simple_id ;
+
+
+
+=== Collapsed ===
+Schema_version_id: String_literal;
+
+
+=== Backlog ====
+
+// Literals and built-in constants only for now
+Numeric_expression: Simple_expression ;
+Simple_expression: Term ( add_like_op Term )* ;
+Term: Factor ( Multiplication_like_op Factor )* ;
+Factor: Simple_factor ( "**" Simple_factor )? ;
+Simple_factor: Aggregate_initializer | Interval | Query_expression | ( Unary_op? ( "(" Expression ")" | Primary ) ) | Entity_constructor | Enumeration_reference ;
+Primary: Literal | ( Qualifiable_factor Qualifier* ) ;
+Qualifiable_factor: Function_call | Attribute_ref | Constant_factor | General_ref | Population ;
+Constant_factor: Built_in_constant | Constant_ref ;
+
+
+Attribute_ref: Attribute_id ;
+Constant_ref: Constant_id ;
+Entity_ref: Entity_id ;
+Enumeration_ref: Enumeration_id ;
+Function_ref: Function_id ;
+Parameter_ref: Parameter_id ;
+Procedure_ref: Procedure_id ;
+Rule_label_ref: Rule_label_id ;
+Rule_ref: Rule_id ;
+Schema_ref: Schema_id ;
+Subtype_constraint_ref: Subtype_constraint_id ;
+Type_label_ref: Type_label_id ;
+Type_ref: Type_id ;
+Variable_ref: Variable_id ;
+
+Constant_decl: CONSTANT Constant_body+ END_CONSTANT ";" ;
+
+
+Actual_parameter_list: "(" Parameter? ( "," Parameter )* ")" ; 
+Add_like_op: "+" | "-" | OR | XOR ;
+Aggregate_initializer: "[" ( element ("," element )* )? "]" ;
+Aggregate_source: Simple_expression ;
+Algorithm_head: Declaration* Constant_decl? Local_decl? ;
+Alias_stmt: ALIAS Variable_id FOR General_ref (Qualifier) ";" Stmt+ END_ALIAS ";" ;
+Assignment_stmt: General_ref Qualifier* ":=" expression ";"
+Attribute_qualifier: "." Attribute_ref ;
+Built_in_function: ABS | ACOS | ASIN | ATAN | BLENGTH | COS | EXISTS | EXP | FORMAT | HIBOUND | HIINDEX | LENGTH | LOBOUND | LOINDEX | LOG | LOG2 | LOG10 | NVL | ODD | ROLESOF | SIN | SIZEOF | SQRT | TAN | TYPEOF | USEDIN | VALUE | VALUE_IN | VALUE_UNIQUE ;
+Built_in_procedure: INSERT | REMOVE ;
+Case_action: Case_label ( "," case_label )* ":" Stmt ;
+Case_label: Expression ;
+Case_stmt: CASE Selector OF Case_action* ( OTHERWISE ":" Stmt )? END_CASE ";" ;
+Compound_stmt: BEGIN Stmt+ END ";" ;
+Constant_body: Constant_id ":" Instantiable_type ":=" Expression ";" ;
+Constant_id: Simple_id ;
+Derived_attr: Attribute_decl ":" Parameter_type ":=" Expression ";" ;
+Domain_rule: (Rule_label_id ":")? Expression ;
+Element: Expression [ ":" Repetition ] ;
+Entity_constructor: Entity_ref "(" ( expression ( "," expression )* )? ")" ;
+Entity_id: Simple_id ;
+Enumeration_id: Simple_id ;
+Enumeration_reference:  (Type_ref "." )? Enumeration_ref ;
+Escape_stmt: ESCAPE ";" ;
+Expression: Simple_expression (Rel_op_extended Simple_expression)? ;
+Formal_parameter: Parameter_id ( "," parameter_id )* ":" Parameter_type ;
+Function_call: ( Built_in_function | Function_ref ) Actual_parameter_list ;
+Function_decl: Function_head Algorithm_head Stmt+ END_FUNCTION ";" ;
+Function_head: FUNCTION Function_id ( "(" formal_parameter ( ";" formal_parameter )* ")" )? ":" Parameter_type ";" ;
+Function_id: Simple_id ;
+General_ref: Parameter_ref | Variable_ref ;
+
+
+Group_qualifier: "\\" Entity_ref ;
+If_stmt: IF Logical_expression THEN Stmt+ (ELSE Stmt+)? END_IF ";" ;
+Increment: numeric_expression ;
+Increment_control: variable_id ":=" bound_1 TO bound_2 [ BY increment ] ;
+Index: Numeric_expression ;
+Index_1: Index ;
+Index_2: Index ;
+Index_qualifier: "[" Index_1 ( ":" Index_2 )? "]" ;
+Interval: "{" Interval_low Interval_op Interval_item Interval_op Interval_high "}" ;
+Interval_high: Simple_expression ;
+Interval_item: Simple_expression ;
+Interval_low: Simple_expression ;
+Interval_op: "<=" | "<" ;
+Local_decl: LOCAL Local_variable+ END_LOCAL ";" ;
+Local_variable: Variable_id ( "," variable_id)* ":" Parameter_type ( ":=" Expression )? ";" ;
+Logical_expression: Expression ;
+Multiplication_like_op: "*" | "/" | DIV | MOD | AND | "||" ;
+Named_type_or_rename: Named_types (AS ( Entity_id | Type_id ) )? ;
+Null_stmt: ";" ;
+Parameter: Expression ;
+Parameter_id: Simple_id ;
+Population: Entity_ref ;
+Procedure_call_stmt: ( Built_in_procedure | Procedure_ref ) Actual_parameter_list ";" ;
+Qualified_attribute: SELF Group_qualifier Attribute_qualifier ;
+Qualifier: Attribute_qualifier | Group_qualifier | Index_qualifier ;
+Query_expression: QUERY "(" Variable_id "<*" Aggregate_source "|" Logical_expression ")" ;
+Referenced_attribute: attribute_ref | qualified_attribute ;
+Reference_clause: REFERENCE FROM schema_ref [ "(" resource_or_rename { "," resource_or_rename } ")" ] ";" ;
+Rel_op: "<=" | ">=" | "<>" | "=" | ":<>:" | ":=:" | "<" | ">" ;
+Rel_op_extended: rel_op | IN | LIKE ;
+Rename_id: constant_id | entity_id | function_id | procedure_id | type_id ;
+Repeat_control: Increment_control? While_control? Until_control?;
+Repeat_stmt: REPEAT Repeat_control ";" Stmt+ END_REPEAT ";" ;
+Repetition: Numeric_expression ;
+Resource_or_rename: Resource_ref ( AS Rename_id )? ;
+Resource_ref: Constant_ref | Entity_ref | Function_ref | Procedure_ref | Type_ref ;
+Return_stmt: RETURN ( "(" expression ")" )? ";" ;
+Rule_head: RULE Rule_id FOR "(" Entity_ref ("," Entity_ref )* ")" ";" ;
+Rule_id: Simple_id ;
+Rule_label_id: Simple_id ;
+Selector: Expression ;
+Skip_stmt: SKIP ";" ;
+Stmt: Alias_stmt | Assignment_stmt | Case_stmt | Compound_stmt | Escape_stmt | If_stmt | Null_stmt | Procedure_call_stmt | Repeat_stmt | Return_stmt | Skip_stmt ;
+Total_over: TOTAL_OVER "(" Entity_ref ( "," Entity_ref )? ")" ";" ;
+Type_decl: TYPE Type_id "=" Underlying_type ";" Where_clause? END_TYPE ";" ;
+Type_id: Simple_id ;
+Unary_op: "+" | "-" | NOT ;
+Unique_rule: ( Rule_label_id ":" )? Referenced_attribute ( "," Referenced_attribute )* ;
+Until_control: UNTIL Logical_expression ;
+Use_clause: USE FROM Schema_ref ( "(" Named_type_or_rename ( "," Named_type_or_rename )* ")" )? ";" ;
+Variable_id: Simple_id ;
+While_control: WHILE Logical_expression ;
+
+
+terminal ABS: "abs" ;
+terminal ABSTRACT: "abstract" ;
+terminal ACOS: "acos" ;
+terminal AGGREGATE: "aggregate" ;
+terminal ALIAS: "alias" ;
+terminal AND: "and" ;
+terminal ANDOR: "andor" ;
+terminal ARRAY: "array" ;
+terminal AS: "as" ;
+terminal ASIN: "asin" ;
+terminal ATAN: "atan" ;
+terminal BAG: "bag" ;
+terminal BASED_ON: "based_on" ;
+terminal BEGIN: "begin" ;
+terminal BINARY: "binary" ;
+terminal BLENGTH: "blength" ;
+terminal BOOLEAN: "boolean" ;
+terminal BY: "by" ;
+terminal CASE: "case" ;
+terminal CONSTANT: "constant" ;
+terminal CONST_E: "const_e" ;
+terminal COS: "cos" ;
+terminal DERIVE: "derive" ;
+terminal DIV: "div" ;
+terminal ELSE: "else" ;
+terminal END: "end" ;
+terminal END_ALIAS: "end_alias" ;
+terminal END_CASE: "end_case" ;
+terminal END_CONSTANT: "end_constant" ;
+terminal END_ENTITY: "end_entity" ;
+terminal END_FUNCTION: "end_function" ;
+terminal END_IF: "end_if" ;
+terminal END_LOCAL: "end_local" ;
+terminal END_PROCEDURE: "end_procedure" ;
+terminal END_REPEAT: "end_repeat" ;
+terminal END_RULE: "end_rule" ;
+terminal END_SCHEMA: "end_schema" ;
+terminal END_SUBTYPE_CONSTRAINT: "end_subtype_constraint" ;
+terminal END_TYPE: "end_type" ;
+terminal ENTITY: "entity" ;
+terminal ENUMERATION: "enumeration" ;
+terminal ESCAPE: "escape" ;
+terminal EXISTS: "exists" ;
+terminal EXTENSIBLE: "extensible" ;
+terminal EXP: "exp" ;
+terminal FALSE: "false" ;
+terminal FIXED: "fixed" ;
+terminal FOR: "for" ;
+terminal FORMAT: "format" ;
+terminal FROM: "from" ;
+terminal FUNCTION: "function" ;
+terminal GENERIC: "generic" ;
+terminal GENERIC_ENTITY: "generic_entity" ;
+terminal HIBOUND: "hibound" ;
+terminal HIINDEX: "hiindex" ;
+terminal IF: "if" ;
+terminal IN: "in" ;
+terminal INSERT: "insert" ;
+terminal INTEGER: "integer" ;
+terminal INVERSE: "inverse" ;
+terminal LENGTH: "length" ;
+terminal LIKE: "like" ;
+terminal LIST: "list" ;
+terminal LOBOUND: "lobound" ;
+terminal LOCAL: "local" ;
+terminal LOG: "log" ;
+terminal LOG10: "log10" ;
+terminal LOG2: "log2" ;
+terminal LOGICAL: "logical" ;
+terminal LOINDEX: "loindex" ;
+terminal MOD: "mod" ;
+terminal NOT: "not" ;
+terminal NUMBER: "number" ;
+terminal NVL: "nvl" ;
+terminal ODD: "odd" ;
+terminal OF: "of" ;
+terminal ONEOF: "oneof" ;
+terminal OPTIONAL: "optional" ;
+terminal OR: "or" ;
+terminal OTHERWISE: "otherwise" ;
+terminal PI: "pi" ;
+terminal PROCEDURE: "procedure" ;
+terminal QUERY: "query" ;
+terminal REAL: "real" ;
+terminal REFERENCE: "reference" ;
+terminal REMOVE: "remove" ;
+terminal RENAMED: "renamed" ;
+terminal REPEAT: "repeat" ;
+terminal RETURN: "return" ;
+terminal ROLESOF: "rolesof" ;
+terminal RULE: "rule" ;
+terminal SCHEMA: "schema" ;
+terminal SELECT: "select" ;
+terminal SELF: "self" ;
+terminal SET: "set" ;
+terminal SIN: "sin" ;
+terminal SIZEOF: "sizeof" ;
+terminal SKIP: "skip" ;
+terminal SQRT: "sqrt" ;
+terminal STRING: "string" ;
+terminal SUBTYPE: "subtype" ;
+terminal SUBTYPE_CONSTRAINT: "subtype_constraint" ;
+terminal SUPERTYPE: "supertype" ;
+terminal TAN: "tan" ;
+terminal THEN: "then" ;
+terminal TO: "to" ;
+terminal TOTAL_OVER: "total_over" ;
+terminal TRUE: "true" ;
+terminal TYPE: "type" ;
+terminal TYPEOF: "typeof" ;
+terminal UNIQUE: "unique" ;
+terminal UNKNOWN: "unknown" ;
+terminal UNTIL: "until" ;
+terminal USE: "use" ;
+terminal USEDIN: "usedin" ;
+terminal VALUE: "value" ;
+terminal VALUE_IN: "value_in" ;
+terminal VALUE_UNIQUE: "value_unique" ;
+terminal VAR: "var" ;
+terminal WHERE: "where" ;
+terminal WHILE: "while" ;
+terminal WITH: "with" ;
+terminal XOR: "xor";
+
+
+*/
