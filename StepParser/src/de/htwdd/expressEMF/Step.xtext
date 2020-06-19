@@ -1,0 +1,135 @@
+grammar de.htwdd.expressEMF.Step hidden (WS, Comment)
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+// import "platform:/resource/ExpressEMF/model/ExpressEMF.ecore" as Express
+// import "http://ifc4" as IFC4
+import "platform:/resource/ExpressParser/model/generated/Express.ecore" as Express
+
+generate step "http://www.htw-dresden.de/geoinformation/expressEMF/Step"
+
+ExchangeFile:
+	// no AnchorSection, ReferenceSection, SignatureSection in IFC, exactly 1 data section	
+	'ISO-10303-21' ';' header=HeaderSection data=DataSection* 'END-ISO-10303-21;';
+	
+HeaderSection:
+	'HEADER' ';' headerEntity+=HeaderEntity headerEntity+=HeaderEntity (headerEntity+=HeaderEntity)+ 'ENDSEC' ';';
+
+HeaderEntity: ModelHeaderEntity | keyword=KEYWORD parameters=ParameterList ';' ;
+ModelHeaderEntity: "Schema" "(" importedNamespace=Parameter ")";
+Parameter: 	TypedParameter | UntypedParameter | OmittedParameter;
+TypedParameter: type=KEYWORD '(' parameter=Parameter ')' ;
+UntypedParameter: v=STRING | v=REAL | v='$' | v=INTEGER | v=ENUMERATION | v=BINARY | ParameterList | e=[SimpleEntityInstance|ENTITY_INSTANCE_NAME] ;
+OmittedParameter: v='*';
+ParameterList: '(' (values+=Parameter (',' values+=Parameter)*)? ')';
+DataSection: 
+	// only simple records in IFC
+	'DATA' (parameters=ParameterList)? ';' (entities+=SimpleEntityInstance)* 'ENDSEC' ';';
+SimpleEntityInstance:  name=ENTITY_INSTANCE_NAME '=' type=[Express::EntityDecl|KEYWORD]  parameters=ParameterList ';';  // TODO this is not yet working 
+
+terminal KEYWORD:  UPPER ( UPPER|DIGIT)*; // no user-defined Keywords in IFC
+terminal REAL: SIGN? DIGIT+ '.' DIGIT* ('E' SIGN? DIGIT+)?;
+terminal INTEGER: ('+'|'-')? ('0'..'9')+;
+// terminal STRING: "'" ( SPECIAL | DIGIT | SPACE | LOWER | UPPER | HIGH_CODEPOINT | "''" | '\\\\'  )* "'" ; // no control directives
+terminal STRING: "'" (!"'")* "'";
+terminal BINARY: '"' ('0'..'3') HEX* '"' ;
+terminal ENTITY_INSTANCE_NAME: '#' DIGIT+;
+terminal ENUMERATION: '.' UPPER (UPPER|DIGIT)* '.' ;
+terminal Comment: ('/*' -> '*/' | '//' !('\n'|'\r')* ('\r'? '\n')?); /* remark tags and balanced parentheses omitted */
+
+terminal fragment HEX: DIGIT | 'A'..'F' ;
+terminal fragment SIGN: '+'|'-';
+terminal fragment UPPER: 'A'..'Z'|'_';
+// terminal fragment LOWER: ('a'..'z');
+// terminal fragment SPACE: ' ';
+terminal fragment DIGIT: '0'..'9';
+// terminal fragment SPECIAL: '!' | '""' | '*' | '$' | '%' | '&' | '.' | '#' | '+' | ','  | '-' | '(' | ')' | '?' | '/' | ':' | ';' | '<'  | '=' | '>' | '@' | '[' | ']' | '{' | '|' | '}'  | '^' | '`' | '~' ;
+terminal WS: (' '|'\t'|'\r'|'\n')+;
+// terminal fragment HIGH_CODEPOINT:  '\u0080'..'\uFFFF'; // Java limitation to 32 bit
+// terminal Anything: .;
+
+
+/*
+
+Tokens
+==============
+KEYWORD           = USER_DEFINED_KEYWORD | STANDARD_KEYWORD .
+USER_DEFINED_KEYWORD = "!" UPPER { UPPER | DIGIT } .
+STANDARD_KEYWORD  = UPPER { UPPER | DIGIT } .
+SIGN              = "+" | "-" .
+INTEGER           = [ SIGN ] DIGIT { DIGIT } .
+REAL              = [ SIGN ] DIGIT { DIGIT } "." { DIGIT } [ "E" [ SIGN ] DIGIT { DIGIT } ] .
+STRING            = "'" { SPECIAL | DIGIT | SPACE | LOWER | UPPER | HIGH_CODEPOINT |
+                    APOSTROPHE APOSTROPHE | REVERSE_SOLIDUS REVERSE_SOLIDUS | CONTROL_DIRECTIVE } "'" .
+ENTITY_INSTANCE_NAME      = "#" ( DIGIT ) { DIGIT } .
+VALUE_INSTANCE_NAME       = "@" ( DIGIT ) { DIGIT } .
+CONSTANT_ENTITY_NAME      = "#" ( UPPER ) { UPPER | DIGIT } .
+CONSTANT_VALUE_NAME       = "@" ( UPPER ) { UPPER | DIGIT } .
+LHS_OCCURRENCE_NAME       = ( ENTITY_INSTANCE_NAME | VALUE_INSTANCE_NAME ) . 
+RHS_OCCURRENCE_NAME       = ( ENTITY_INSTANCE_NAME | VALUE_INSTANCE_NAME |
+                              CONSTANT_ENTITY_NAME | CONSTANT_VALUE_NAME) . 
+ANCHOR_NAME       = "<" URI_FRAGMENT_IDENTIFIER ">" .
+TAG_NAME          = ( UPPER | LOWER) { UPPER | LOWER | DIGIT } .
+RESOURCE          = "<" UNIVERSAL_RESOURCE_IDENTIFIER ">" .
+ENUMERATION       = "." UPPER { UPPER | DIGIT } "." .
+HEX               = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" |
+                    "8" | "9" | "A" | "B" | "C" | "D" | "E" | "F" .
+BINARY            = """" ( "0" | "1" | "2" | "3" ) { HEX } """" .
+SIGNATURE_CONTENT = BASE64 .
+
+
+Grammar
+==============
+EXCHANGE_FILE      = "ISO-10303-21;"  HEADER_SECTION [ ANCHOR_SECTION ] [ REFERENCE_SECTION ]
+					 { DATA_SECTION } "END-ISO-10303-21;" { SIGNATURE_SECTION }.
+HEADER_SECTION     = "HEADER;"  HEADER_ENTITY HEADER_ENTITY HEADER_ENTITY [HEADER_ENTITY_LIST] "ENDSEC;" .
+HEADER_ENTITY_LIST = HEADER_ENTITY { HEADER_ENTITY } .
+HEADER_ENTITY      = KEYWORD  "(" [ PARAMETER_LIST ] ")" ";" .
+PARAMETER_LIST     = PARAMETER { "," PARAMETER } .
+PARAMETER          = TYPED_PARAMETER  | UNTYPED_PARAMETER | OMITTED_PARAMETER  .
+TYPED_PARAMETER    = KEYWORD "(" PARAMETER ")" .
+UNTYPED_PARAMETER  = "$" | INTEGER | REAL | STRING | RHS_OCCURENCE_NAME | ENUMERATION | BINARY | LIST .
+OMITTED_PARAMETER  = "*" .
+LIST               = "(" [ PARAMETER { "," PARAMETER } ] ")" .
+ANCHOR_SECTION     = "ANCHOR;" ANCHOR_LIST "ENDSEC;" .
+ANCHOR_LIST        = { ANCHOR } .
+ANCHOR             = ANCHOR_NAME "=" ANCHOR_ITEM { ANCHOR_TAG } ";" .
+ANCHOR_ITEM        = "$" | INTEGER | REAL | STRING | ENUMERATION | BINARY | RHS_OCCURRENCE_NAME | RESOURCE | ANCHOR_ITEM_LIST .
+ANCHOR_ITEM_LIST   = "(" [ ANCHOR_ITEM { "," ANCHOR_ITEM } ] ")" .
+ANCHOR_TAG         = "{" TAG_NAME ":" ANCHOR_ITEM "}" .
+REFERENCE_SECTION  = "REFERENCE;" REFERENCE_LIST "ENDSEC;" .
+REFERENCE_LIST     = { REFERENCE } .
+REFERENCE          = LHS_OCCURRENCE_NAME "=" RESOURCE ";" .
+DATA_SECTION       = "DATA" [ "(" PARAMETER_LIST ")" ] ";" ENTITY_INSTANCE_LIST "ENDSEC;" .
+ENTITY_INSTANCE_LIST = { ENTITY_INSTANCE } .
+ENTITY_INSTANCE    = SIMPLE_ENTITY_INSTANCE | COMPLEX_ENTITY_INSTANCE .
+SIMPLE_ENTITY_INSTANCE  = ENTITY_INSTANCE_NAME "=" SIMPLE_RECORD ";" .
+COMPLEX_ENTITY_INSTANCE = ENTITY_INSTANCE_NAME "=" SUBSUPER_RECORD ";" .
+SIMPLE_RECORD      = KEYWORD "(" [ PARAMETER_LIST ] ")" .
+SUBSUPER_RECORD    = "(" SIMPLE_RECORD_LIST ")" .
+SIMPLE_RECORD_LIST = SIMPLE_RECORD { SIMPLE_RECORD } .
+SIGNATURE_SECTION  = "SIGNATURE" SIGNATURE_CONTENT "ENDSEC;".
+
+
+Characters
+===========
+SPACE    = " " .
+DIGIT    = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" .
+LOWER    = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h"
+         | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p"
+         | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x"
+         | "y" | "z" .
+UPPER    = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H"
+         | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P"
+         | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X"
+         | "Y" | "Z" | "_" .
+SPECIAL  = "!" | """" | "*" | "$" | "%" | "&" | "." | "#"
+	 | "+" | ","  | "-" | "(" | ")" | "?" | "/" | ":" 
+	 | ";" | "<"  | "=" | ">" | "@" | "[" | "]" | "{" 
+	 | "|" | "}"  | "^" | "`" | "~" .
+REVERSE_SOLIDUS  = "\" .
+APOSTROPHE = "'" .
+LATIN_CODEPOINT = SPACE | DIGIT | LOWER | UPPER | SPECIAL | REVERSE_SOLIDUS | APOSTROPHE
+HIGH_CODEPOINT	= (U+0080 to U+10FFFF, see 5.2)
+
+ */
+
