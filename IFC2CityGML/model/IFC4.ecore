@@ -1,0 +1,1460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+  <ecore:EPackage name="IFC4" nsURI="http://IFC4.ecore" nsPrefix="ifc4">
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTelecomAddress" eSuperTypes="#/0/IfcAddress"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCovering" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcVibrationIsolatorType" eSuperTypes="#/0/IfcElementComponentType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTextLiteralWithExtent" eSuperTypes="#/0/IfcTextLiteral">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Extent" eType="#/0/IfcPlanarExtent"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCurve" abstract="true" eSuperTypes="#/0/IfcGeometricRepresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSphericalSurface" eSuperTypes="#/0/IfcElementarySurface"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcVertexLoop" eSuperTypes="#/0/IfcLoop">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="LoopVertex" eType="#/0/IfcVertex"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDraughtingPreDefinedCurveFont"
+        eSuperTypes="#/0/IfcPreDefinedCurveFont"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPipeSegment" eSuperTypes="#/0/IfcFlowSegment"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBuildingElementProxy" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDuctFitting" eSuperTypes="#/0/IfcFlowFitting"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAirTerminalBoxType" eSuperTypes="#/0/IfcFlowControllerType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcOuterBoundaryCurve" eSuperTypes="#/0/IfcBoundaryCurve"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcGeometricRepresentationItem" abstract="true"
+        eSuperTypes="#/0/IfcRepresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSurfaceFeature" eSuperTypes="#/0/IfcFeatureElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSurfaceStyleShading" eSuperTypes="#/0/IfcPresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="SurfaceColour" eType="#/0/IfcColourRgb"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProtectiveDeviceTrippingUnitType"
+        eSuperTypes="#/0/IfcDistributionControlElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFurniture" eSuperTypes="#/0/IfcFurnishingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPropertySetDefinition" abstract="true"
+        eSuperTypes="#/0/IfcPropertyDefinition"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRoot" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="OwnerHistory" eType="#/0/IfcOwnerHistory"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFastener" eSuperTypes="#/0/IfcElementComponent"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLibraryReference" eSuperTypes="#/0/IfcExternalReference">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ReferencedLibrary" eType="#/0/IfcLibraryInformation"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMetric" eSuperTypes="#/0/IfcConstraint">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ReferencePath" eType="#/0/IfcReference"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralSurfaceAction" eSuperTypes="#/0/IfcStructuralAction"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSurfaceStyleWithTextures" eSuperTypes="#/0/IfcPresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTessellatedItem" abstract="true"
+        eSuperTypes="#/0/IfcGeometricRepresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcVoidingFeature" eSuperTypes="#/0/IfcFeatureElementSubtraction"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcOrientedEdge" eSuperTypes="#/0/IfcEdge">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="EdgeElement" eType="#/0/IfcEdge"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFlowController" eSuperTypes="#/0/IfcDistributionFlowElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFillAreaStyle" eSuperTypes="#/0/IfcPresentationStyle"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSurfaceStyleRendering" eSuperTypes="#/0/IfcSurfaceStyleShading"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcQuantityWeight" eSuperTypes="#/0/IfcPhysicalSimpleQuantity"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTimePeriod"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRightCircularCone" eSuperTypes="#/0/IfcCsgPrimitive3D"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCostItem" eSuperTypes="#/0/IfcControl"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDistributionElementType" eSuperTypes="#/0/IfcElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcClosedShell" eSuperTypes="#/0/IfcConnectedFaceSet"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelAssociatesMaterial" eSuperTypes="#/0/IfcRelAssociates"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFireSuppressionTerminalType" eSuperTypes="#/0/IfcFlowTerminalType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcController" eSuperTypes="#/0/IfcDistributionControlElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProcess" abstract="true" eSuperTypes="#/0/IfcObject"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMechanicalFastenerType" eSuperTypes="#/0/IfcElementComponentType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelAssociatesLibrary" eSuperTypes="#/0/IfcRelAssociates"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSpatialStructureElement" abstract="true"
+        eSuperTypes="#/0/IfcSpatialElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAxis2Placement3D" eSuperTypes="#/0/IfcPlacement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RefDirection" eType="#/0/IfcDirection"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Axis" eType="#/0/IfcDirection"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcShadingDeviceType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcReinforcementDefinitionProperties"
+        eSuperTypes="#/0/IfcPreDefinedPropertySet"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMember" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSubContractResource" eSuperTypes="#/0/IfcConstructionResource"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBeamStandardCase" eSuperTypes="#/0/IfcBeam"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPcurve" eSuperTypes="#/0/IfcCurve">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ReferenceCurve" eType="#/0/IfcCurve"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="BasisSurface" eType="#/0/IfcSurface"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCondenser" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralResultGroup" eSuperTypes="#/0/IfcGroup">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ResultForLoadGroup" eType="#/0/IfcStructuralLoadGroup"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcGeographicElement" eSuperTypes="#/0/IfcElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPropertyTemplate" abstract="true"
+        eSuperTypes="#/0/IfcPropertyTemplateDefinition"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralLoadCase" eSuperTypes="#/0/IfcStructuralLoadGroup"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCableFitting" eSuperTypes="#/0/IfcFlowFitting"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProductDefinitionShape" eSuperTypes="#/0/IfcProductRepresentation"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSpatialElement" abstract="true"
+        eSuperTypes="#/0/IfcProduct"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProjectionElement" eSuperTypes="#/0/IfcFeatureElementAddition"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFlowTerminalType" abstract="true"
+        eSuperTypes="#/0/IfcDistributionFlowElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRecurrencePattern"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcGeometricRepresentationSubContext"
+        eSuperTypes="#/0/IfcGeometricRepresentationContext">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ParentContext" eType="#/0/IfcGeometricRepresentationContext"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTendonAnchorType" eSuperTypes="#/0/IfcReinforcingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBooleanClippingResult" eSuperTypes="#/0/IfcBooleanResult"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAlarm" eSuperTypes="#/0/IfcDistributionControlElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBoundedCurve" abstract="true" eSuperTypes="#/0/IfcCurve"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcContext" abstract="true" eSuperTypes="#/0/IfcObjectDefinition">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="UnitsInContext" eType="#/0/IfcUnitAssignment"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RepresentationContexts"
+          upperBound="-1" eType="#/0/IfcRepresentationContext"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSystem" eSuperTypes="#/0/IfcGroup"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSpatialStructureElementType" abstract="true"
+        eSuperTypes="#/0/IfcSpatialElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPostalAddress" eSuperTypes="#/0/IfcAddress"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPerformanceHistory" eSuperTypes="#/0/IfcControl"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcImageTexture" eSuperTypes="#/0/IfcSurfaceTexture"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCompressorType" eSuperTypes="#/0/IfcFlowMovingDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConversionBasedUnit" eSuperTypes="#/0/IfcNamedUnit">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ConversionFactor" eType="#/0/IfcMeasureWithUnit"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCurveBoundedPlane" eSuperTypes="#/0/IfcBoundedSurface">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="OuterBoundary" eType="#/0/IfcCurve"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="InnerBoundaries" upperBound="-1"
+          eType="#/0/IfcCurve"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="BasisSurface" eType="#/0/IfcPlane"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcColumn" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCableCarrierSegmentType" eSuperTypes="#/0/IfcFlowSegmentType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMemberStandardCase" eSuperTypes="#/0/IfcMember"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTableRow"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTextStyleFontModel" eSuperTypes="#/0/IfcPreDefinedTextFont"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFootingType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFastenerType" eSuperTypes="#/0/IfcElementComponentType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElectricApplianceType" eSuperTypes="#/0/IfcFlowTerminalType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcEvaporativeCoolerType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCableSegmentType" eSuperTypes="#/0/IfcFlowSegmentType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralMember" abstract="true"
+        eSuperTypes="#/0/IfcStructuralItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCylindricalSurface" eSuperTypes="#/0/IfcElementarySurface"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcEvaporator" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRegularTimeSeries" eSuperTypes="#/0/IfcTimeSeries"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLine" eSuperTypes="#/0/IfcCurve">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Dir" eType="#/0/IfcVector"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Pnt" eType="#/0/IfcCartesianPoint"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCircleHollowProfileDef" eSuperTypes="#/0/IfcCircleProfileDef"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCartesianTransformationOperator2DnonUniform"
+        eSuperTypes="#/0/IfcCartesianTransformationOperator2D"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFilterType" eSuperTypes="#/0/IfcFlowTreatmentDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcObject" abstract="true" eSuperTypes="#/0/IfcObjectDefinition"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCommunicationsAppliance" eSuperTypes="#/0/IfcFlowTerminal"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFilter" eSuperTypes="#/0/IfcFlowTreatmentDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcChillerType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAudioVisualApplianceType" eSuperTypes="#/0/IfcFlowTerminalType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPresentationLayerAssignment"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCurtainWall" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPresentationItem" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDistributionControlElementType"
+        abstract="true" eSuperTypes="#/0/IfcDistributionElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCostValue" eSuperTypes="#/0/IfcAppliedValue"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelServicesBuildings" eSuperTypes="#/0/IfcRelConnects">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingSystem" eType="#/0/IfcSystem"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedBuildings" upperBound="-1"
+          eType="#/0/IfcSpatialElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFixedReferenceSweptAreaSolid" eSuperTypes="#/0/IfcSweptAreaSolid">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Directrix" eType="#/0/IfcCurve"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="FixedReference" eType="#/0/IfcDirection"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElementarySurface" abstract="true"
+        eSuperTypes="#/0/IfcSurface">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Position" eType="#/0/IfcAxis2Placement3D"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProtectiveDevice" eSuperTypes="#/0/IfcFlowController"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProject" eSuperTypes="#/0/IfcContext"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAsymmetricIShapeProfileDef" eSuperTypes="#/0/IfcParameterizedProfileDef"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcReinforcingBar" eSuperTypes="#/0/IfcReinforcingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProjectLibrary" eSuperTypes="#/0/IfcContext"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcExtrudedAreaSolidTapered" eSuperTypes="#/0/IfcExtrudedAreaSolid">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="EndSweptArea" eType="#/0/IfcProfileDef"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMotorConnection" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFlowFitting" eSuperTypes="#/0/IfcDistributionFlowElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcHumidifier" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelDefinesByType" eSuperTypes="#/0/IfcRelDefines">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedObjects" upperBound="-1"
+          eType="#/0/IfcObject"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingType" eType="#/0/IfcTypeObject"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTopologicalRepresentationItem"
+        abstract="true" eSuperTypes="#/0/IfcRepresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcGridPlacement" eSuperTypes="#/0/IfcObjectPlacement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="PlacementLocation" eType="#/0/IfcVirtualGridIntersection"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSwitchingDeviceType" eSuperTypes="#/0/IfcFlowControllerType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCurrencyRelationship" eSuperTypes="#/0/IfcResourceLevelRelationship">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedMonetaryUnit"
+          eType="#/0/IfcMonetaryUnit"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingMonetaryUnit"
+          eType="#/0/IfcMonetaryUnit"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RateSource" eType="#/0/IfcLibraryInformation"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFlowControllerType" abstract="true"
+        eSuperTypes="#/0/IfcDistributionFlowElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPermit" eSuperTypes="#/0/IfcControl"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcManifoldSolidBrep" abstract="true"
+        eSuperTypes="#/0/IfcSolidModel">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Outer" eType="#/0/IfcClosedShell"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcExternalSpatialElement" eSuperTypes="#/0/IfcExternalSpatialStructureElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPhysicalQuantity" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDistributionFlowElementType" abstract="true"
+        eSuperTypes="#/0/IfcDistributionElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcOwnerHistory">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="OwningUser" eType="#/0/IfcPersonAndOrganization"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="LastModifyingUser" eType="#/0/IfcPersonAndOrganization"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="OwningApplication" eType="#/0/IfcApplication"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="LastModifyingApplication"
+          eType="#/0/IfcApplication"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFeatureElement" abstract="true"
+        eSuperTypes="#/0/IfcElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMappedItem" eSuperTypes="#/0/IfcRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="MappingSource" eType="#/0/IfcRepresentationMap"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="MappingTarget" eType="#/0/IfcCartesianTransformationOperator"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPreDefinedItem" abstract="true"
+        eSuperTypes="#/0/IfcPresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDocumentInformation" eSuperTypes="#/0/IfcExternalInformation"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelAssignsToProcess" eSuperTypes="#/0/IfcRelAssigns">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="QuantityInProcess" eType="#/0/IfcMeasureWithUnit"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDimensionalExponents"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelAssociates" abstract="true"
+        eSuperTypes="#/0/IfcRelationship"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElementType" abstract="true" eSuperTypes="#/0/IfcTypeProduct"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcEdgeLoop" eSuperTypes="#/0/IfcLoop"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConstructionMaterialResourceType"
+        eSuperTypes="#/0/IfcConstructionResourceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConstructionProductResource" eSuperTypes="#/0/IfcConstructionResource"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcEnergyConversionDeviceType" abstract="true"
+        eSuperTypes="#/0/IfcDistributionFlowElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcExtendedProperties" abstract="true"
+        eSuperTypes="#/0/IfcPropertyAbstraction">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Properties" upperBound="-1"
+          eType="#/0/IfcProperty"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcZShapeProfileDef" eSuperTypes="#/0/IfcParameterizedProfileDef"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcGeometricRepresentationContext"
+        eSuperTypes="#/0/IfcRepresentationContext">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="TrueNorth" eType="#/0/IfcDirection"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPileType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFlowMeter" eSuperTypes="#/0/IfcFlowController"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcExternalReference" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTextStyle" eSuperTypes="#/0/IfcPresentationStyle">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="TextStyle" eType="#/0/IfcTextStyleTextModel"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="TextCharacterAppearance"
+          eType="#/0/IfcTextStyleForDefinedFont"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPreDefinedCurveFont" abstract="true"
+        eSuperTypes="#/0/IfcPreDefinedItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcWorkSchedule" eSuperTypes="#/0/IfcWorkControl"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralLoadLinearForce" eSuperTypes="#/0/IfcStructuralLoadStatic"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSurfaceReinforcementArea" eSuperTypes="#/0/IfcStructuralLoadOrResult"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcWasteTerminal" eSuperTypes="#/0/IfcFlowTerminal"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcVibrationIsolator" eSuperTypes="#/0/IfcElementComponent"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcReference">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="InnerReference" eType="#/0/IfcReference"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLoop" eSuperTypes="#/0/IfcTopologicalRepresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCoolingTowerType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcActorRole"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBuildingElementPartType" eSuperTypes="#/0/IfcElementComponentType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDistributionElement" eSuperTypes="#/0/IfcElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralAnalysisModel" eSuperTypes="#/0/IfcSystem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="OrientationOf2DPlane"
+          eType="#/0/IfcAxis2Placement3D"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="HasResults" upperBound="-1"
+          eType="#/0/IfcStructuralResultGroup"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="SharedPlacement" eType="#/0/IfcObjectPlacement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="LoadedBy" upperBound="-1"
+          eType="#/0/IfcStructuralLoadGroup"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRevolvedAreaSolid" eSuperTypes="#/0/IfcSweptAreaSolid">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Axis" eType="#/0/IfcAxis1Placement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFaceBasedSurfaceModel" eSuperTypes="#/0/IfcGeometricRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="FbsmFaces" upperBound="-1"
+          eType="#/0/IfcConnectedFaceSet"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFireSuppressionTerminal" eSuperTypes="#/0/IfcFlowTerminal"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelConnectsElements" eSuperTypes="#/0/IfcRelConnects">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedElement" eType="#/0/IfcElement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingElement" eType="#/0/IfcElement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ConnectionGeometry" eType="#/0/IfcConnectionGeometry"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCsgPrimitive3D" abstract="true"
+        eSuperTypes="#/0/IfcGeometricRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Position" eType="#/0/IfcAxis2Placement3D"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTextLiteral" eSuperTypes="#/0/IfcGeometricRepresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcWindowType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSlab" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcGeometricCurveSet" eSuperTypes="#/0/IfcGeometricSet"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelFlowControlElements" eSuperTypes="#/0/IfcRelConnects">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingFlowElement"
+          eType="#/0/IfcDistributionFlowElement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedControlElements"
+          upperBound="-1" eType="#/0/IfcDistributionControlElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCShapeProfileDef" eSuperTypes="#/0/IfcParameterizedProfileDef"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralPlanarAction" eSuperTypes="#/0/IfcStructuralSurfaceAction"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcComplexProperty" eSuperTypes="#/0/IfcProperty">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="HasProperties" upperBound="-1"
+          eType="#/0/IfcProperty"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElectricGenerator" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcGridAxis">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="AxisCurve" eType="#/0/IfcCurve"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPreDefinedProperties" abstract="true"
+        eSuperTypes="#/0/IfcPropertyAbstraction"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTypeProcess" abstract="true" eSuperTypes="#/0/IfcTypeObject"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralAction" abstract="true"
+        eSuperTypes="#/0/IfcStructuralActivity"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcEvaporatorType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCartesianPointList3D" eSuperTypes="#/0/IfcCartesianPointList"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcIndexedPolyCurve" eSuperTypes="#/0/IfcBoundedCurve">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Points" eType="#/0/IfcCartesianPointList"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcResourceApprovalRelationship" eSuperTypes="#/0/IfcResourceLevelRelationship">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingApproval" eType="#/0/IfcApproval"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcActor" eSuperTypes="#/0/IfcObject"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDuctSilencer" eSuperTypes="#/0/IfcFlowTreatmentDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFaceOuterBound" eSuperTypes="#/0/IfcFaceBound"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElectricAppliance" eSuperTypes="#/0/IfcFlowTerminal"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcWorkPlan" eSuperTypes="#/0/IfcWorkControl"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDistributionChamberElement" eSuperTypes="#/0/IfcDistributionFlowElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDerivedUnitElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Unit" eType="#/0/IfcNamedUnit"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCableSegment" eSuperTypes="#/0/IfcFlowSegment"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcOrganization"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDirection" eSuperTypes="#/0/IfcGeometricRepresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcActuatorType" eSuperTypes="#/0/IfcDistributionControlElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRampFlightType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcUShapeProfileDef" eSuperTypes="#/0/IfcParameterizedProfileDef"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPerson"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPropertyReferenceValue" eSuperTypes="#/0/IfcSimpleProperty"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSchedulingTime" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDoorPanelProperties" eSuperTypes="#/0/IfcPreDefinedPropertySet">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ShapeAspectStyle" eType="#/0/IfcShapeAspect"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFlowTreatmentDeviceType" abstract="true"
+        eSuperTypes="#/0/IfcDistributionFlowElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPlateStandardCase" eSuperTypes="#/0/IfcPlate"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterialList"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAudioVisualAppliance" eSuperTypes="#/0/IfcFlowTerminal"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFlowMeterType" eSuperTypes="#/0/IfcFlowControllerType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLightSourceAmbient" eSuperTypes="#/0/IfcLightSource"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelInterferesElements" eSuperTypes="#/0/IfcRelConnects">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedElement" eType="#/0/IfcElement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingElement" eType="#/0/IfcElement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="InterferenceGeometry"
+          eType="#/0/IfcConnectionGeometry"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPreDefinedColour" abstract="true"
+        eSuperTypes="#/0/IfcPreDefinedItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCurveStyle" eSuperTypes="#/0/IfcPresentationStyle"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRepresentationMap">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="MappedRepresentation"
+          eType="#/0/IfcRepresentation"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSensorType" eSuperTypes="#/0/IfcDistributionControlElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcUnitAssignment"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSweptDiskSolid" eSuperTypes="#/0/IfcSolidModel">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Directrix" eType="#/0/IfcCurve"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelDeclares" eSuperTypes="#/0/IfcRelationship">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingContext" eType="#/0/IfcContext"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcEvent" eSuperTypes="#/0/IfcProcess">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="EventOccurenceTime" eType="#/0/IfcEventTime"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSectionReinforcementProperties"
+        eSuperTypes="#/0/IfcPreDefinedProperties">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="SectionDefinition" eType="#/0/IfcSectionProperties"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="CrossSectionReinforcementDefinitions"
+          upperBound="-1" eType="#/0/IfcReinforcementBarProperties"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcVertex" eSuperTypes="#/0/IfcTopologicalRepresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProjectedCRS" eSuperTypes="#/0/IfcCoordinateReferenceSystem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="MapUnit" eType="#/0/IfcNamedUnit"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelAssociatesDocument" eSuperTypes="#/0/IfcRelAssociates"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBoundaryCondition" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcExternalSpatialStructureElement"
+        abstract="true" eSuperTypes="#/0/IfcSpatialElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBoundaryNodeCondition" eSuperTypes="#/0/IfcBoundaryCondition"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDerivedUnit">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Elements" upperBound="-1"
+          eType="#/0/IfcDerivedUnitElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterialProfileWithOffsets" eSuperTypes="#/0/IfcMaterialProfile"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcExtrudedAreaSolid" eSuperTypes="#/0/IfcSweptAreaSolid">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ExtrudedDirection" eType="#/0/IfcDirection"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCooledBeam" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDuctFittingType" eSuperTypes="#/0/IfcFlowFittingType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSlabElementedCase" eSuperTypes="#/0/IfcSlab"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTextureCoordinate" abstract="true"
+        eSuperTypes="#/0/IfcPresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMedicalDevice" eSuperTypes="#/0/IfcFlowTerminal"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralCurveAction" eSuperTypes="#/0/IfcStructuralAction"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSanitaryTerminalType" eSuperTypes="#/0/IfcFlowTerminalType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcApproval"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSimpleProperty" abstract="true"
+        eSuperTypes="#/0/IfcProperty"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFan" eSuperTypes="#/0/IfcFlowMovingDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConstructionMaterialResource" eSuperTypes="#/0/IfcConstructionResource"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcEllipseProfileDef" eSuperTypes="#/0/IfcParameterizedProfileDef"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcOccupant" eSuperTypes="#/0/IfcActor"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcObjective" eSuperTypes="#/0/IfcConstraint"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterialUsageDefinition" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSectionProperties" eSuperTypes="#/0/IfcPreDefinedProperties">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="StartProfile" eType="#/0/IfcProfileDef"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="EndProfile" eType="#/0/IfcProfileDef"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcControllerType" eSuperTypes="#/0/IfcDistributionControlElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPolygonalFaceSet" eSuperTypes="#/0/IfcTessellatedFaceSet"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPipeFittingType" eSuperTypes="#/0/IfcFlowFittingType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFurnishingElementType" eSuperTypes="#/0/IfcElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFlowInstrument" eSuperTypes="#/0/IfcDistributionControlElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTypeResource" abstract="true" eSuperTypes="#/0/IfcTypeObject"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAnnotation" eSuperTypes="#/0/IfcProduct"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLocalPlacement" eSuperTypes="#/0/IfcObjectPlacement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="PlacementRelTo" eType="#/0/IfcObjectPlacement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelDefines" abstract="true" eSuperTypes="#/0/IfcRelationship"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLightFixture" eSuperTypes="#/0/IfcFlowTerminal"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPropertyTemplateDefinition" abstract="true"
+        eSuperTypes="#/0/IfcPropertyDefinition"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCartesianPointList" abstract="true"
+        eSuperTypes="#/0/IfcGeometricRepresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcObjectDefinition" abstract="true"
+        eSuperTypes="#/0/IfcRoot"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFillAreaStyleHatching" eSuperTypes="#/0/IfcGeometricRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="HatchLineAppearance"
+          eType="#/0/IfcCurveStyle"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="PatternStart" eType="#/0/IfcCartesianPoint"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="PointOfReferenceHatchLine"
+          eType="#/0/IfcCartesianPoint"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCoordinateReferenceSystem" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLampType" eSuperTypes="#/0/IfcFlowTerminalType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelDefinesByTemplate" eSuperTypes="#/0/IfcRelDefines">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedPropertySets"
+          upperBound="-1" eType="#/0/IfcPropertySetDefinition"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingTemplate" eType="#/0/IfcPropertySetTemplate"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElectricMotorType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPhysicalSimpleQuantity" abstract="true"
+        eSuperTypes="#/0/IfcPhysicalQuantity">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Unit" eType="#/0/IfcNamedUnit"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElementAssembly" eSuperTypes="#/0/IfcElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPreDefinedPropertySet" abstract="true"
+        eSuperTypes="#/0/IfcPropertySetDefinition"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcIndexedColourMap" eSuperTypes="#/0/IfcPresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Colours" eType="#/0/IfcColourRgbList"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="MappedTo" eType="#/0/IfcTessellatedFaceSet"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRightCircularCylinder" eSuperTypes="#/0/IfcCsgPrimitive3D"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelConnectsWithEccentricity" eSuperTypes="#/0/IfcRelConnectsStructuralMember">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ConnectionConstraint"
+          eType="#/0/IfcConnectionGeometry"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelDefinesByProperties" eSuperTypes="#/0/IfcRelDefines">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedObjects" upperBound="-1"
+          eType="#/0/IfcObjectDefinition"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAirTerminalType" eSuperTypes="#/0/IfcFlowTerminalType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBeamType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFlowMovingDeviceType" abstract="true"
+        eSuperTypes="#/0/IfcDistributionFlowElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLightSourceSpot" eSuperTypes="#/0/IfcLightSourcePositional">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Orientation" eType="#/0/IfcDirection"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcOpeningElement" eSuperTypes="#/0/IfcFeatureElementSubtraction"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTubeBundleType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcUnitaryControlElementType" eSuperTypes="#/0/IfcDistributionControlElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCostSchedule" eSuperTypes="#/0/IfcControl"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralItem" abstract="true"
+        eSuperTypes="#/0/IfcProduct"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterialRelationship" eSuperTypes="#/0/IfcResourceLevelRelationship">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingMaterial" eType="#/0/IfcMaterial"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedMaterials" upperBound="-1"
+          eType="#/0/IfcMaterial"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTank" eSuperTypes="#/0/IfcFlowStorageDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLamp" eSuperTypes="#/0/IfcFlowTerminal"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcQuantitySet" abstract="true" eSuperTypes="#/0/IfcPropertySetDefinition"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBoundaryNodeConditionWarping" eSuperTypes="#/0/IfcBoundaryNodeCondition"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRailingType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFlowFittingType" abstract="true"
+        eSuperTypes="#/0/IfcDistributionFlowElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBoundaryFaceCondition" eSuperTypes="#/0/IfcBoundaryCondition"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCurveBoundedSurface" eSuperTypes="#/0/IfcBoundedSurface">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="BasisSurface" eType="#/0/IfcSurface"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Boundaries" upperBound="-1"
+          eType="#/0/IfcBoundaryCurve"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcGeometricSet" eSuperTypes="#/0/IfcGeometricRepresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralConnectionCondition"
+        abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTaskTime" eSuperTypes="#/0/IfcSchedulingTime"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralActivity" abstract="true"
+        eSuperTypes="#/0/IfcProduct">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="AppliedLoad" eType="#/0/IfcStructuralLoad"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTaskTimeRecurring" eSuperTypes="#/0/IfcTaskTime">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Recurrence" eType="#/0/IfcRecurrencePattern"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcInterceptor" eSuperTypes="#/0/IfcFlowTreatmentDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcReinforcingMesh" eSuperTypes="#/0/IfcReinforcingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSystemFurnitureElement" eSuperTypes="#/0/IfcFurnishingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFillAreaStyleTiles" eSuperTypes="#/0/IfcGeometricRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Tiles" upperBound="-1"
+          eType="#/0/IfcStyledItem"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConstructionResource" abstract="true"
+        eSuperTypes="#/0/IfcResource">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="BaseQuantity" eType="#/0/IfcPhysicalQuantity"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Usage" eType="#/0/IfcResourceTime"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcWallType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBuildingSystem" eSuperTypes="#/0/IfcSystem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBurner" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLightSourceGoniometric" eSuperTypes="#/0/IfcLightSource">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Position" eType="#/0/IfcAxis2Placement3D"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ColourAppearance" eType="#/0/IfcColourRgb"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralCurveConnection" eSuperTypes="#/0/IfcStructuralConnection">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Axis" eType="#/0/IfcDirection"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFurnitureType" eSuperTypes="#/0/IfcFurnishingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelAssignsToActor" eSuperTypes="#/0/IfcRelAssigns">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingActor" eType="#/0/IfcActor"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ActingRole" eType="#/0/IfcActorRole"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDistributionChamberElementType"
+        eSuperTypes="#/0/IfcDistributionFlowElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSurfaceOfLinearExtrusion" eSuperTypes="#/0/IfcSweptSurface">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ExtrudedDirection" eType="#/0/IfcDirection"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcHeatExchanger" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCivilElement" eSuperTypes="#/0/IfcElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcUnitaryEquipmentType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDistributionFlowElement" eSuperTypes="#/0/IfcDistributionElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcHeatExchangerType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcChimneyType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcReinforcingMeshType" eSuperTypes="#/0/IfcReinforcingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelAssociatesApproval" eSuperTypes="#/0/IfcRelAssociates">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingApproval" eType="#/0/IfcApproval"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPolygonalBoundedHalfSpace" eSuperTypes="#/0/IfcHalfSpaceSolid">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="PolygonalBoundary" eType="#/0/IfcBoundedCurve"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Position" eType="#/0/IfcAxis2Placement3D"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcVertexPoint" eSuperTypes="#/0/IfcVertex">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="VertexGeometry" eType="#/0/IfcPoint"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBlock" eSuperTypes="#/0/IfcCsgPrimitive3D"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTopologyRepresentation" eSuperTypes="#/0/IfcShapeModel"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElectricGeneratorType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcJunctionBoxType" eSuperTypes="#/0/IfcFlowFittingType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcNamedUnit" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Dimensions" eType="#/0/IfcDimensionalExponents"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCircleProfileDef" eSuperTypes="#/0/IfcParameterizedProfileDef"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDistributionSystem" eSuperTypes="#/0/IfcSystem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcEdgeCurve" eSuperTypes="#/0/IfcEdge">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="EdgeGeometry" eType="#/0/IfcCurve"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElementComponent" abstract="true"
+        eSuperTypes="#/0/IfcElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelAssignsToGroup" eSuperTypes="#/0/IfcRelAssigns">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingGroup" eType="#/0/IfcGroup"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBlobTexture" eSuperTypes="#/0/IfcSurfaceTexture"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcVirtualElement" eSuperTypes="#/0/IfcElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDraughtingPreDefinedColour" eSuperTypes="#/0/IfcPreDefinedColour"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelConnects" abstract="true" eSuperTypes="#/0/IfcRelationship"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcIndexedTriangleTextureMap" eSuperTypes="#/0/IfcIndexedTextureMap"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralLoadOrResult" abstract="true"
+        eSuperTypes="#/0/IfcStructuralLoad"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcWorkControl" abstract="true" eSuperTypes="#/0/IfcControl">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Creators" upperBound="-1"
+          eType="#/0/IfcPerson"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCompositeCurveOnSurface" eSuperTypes="#/0/IfcCompositeCurve"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelationship" abstract="true" eSuperTypes="#/0/IfcRoot"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCartesianTransformationOperator3D"
+        eSuperTypes="#/0/IfcCartesianTransformationOperator">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Axis3" eType="#/0/IfcDirection"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConversionBasedUnitWithOffset"
+        eSuperTypes="#/0/IfcConversionBasedUnit"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSlabType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcOpenShell" eSuperTypes="#/0/IfcConnectedFaceSet"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMapConversion" eSuperTypes="#/0/IfcCoordinateOperation"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTendon" eSuperTypes="#/0/IfcReinforcingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElementAssemblyType" eSuperTypes="#/0/IfcElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcIndexedTextureMap" abstract="true"
+        eSuperTypes="#/0/IfcTextureCoordinate">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="TexCoords" eType="#/0/IfcTextureVertexList"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="MappedTo" eType="#/0/IfcTessellatedFaceSet"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelAssignsToGroupByFactor" eSuperTypes="#/0/IfcRelAssignsToGroup"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelConnectsPortToElement" eSuperTypes="#/0/IfcRelConnects">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedElement" eType="#/0/IfcDistributionElement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingPort" eType="#/0/IfcPort"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRepresentation" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Items" upperBound="-1"
+          eType="#/0/IfcRepresentationItem"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ContextOfItems" eType="#/0/IfcRepresentationContext"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSweptDiskSolidPolygonal" eSuperTypes="#/0/IfcSweptDiskSolid"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTextureVertex" eSuperTypes="#/0/IfcPresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcActuator" eSuperTypes="#/0/IfcDistributionControlElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLShapeProfileDef" eSuperTypes="#/0/IfcParameterizedProfileDef"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralCurveMember" eSuperTypes="#/0/IfcStructuralMember">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Axis" eType="#/0/IfcDirection"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAddress" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElectricMotor" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcShellBasedSurfaceModel" eSuperTypes="#/0/IfcGeometricRepresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSolarDevice" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFacetedBrepWithVoids" eSuperTypes="#/0/IfcFacetedBrep">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Voids" upperBound="-1"
+          eType="#/0/IfcClosedShell"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStyleModel" abstract="true" eSuperTypes="#/0/IfcRepresentation"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCartesianTransformationOperator3DnonUniform"
+        eSuperTypes="#/0/IfcCartesianTransformationOperator3D"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterialLayer" eSuperTypes="#/0/IfcMaterialDefinition">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Material" eType="#/0/IfcMaterial"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSurfaceTexture" abstract="true"
+        eSuperTypes="#/0/IfcPresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="TextureTransform" eType="#/0/IfcCartesianTransformationOperator2D"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSurfaceCurve" eSuperTypes="#/0/IfcCurve">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Curve3D" eType="#/0/IfcCurve"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcOffsetCurve3D" eSuperTypes="#/0/IfcCurve">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RefDirection" eType="#/0/IfcDirection"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="BasisCurve" eType="#/0/IfcCurve"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSpatialElementType" abstract="true"
+        eSuperTypes="#/0/IfcTypeProduct"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTankType" eSuperTypes="#/0/IfcFlowStorageDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcIrregularTimeSeries" eSuperTypes="#/0/IfcTimeSeries"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcIrregularTimeSeriesValue"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralConnection" abstract="true"
+        eSuperTypes="#/0/IfcStructuralItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="AppliedCondition" eType="#/0/IfcBoundaryCondition"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPipeSegmentType" eSuperTypes="#/0/IfcFlowSegmentType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcShadingDevice" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCurveStyleFontPattern" eSuperTypes="#/0/IfcPresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAirTerminal" eSuperTypes="#/0/IfcFlowTerminal"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTendonAnchor" eSuperTypes="#/0/IfcReinforcingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcExternallyDefinedHatchStyle" eSuperTypes="#/0/IfcExternalReference"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralPointAction" eSuperTypes="#/0/IfcStructuralAction"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCondenserType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcIndexedPolygonalFace" eSuperTypes="#/0/IfcTessellatedItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcColumnStandardCase" eSuperTypes="#/0/IfcColumn"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStairFlight" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralLoadTemperature" eSuperTypes="#/0/IfcStructuralLoadStatic"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterialLayerSet" eSuperTypes="#/0/IfcMaterialDefinition"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSphere" eSuperTypes="#/0/IfcCsgPrimitive3D"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcEdge" eSuperTypes="#/0/IfcTopologicalRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="EdgeEnd" eType="#/0/IfcVertex"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="EdgeStart" eType="#/0/IfcVertex"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBuildingElement" abstract="true"
+        eSuperTypes="#/0/IfcElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCrewResourceType" eSuperTypes="#/0/IfcConstructionResourceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAxis2Placement2D" eSuperTypes="#/0/IfcPlacement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RefDirection" eType="#/0/IfcDirection"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralLoadConfiguration" eSuperTypes="#/0/IfcStructuralLoad"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcJunctionBox" eSuperTypes="#/0/IfcFlowFitting"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProduct" abstract="true" eSuperTypes="#/0/IfcObject">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ObjectPlacement" eType="#/0/IfcObjectPlacement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Representation" eType="#/0/IfcProductRepresentation"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcExternalReferenceRelationship"
+        eSuperTypes="#/0/IfcResourceLevelRelationship">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingReference" eType="#/0/IfcExternalReference"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSpaceType" eSuperTypes="#/0/IfcSpatialStructureElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTypeProduct" eSuperTypes="#/0/IfcTypeObject"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBooleanResult" eSuperTypes="#/0/IfcGeometricRepresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConnectionCurveGeometry" eSuperTypes="#/0/IfcConnectionGeometry"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcEllipse" eSuperTypes="#/0/IfcConic"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralLinearAction" eSuperTypes="#/0/IfcStructuralCurveAction"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBoundaryEdgeCondition" eSuperTypes="#/0/IfcBoundaryCondition"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCompositeCurve" eSuperTypes="#/0/IfcBoundedCurve"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelDecomposes" abstract="true"
+        eSuperTypes="#/0/IfcRelationship"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCircle" eSuperTypes="#/0/IfcConic"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcComplexPropertyTemplate" eSuperTypes="#/0/IfcPropertyTemplate">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="HasPropertyTemplates"
+          upperBound="-1" eType="#/0/IfcPropertyTemplate"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDocumentInformationRelationship"
+        eSuperTypes="#/0/IfcResourceLevelRelationship">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingDocument" eType="#/0/IfcDocumentInformation"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedDocuments" upperBound="-1"
+          eType="#/0/IfcDocumentInformation"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAdvancedFace" eSuperTypes="#/0/IfcFaceSurface"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcExternallyDefinedSurfaceStyle"
+        eSuperTypes="#/0/IfcExternalReference"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProcedure" eSuperTypes="#/0/IfcProcess"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcReparametrisedCompositeCurveSegment"
+        eSuperTypes="#/0/IfcCompositeCurveSegment"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSurfaceCurveSweptAreaSolid" eSuperTypes="#/0/IfcSweptAreaSolid">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Directrix" eType="#/0/IfcCurve"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ReferenceSurface" eType="#/0/IfcSurface"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProjectOrder" eSuperTypes="#/0/IfcControl"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConnectionPointEccentricity" eSuperTypes="#/0/IfcConnectionPointGeometry"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPresentationStyleAssignment"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSlippageConnectionCondition" eSuperTypes="#/0/IfcStructuralConnectionCondition"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterialDefinitionRepresentation"
+        eSuperTypes="#/0/IfcProductRepresentation">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RepresentedMaterial"
+          eType="#/0/IfcMaterial"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFlowStorageDevice" eSuperTypes="#/0/IfcDistributionFlowElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSpatialZoneType" eSuperTypes="#/0/IfcSpatialElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProtectiveDeviceType" eSuperTypes="#/0/IfcFlowControllerType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcQuantityTime" eSuperTypes="#/0/IfcPhysicalSimpleQuantity"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDuctSegment" eSuperTypes="#/0/IfcFlowSegment"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFaceSurface" eSuperTypes="#/0/IfcFace">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="FaceSurface" eType="#/0/IfcSurface"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRectangularPyramid" eSuperTypes="#/0/IfcCsgPrimitive3D"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPropertyEnumeratedValue" eSuperTypes="#/0/IfcSimpleProperty">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="EnumerationReference"
+          eType="#/0/IfcPropertyEnumeration"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelFillsElement" eSuperTypes="#/0/IfcRelConnects">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingOpeningElement"
+          eType="#/0/IfcOpeningElement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedBuildingElement"
+          eType="#/0/IfcElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSeamCurve" eSuperTypes="#/0/IfcSurfaceCurve"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAdvancedBrep" eSuperTypes="#/0/IfcManifoldSolidBrep"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFaceBound" eSuperTypes="#/0/IfcTopologicalRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Bound" eType="#/0/IfcLoop"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBoundedSurface" abstract="true"
+        eSuperTypes="#/0/IfcSurface"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDistributionPort" eSuperTypes="#/0/IfcPort"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTextStyleTextModel" eSuperTypes="#/0/IfcPresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcIntersectionCurve" eSuperTypes="#/0/IfcSurfaceCurve"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSystemFurnitureElementType" eSuperTypes="#/0/IfcFurnishingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCartesianPointList2D" eSuperTypes="#/0/IfcCartesianPointList"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTShapeProfileDef" eSuperTypes="#/0/IfcParameterizedProfileDef"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPump" eSuperTypes="#/0/IfcFlowMovingDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcClassification" eSuperTypes="#/0/IfcExternalInformation"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralLoadSingleDisplacement"
+        eSuperTypes="#/0/IfcStructuralLoadStatic"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDoorStyle" eSuperTypes="#/0/IfcTypeProduct"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPropertyTableValue" eSuperTypes="#/0/IfcSimpleProperty"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcWindowStandardCase" eSuperTypes="#/0/IfcWindow"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcResourceLevelRelationship" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFlowInstrumentType" eSuperTypes="#/0/IfcDistributionControlElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcClassificationReference" eSuperTypes="#/0/IfcExternalReference"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCurveStyleFontAndScaling" eSuperTypes="#/0/IfcPresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCoil" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCoilType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTypeObject" eSuperTypes="#/0/IfcObjectDefinition">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="HasPropertySets" upperBound="-1"
+          eType="#/0/IfcPropertySetDefinition"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElement" abstract="true" eSuperTypes="#/0/IfcProduct"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcWindowPanelProperties" eSuperTypes="#/0/IfcPreDefinedPropertySet">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ShapeAspectStyle" eType="#/0/IfcShapeAspect"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProfileProperties" eSuperTypes="#/0/IfcExtendedProperties">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ProfileDefinition" eType="#/0/IfcProfileDef"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPixelTexture" eSuperTypes="#/0/IfcSurfaceTexture"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStairFlightType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRationalBSplineCurveWithKnots"
+        eSuperTypes="#/0/IfcBSplineCurveWithKnots"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCableCarrierFitting" eSuperTypes="#/0/IfcFlowFitting"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralLoad" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcColumnType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcVector" eSuperTypes="#/0/IfcGeometricRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Orientation" eType="#/0/IfcDirection"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCivilElementType" eSuperTypes="#/0/IfcElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConnectionSurfaceGeometry" eSuperTypes="#/0/IfcConnectionGeometry"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRamp" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDoorType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConstructionProductResourceType"
+        eSuperTypes="#/0/IfcConstructionResourceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElementQuantity" eSuperTypes="#/0/IfcQuantitySet">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Quantities" upperBound="-1"
+          eType="#/0/IfcPhysicalQuantity"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRectangularTrimmedSurface" eSuperTypes="#/0/IfcBoundedSurface">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="BasisSurface" eType="#/0/IfcSurface"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDistributionCircuit" eSuperTypes="#/0/IfcDistributionSystem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProxy" eSuperTypes="#/0/IfcProduct"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDistributionControlElement" eSuperTypes="#/0/IfcDistributionElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPropertySingleValue" eSuperTypes="#/0/IfcSimpleProperty"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBuildingStorey" eSuperTypes="#/0/IfcSpatialStructureElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElectricFlowStorageDeviceType"
+        eSuperTypes="#/0/IfcFlowStorageDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPolyline" eSuperTypes="#/0/IfcBoundedCurve"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcUnitaryControlElement" eSuperTypes="#/0/IfcDistributionControlElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPropertyAbstraction" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcGeographicElementType" eSuperTypes="#/0/IfcElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPlanarExtent" eSuperTypes="#/0/IfcGeometricRepresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRectangleHollowProfileDef" eSuperTypes="#/0/IfcRectangleProfileDef"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterialProfileSetUsageTapering"
+        eSuperTypes="#/0/IfcMaterialProfileSetUsage">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ForProfileEndSet" eType="#/0/IfcMaterialProfileSet"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFanType" eSuperTypes="#/0/IfcFlowMovingDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSweptAreaSolid" abstract="true"
+        eSuperTypes="#/0/IfcSolidModel">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Position" eType="#/0/IfcAxis2Placement3D"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="SweptArea" eType="#/0/IfcProfileDef"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPropertyListValue" eSuperTypes="#/0/IfcSimpleProperty"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTrapeziumProfileDef" eSuperTypes="#/0/IfcParameterizedProfileDef"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSurfaceStyleLighting" eSuperTypes="#/0/IfcPresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="TransmissionColour" eType="#/0/IfcColourRgb"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="DiffuseTransmissionColour"
+          eType="#/0/IfcColourRgb"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ReflectanceColour" eType="#/0/IfcColourRgb"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="DiffuseReflectionColour"
+          eType="#/0/IfcColourRgb"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCompressor" eSuperTypes="#/0/IfcFlowMovingDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRampType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBuildingElementPart" eSuperTypes="#/0/IfcElementComponent"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCurveStyleFont" eSuperTypes="#/0/IfcPresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProperty" abstract="true" eSuperTypes="#/0/IfcPropertyAbstraction"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPath" eSuperTypes="#/0/IfcTopologicalRepresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelAssociatesConstraint" eSuperTypes="#/0/IfcRelAssociates">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingConstraint" eType="#/0/IfcConstraint"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTransportElementType" eSuperTypes="#/0/IfcElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDuctSilencerType" eSuperTypes="#/0/IfcFlowTreatmentDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCsgSolid" eSuperTypes="#/0/IfcSolidModel"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelSequence" eSuperTypes="#/0/IfcRelConnects">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingProcess" eType="#/0/IfcProcess"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedProcess" eType="#/0/IfcProcess"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="TimeLag" eType="#/0/IfcLagTime"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcObjectPlacement" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterialDefinition" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralCurveMemberVarying" eSuperTypes="#/0/IfcStructuralCurveMember"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCoordinateOperation" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="TargetCRS" eType="#/0/IfcCoordinateReferenceSystem"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcGrid" eSuperTypes="#/0/IfcProduct"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMonetaryUnit"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralPointReaction" eSuperTypes="#/0/IfcStructuralReaction"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMotorConnectionType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLightSourceDirectional" eSuperTypes="#/0/IfcLightSource">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Orientation" eType="#/0/IfcDirection"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFlowTreatmentDevice" eSuperTypes="#/0/IfcDistributionFlowElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDamper" eSuperTypes="#/0/IfcFlowController"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcOffsetCurve2D" eSuperTypes="#/0/IfcCurve">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="BasisCurve" eType="#/0/IfcCurve"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTriangulatedFaceSet" eSuperTypes="#/0/IfcTessellatedFaceSet"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStair" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCartesianTransformationOperator"
+        abstract="true" eSuperTypes="#/0/IfcGeometricRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Axis1" eType="#/0/IfcDirection"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Axis2" eType="#/0/IfcDirection"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="LocalOrigin" eType="#/0/IfcCartesianPoint"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSIUnit" eSuperTypes="#/0/IfcNamedUnit"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAsset" eSuperTypes="#/0/IfcGroup">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="DepreciatedValue" eType="#/0/IfcCostValue"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="OriginalValue" eType="#/0/IfcCostValue"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="TotalReplacementCost"
+          eType="#/0/IfcCostValue"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ResponsiblePerson" eType="#/0/IfcPerson"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="CurrentValue" eType="#/0/IfcCostValue"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConstructionResourceType" abstract="true"
+        eSuperTypes="#/0/IfcTypeResource">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="BaseQuantity" eType="#/0/IfcPhysicalQuantity"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralLoadGroup" eSuperTypes="#/0/IfcGroup"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterialProfileSetUsage" eSuperTypes="#/0/IfcMaterialUsageDefinition">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ForProfileSet" eType="#/0/IfcMaterialProfileSet"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcOrganizationRelationship" eSuperTypes="#/0/IfcResourceLevelRelationship">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingOrganization"
+          eType="#/0/IfcOrganization"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedOrganizations"
+          upperBound="-1" eType="#/0/IfcOrganization"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPumpType" eSuperTypes="#/0/IfcFlowMovingDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPort" abstract="true" eSuperTypes="#/0/IfcProduct"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBoundingBox" eSuperTypes="#/0/IfcGeometricRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Corner" eType="#/0/IfcCartesianPoint"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDoorLiningProperties" eSuperTypes="#/0/IfcPreDefinedPropertySet">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ShapeAspectStyle" eType="#/0/IfcShapeAspect"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralLoadPlanarForce" eSuperTypes="#/0/IfcStructuralLoadStatic"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConnectionGeometry" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLightDistributionData"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDiscreteAccessory" eSuperTypes="#/0/IfcElementComponent"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDerivedProfileDef" eSuperTypes="#/0/IfcProfileDef">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ParentProfile" eType="#/0/IfcProfileDef"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Operator" eType="#/0/IfcCartesianTransformationOperator2D"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTaskType" eSuperTypes="#/0/IfcTypeProcess"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSurfaceStyleRefraction" eSuperTypes="#/0/IfcPresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCrewResource" eSuperTypes="#/0/IfcConstructionResource"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBoilerType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStairType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcOutletType" eSuperTypes="#/0/IfcFlowTerminalType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPresentationStyle" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelProjectsElement" eSuperTypes="#/0/IfcRelDecomposes">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingElement" eType="#/0/IfcElement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedFeatureElement"
+          eType="#/0/IfcFeatureElementAddition"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralSurfaceMember" eSuperTypes="#/0/IfcStructuralMember"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCartesianPoint" eSuperTypes="#/0/IfcPoint"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCurtainWallType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRationalBSplineSurfaceWithKnots"
+        eSuperTypes="#/0/IfcBSplineSurfaceWithKnots"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcHumidifierType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPhysicalComplexQuantity" eSuperTypes="#/0/IfcPhysicalQuantity">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="HasQuantities" upperBound="-1"
+          eType="#/0/IfcPhysicalQuantity"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPersonAndOrganization">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ThePerson" eType="#/0/IfcPerson"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="TheOrganization" eType="#/0/IfcOrganization"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAirToAirHeatRecovery" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPropertySetTemplate" eSuperTypes="#/0/IfcPropertyTemplateDefinition">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="HasPropertyTemplates"
+          upperBound="-1" eType="#/0/IfcPropertyTemplate"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterialConstituentSet" eSuperTypes="#/0/IfcMaterialDefinition">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="MaterialConstituents"
+          upperBound="-1" eType="#/0/IfcMaterialConstituent"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcQuantityCount" eSuperTypes="#/0/IfcPhysicalSimpleQuantity"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMedicalDeviceType" eSuperTypes="#/0/IfcFlowTerminalType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcShapeModel" abstract="true" eSuperTypes="#/0/IfcRepresentation"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcEvaporativeCooler" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTextureVertexList" eSuperTypes="#/0/IfcPresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelSpaceBoundary2ndLevel" eSuperTypes="#/0/IfcRelSpaceBoundary1stLevel">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="CorrespondingBoundary"
+          eType="#/0/IfcRelSpaceBoundary2ndLevel"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterialProperties" eSuperTypes="#/0/IfcExtendedProperties">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Material" eType="#/0/IfcMaterialDefinition"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPipeFitting" eSuperTypes="#/0/IfcFlowFitting"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPropertyDefinition" abstract="true"
+        eSuperTypes="#/0/IfcRoot"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcToroidalSurface" eSuperTypes="#/0/IfcElementarySurface"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAlarmType" eSuperTypes="#/0/IfcDistributionControlElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPile" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcResource" abstract="true" eSuperTypes="#/0/IfcObject"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPropertyBoundedValue" eSuperTypes="#/0/IfcSimpleProperty"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAxis1Placement" eSuperTypes="#/0/IfcPlacement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Axis" eType="#/0/IfcDirection"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPlane" eSuperTypes="#/0/IfcElementarySurface"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProfileDef"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralSurfaceReaction" eSuperTypes="#/0/IfcStructuralReaction"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMirroredProfileDef" eSuperTypes="#/0/IfcDerivedProfileDef"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCommunicationsApplianceType" eSuperTypes="#/0/IfcFlowTerminalType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterialLayerSetUsage" eSuperTypes="#/0/IfcMaterialUsageDefinition">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ForLayerSet" eType="#/0/IfcMaterialLayerSet"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLightSource" abstract="true" eSuperTypes="#/0/IfcGeometricRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="LightColour" eType="#/0/IfcColourRgb"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCoveringType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPlateType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSubedge" eSuperTypes="#/0/IfcEdge">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ParentEdge" eType="#/0/IfcEdge"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcWall" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcApplication">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ApplicationDeveloper"
+          eType="#/0/IfcOrganization"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRoundedRectangleProfileDef" eSuperTypes="#/0/IfcRectangleProfileDef"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBeam" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFlowTerminal" eSuperTypes="#/0/IfcDistributionFlowElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelDefinesByObject" eSuperTypes="#/0/IfcRelDefines">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingObject" eType="#/0/IfcObject"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedObjects" upperBound="-1"
+          eType="#/0/IfcObject"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralLoadStatic" abstract="true"
+        eSuperTypes="#/0/IfcStructuralLoadOrResult"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFurnishingElement" eSuperTypes="#/0/IfcElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelNests" eSuperTypes="#/0/IfcRelDecomposes">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingObject" eType="#/0/IfcObjectDefinition"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSurface" abstract="true" eSuperTypes="#/0/IfcGeometricRepresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTransformerType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelCoversBldgElements" eSuperTypes="#/0/IfcRelConnects">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingBuildingElement"
+          eType="#/0/IfcElement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedCoverings" upperBound="-1"
+          eType="#/0/IfcCovering"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcInventory" eSuperTypes="#/0/IfcGroup">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="CurrentValue" eType="#/0/IfcCostValue"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="OriginalValue" eType="#/0/IfcCostValue"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ResponsiblePersons" upperBound="-1"
+          eType="#/0/IfcPerson"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcOpeningStandardCase" eSuperTypes="#/0/IfcOpeningElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSpatialZone" eSuperTypes="#/0/IfcSpatialElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProductRepresentation" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConstructionEquipmentResource"
+        eSuperTypes="#/0/IfcConstructionResource"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTableColumn">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ReferencePath" eType="#/0/IfcReference"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcActionRequest" eSuperTypes="#/0/IfcControl"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMeasureWithUnit"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelConnectsWithRealizingElements"
+        eSuperTypes="#/0/IfcRelConnectsElements">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RealizingElements" upperBound="-1"
+          eType="#/0/IfcElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLightIntensityDistribution"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelSpaceBoundary" eSuperTypes="#/0/IfcRelConnects">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ConnectionGeometry" eType="#/0/IfcConnectionGeometry"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedBuildingElement"
+          eType="#/0/IfcElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcResourceTime" eSuperTypes="#/0/IfcSchedulingTime"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelAggregates" eSuperTypes="#/0/IfcRelDecomposes">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingObject" eType="#/0/IfcObjectDefinition"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedObjects" upperBound="-1"
+          eType="#/0/IfcObjectDefinition"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPlacement" abstract="true" eSuperTypes="#/0/IfcGeometricRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Location" eType="#/0/IfcCartesianPoint"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSpaceHeater" eSuperTypes="#/0/IfcFlowTerminal"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralReaction" abstract="true"
+        eSuperTypes="#/0/IfcStructuralActivity"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterialConstituent" eSuperTypes="#/0/IfcMaterialDefinition">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Material" eType="#/0/IfcMaterial"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRevolvedAreaSolidTapered" eSuperTypes="#/0/IfcRevolvedAreaSolid">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="EndSweptArea" eType="#/0/IfcProfileDef"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConstraint" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelAssignsToResource" eSuperTypes="#/0/IfcRelAssigns"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDamperType" eSuperTypes="#/0/IfcFlowControllerType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSimplePropertyTemplate" eSuperTypes="#/0/IfcPropertyTemplate">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Enumerators" eType="#/0/IfcPropertyEnumeration"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCoolingTower" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelAssignsToControl" eSuperTypes="#/0/IfcRelAssigns">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingControl" eType="#/0/IfcControl"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTrimmedCurve" eSuperTypes="#/0/IfcBoundedCurve">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="BasisCurve" eType="#/0/IfcCurve"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcEventType" eSuperTypes="#/0/IfcTypeProcess"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelReferencedInSpatialStructure"
+        eSuperTypes="#/0/IfcRelConnects">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingStructure" eType="#/0/IfcSpatialElement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedElements" upperBound="-1"
+          eType="#/0/IfcProduct"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelConnectsPathElements" eSuperTypes="#/0/IfcRelConnectsElements"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDocumentReference" eSuperTypes="#/0/IfcExternalReference">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ReferencedDocument" eType="#/0/IfcDocumentInformation"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelAssigns" abstract="true" eSuperTypes="#/0/IfcRelationship">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedObjects" upperBound="-1"
+          eType="#/0/IfcObjectDefinition"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFooting" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPointOnCurve" eSuperTypes="#/0/IfcPoint">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="BasisCurve" eType="#/0/IfcCurve"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCompositeProfileDef" eSuperTypes="#/0/IfcProfileDef">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Profiles" upperBound="-1"
+          eType="#/0/IfcProfileDef"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcWasteTerminalType" eSuperTypes="#/0/IfcFlowTerminalType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcQuantityArea" eSuperTypes="#/0/IfcPhysicalSimpleQuantity"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcQuantityLength" eSuperTypes="#/0/IfcPhysicalSimpleQuantity"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcOutlet" eSuperTypes="#/0/IfcFlowTerminal"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelConnectsPorts" eSuperTypes="#/0/IfcRelConnects">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RealizingElement" eType="#/0/IfcElement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedPort" eType="#/0/IfcPort"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingPort" eType="#/0/IfcPort"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSanitaryTerminal" eSuperTypes="#/0/IfcFlowTerminal"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcValve" eSuperTypes="#/0/IfcFlowController"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcEngine" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTextureCoordinateGenerator" eSuperTypes="#/0/IfcTextureCoordinate"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElementComponentType" abstract="true"
+        eSuperTypes="#/0/IfcElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElectricFlowStorageDevice" eSuperTypes="#/0/IfcFlowStorageDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcEventTime" eSuperTypes="#/0/IfcSchedulingTime"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPropertySet" eSuperTypes="#/0/IfcPropertySetDefinition">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="HasProperties" upperBound="-1"
+          eType="#/0/IfcProperty"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcValveType" eSuperTypes="#/0/IfcFlowControllerType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcIndexedPolygonalFaceWithVoids"
+        eSuperTypes="#/0/IfcIndexedPolygonalFace"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLaborResourceType" eSuperTypes="#/0/IfcConstructionResourceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRoofType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMemberType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcZone" eSuperTypes="#/0/IfcSystem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcEngineType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcReinforcingBarType" eSuperTypes="#/0/IfcReinforcingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcColourRgbList" eSuperTypes="#/0/IfcPresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSweptSurface" abstract="true" eSuperTypes="#/0/IfcSurface">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Position" eType="#/0/IfcAxis2Placement3D"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="SweptCurve" eType="#/0/IfcProfileDef"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcReinforcingElement" abstract="true"
+        eSuperTypes="#/0/IfcElementComponent"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConnectionVolumeGeometry" eSuperTypes="#/0/IfcConnectionGeometry"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTextStyleForDefinedFont" eSuperTypes="#/0/IfcPresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcWorkTime" eSuperTypes="#/0/IfcSchedulingTime">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RecurrencePattern" eType="#/0/IfcRecurrencePattern"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralLoadSingleForceWarping"
+        eSuperTypes="#/0/IfcStructuralLoadSingleForce"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralPointConnection" eSuperTypes="#/0/IfcStructuralConnection">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ConditionCoordinateSystem"
+          eType="#/0/IfcAxis2Placement3D"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSwitchingDevice" eSuperTypes="#/0/IfcFlowController"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRoof" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConic" abstract="true" eSuperTypes="#/0/IfcCurve"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLaborResource" eSuperTypes="#/0/IfcConstructionResource"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAirTerminalBox" eSuperTypes="#/0/IfcFlowController"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterialLayerWithOffsets" eSuperTypes="#/0/IfcMaterialLayer"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelCoversSpaces" eSuperTypes="#/0/IfcRelConnects">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedCoverings" upperBound="-1"
+          eType="#/0/IfcCovering"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingSpace" eType="#/0/IfcSpace"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelConnectsStructuralActivity"
+        eSuperTypes="#/0/IfcRelConnects">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedStructuralActivity"
+          eType="#/0/IfcStructuralActivity"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSubContractResourceType" eSuperTypes="#/0/IfcConstructionResourceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProtectiveDeviceTrippingUnit" eSuperTypes="#/0/IfcDistributionControlElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSolidModel" abstract="true" eSuperTypes="#/0/IfcGeometricRepresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelContainedInSpatialStructure"
+        eSuperTypes="#/0/IfcRelConnects">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingStructure" eType="#/0/IfcSpatialElement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedElements" upperBound="-1"
+          eType="#/0/IfcProduct"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcApprovalRelationship" eSuperTypes="#/0/IfcResourceLevelRelationship">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingApproval" eType="#/0/IfcApproval"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedApprovals" upperBound="-1"
+          eType="#/0/IfcApproval"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralSurfaceMemberVarying"
+        eSuperTypes="#/0/IfcStructuralSurfaceMember"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcWallStandardCase" eSuperTypes="#/0/IfcWall"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFlowStorageDeviceType" abstract="true"
+        eSuperTypes="#/0/IfcDistributionFlowElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSectionedSpine" eSuperTypes="#/0/IfcGeometricRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="SpineCurve" eType="#/0/IfcCompositeCurve"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBSplineCurve" abstract="true" eSuperTypes="#/0/IfcBoundedCurve"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFailureConnectionCondition" eSuperTypes="#/0/IfcStructuralConnectionCondition"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcUnitaryEquipment" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralLoadSingleDisplacementDistortion"
+        eSuperTypes="#/0/IfcStructuralLoadSingleDisplacement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAirToAirHeatRecoveryType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCooledBeamType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcReinforcementBarProperties" eSuperTypes="#/0/IfcPreDefinedProperties"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBuildingElementType" abstract="true"
+        eSuperTypes="#/0/IfcElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBSplineCurveWithKnots" eSuperTypes="#/0/IfcBSplineCurve"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcContextDependentUnit" eSuperTypes="#/0/IfcNamedUnit"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDuctSegmentType" eSuperTypes="#/0/IfcFlowSegmentType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcEnergyConversionDevice" eSuperTypes="#/0/IfcDistributionFlowElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcShapeAspect"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMechanicalFastener" eSuperTypes="#/0/IfcElementComponent"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSolarDeviceType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcProcedureType" eSuperTypes="#/0/IfcTypeProcess"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcResourceConstraintRelationship"
+        eSuperTypes="#/0/IfcResourceLevelRelationship">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingConstraint" eType="#/0/IfcConstraint"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcHalfSpaceSolid" eSuperTypes="#/0/IfcGeometricRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="BaseSurface" eType="#/0/IfcSurface"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBoxedHalfSpace" eSuperTypes="#/0/IfcHalfSpaceSolid">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Enclosure" eType="#/0/IfcBoundingBox"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcGroup" eSuperTypes="#/0/IfcObject"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAnnotationFillArea" eSuperTypes="#/0/IfcGeometricRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="OuterBoundary" eType="#/0/IfcCurve"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="InnerBoundaries" upperBound="-1"
+          eType="#/0/IfcCurve"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBoiler" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralCurveReaction" eSuperTypes="#/0/IfcStructuralReaction"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcWindowStyle" eSuperTypes="#/0/IfcTypeProduct"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPoint" abstract="true" eSuperTypes="#/0/IfcGeometricRepresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDoor" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSensor" eSuperTypes="#/0/IfcDistributionControlElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcChiller" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFlowSegmentType" abstract="true"
+        eSuperTypes="#/0/IfcDistributionFlowElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStackTerminal" eSuperTypes="#/0/IfcFlowTerminal"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPreDefinedTextFont" abstract="true"
+        eSuperTypes="#/0/IfcPreDefinedItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralSurfaceConnection" eSuperTypes="#/0/IfcStructuralConnection"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTendonType" eSuperTypes="#/0/IfcReinforcingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcWindow" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPlate" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTask" eSuperTypes="#/0/IfcProcess">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="TaskTime" eType="#/0/IfcTaskTime"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcExternallyDefinedTextFont" eSuperTypes="#/0/IfcExternalReference"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcColourSpecification" abstract="true"
+        eSuperTypes="#/0/IfcPresentationItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDiscreteAccessoryType" eSuperTypes="#/0/IfcElementComponentType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFlowSegment" eSuperTypes="#/0/IfcDistributionFlowElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSurfaceStyle" eSuperTypes="#/0/IfcPresentationStyle"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElectricDistributionBoardType"
+        eSuperTypes="#/0/IfcFlowControllerType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcArbitraryOpenProfileDef" eSuperTypes="#/0/IfcProfileDef">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Curve" eType="#/0/IfcBoundedCurve"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPresentationLayerWithStyle" eSuperTypes="#/0/IfcPresentationLayerAssignment">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="LayerStyles" upperBound="-1"
+          eType="#/0/IfcPresentationStyle"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAppliedValue">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="UnitBasis" eType="#/0/IfcMeasureWithUnit"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRampFlight" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStyledItem" eSuperTypes="#/0/IfcRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Item" eType="#/0/IfcRepresentationItem"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSite" eSuperTypes="#/0/IfcSpatialStructureElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="SiteAddress" eType="#/0/IfcPostalAddress"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTransportElement" eSuperTypes="#/0/IfcElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRectangleProfileDef" eSuperTypes="#/0/IfcParameterizedProfileDef"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElectricDistributionBoard" eSuperTypes="#/0/IfcFlowController"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCableFittingType" eSuperTypes="#/0/IfcFlowFittingType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterialProfileSet" eSuperTypes="#/0/IfcMaterialDefinition">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="CompositeProfile" eType="#/0/IfcCompositeProfileDef"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPolyLoop" eSuperTypes="#/0/IfcLoop"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcVirtualGridIntersection"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFace" eSuperTypes="#/0/IfcTopologicalRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Bounds" upperBound="-1"
+          eType="#/0/IfcFaceBound"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRailing" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBSplineSurfaceWithKnots" eSuperTypes="#/0/IfcBSplineSurface"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFeatureElementSubtraction" abstract="true"
+        eSuperTypes="#/0/IfcFeatureElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelConnectsStructuralMember" eSuperTypes="#/0/IfcRelConnects">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingStructuralMember"
+          eType="#/0/IfcStructuralMember"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedStructuralConnection"
+          eType="#/0/IfcStructuralConnection"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="AdditionalConditions"
+          eType="#/0/IfcStructuralConnectionCondition"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ConditionCoordinateSystem"
+          eType="#/0/IfcAxis2Placement3D"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="AppliedCondition" eType="#/0/IfcBoundaryCondition"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcArbitraryClosedProfileDef" eSuperTypes="#/0/IfcProfileDef">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="OuterCurve" eType="#/0/IfcCurve"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcIShapeProfileDef" eSuperTypes="#/0/IfcParameterizedProfileDef"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPlanarBox" eSuperTypes="#/0/IfcPlanarExtent"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSlabStandardCase" eSuperTypes="#/0/IfcSlab"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFlowMovingDevice" eSuperTypes="#/0/IfcDistributionFlowElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPermeableCoveringProperties" eSuperTypes="#/0/IfcPreDefinedPropertySet">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ShapeAspectStyle" eType="#/0/IfcShapeAspect"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTextureMap" eSuperTypes="#/0/IfcTextureCoordinate">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="MappedTo" eType="#/0/IfcFace"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTimeSeriesValue"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcReinforcingElementType" abstract="true"
+        eSuperTypes="#/0/IfcElementComponentType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelAssociatesClassification" eSuperTypes="#/0/IfcRelAssociates"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcQuantityVolume" eSuperTypes="#/0/IfcPhysicalSimpleQuantity"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralLoadSingleForce" eSuperTypes="#/0/IfcStructuralLoadStatic"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelVoidsElement" eSuperTypes="#/0/IfcRelDecomposes">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatedOpeningElement"
+          eType="#/0/IfcFeatureElementSubtraction"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RelatingBuildingElement"
+          eType="#/0/IfcElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcParameterizedProfileDef" abstract="true"
+        eSuperTypes="#/0/IfcProfileDef">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Position" eType="#/0/IfcAxis2Placement2D"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConnectedFaceSet" eSuperTypes="#/0/IfcTopologicalRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="CfsFaces" upperBound="-1"
+          eType="#/0/IfcFace"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCenterLineProfileDef" eSuperTypes="#/0/IfcArbitraryOpenProfileDef"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBuildingElementProxyType" eSuperTypes="#/0/IfcBuildingElementType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLibraryInformation" eSuperTypes="#/0/IfcExternalInformation"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCompositeCurveSegment" eSuperTypes="#/0/IfcGeometricRepresentationItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ParentCurve" eType="#/0/IfcCurve"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTessellatedFaceSet" abstract="true"
+        eSuperTypes="#/0/IfcTessellatedItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Coordinates" eType="#/0/IfcCartesianPointList3D"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRepresentationItem" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBurnerType" eSuperTypes="#/0/IfcEnergyConversionDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcArbitraryProfileDefWithVoids" eSuperTypes="#/0/IfcArbitraryClosedProfileDef">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="InnerCurves" upperBound="-1"
+          eType="#/0/IfcCurve"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConstructionEquipmentResourceType"
+        eSuperTypes="#/0/IfcConstructionResourceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcColourRgb" eSuperTypes="#/0/IfcColourSpecification"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPointOnSurface" eSuperTypes="#/0/IfcPoint">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="BasisSurface" eType="#/0/IfcSurface"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStyledRepresentation" eSuperTypes="#/0/IfcStyleModel"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBuilding" eSuperTypes="#/0/IfcSpatialStructureElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="BuildingAddress" eType="#/0/IfcPostalAddress"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterialProfile" eSuperTypes="#/0/IfcMaterialDefinition">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Profile" eType="#/0/IfcProfileDef"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Material" eType="#/0/IfcMaterial"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSurfaceOfRevolution" eSuperTypes="#/0/IfcSweptSurface">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="AxisPosition" eType="#/0/IfcAxis1Placement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLightSourcePositional" eSuperTypes="#/0/IfcLightSource">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Position" eType="#/0/IfcCartesianPoint"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPropertyDependencyRelationship"
+        eSuperTypes="#/0/IfcResourceLevelRelationship">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="DependantProperty" eType="#/0/IfcProperty"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="DependingProperty" eType="#/0/IfcProperty"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCartesianTransformationOperator2D"
+        eSuperTypes="#/0/IfcCartesianTransformationOperator"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcWallElementedCase" eSuperTypes="#/0/IfcWall"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTubeBundle" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRepresentationContext" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElectricTimeControlType" eSuperTypes="#/0/IfcFlowControllerType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLagTime" eSuperTypes="#/0/IfcSchedulingTime"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcElectricTimeControl" eSuperTypes="#/0/IfcFlowController"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterialClassificationRelationship">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ClassifiedMaterial" eType="#/0/IfcMaterial"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcControl" abstract="true" eSuperTypes="#/0/IfcObject"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcShapeRepresentation" eSuperTypes="#/0/IfcShapeModel"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcChimney" eSuperTypes="#/0/IfcBuildingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcExternalInformation" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTimeSeries" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcStackTerminalType" eSuperTypes="#/0/IfcFlowTerminalType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcDoorStandardCase" eSuperTypes="#/0/IfcDoor"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcWorkCalendar" eSuperTypes="#/0/IfcControl">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ExceptionTimes" upperBound="-1"
+          eType="#/0/IfcWorkTime"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="WorkingTimes" upperBound="-1"
+          eType="#/0/IfcWorkTime"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCableCarrierFittingType" eSuperTypes="#/0/IfcFlowFittingType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSpaceHeaterType" eSuperTypes="#/0/IfcFlowTerminalType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcPropertyEnumeration" eSuperTypes="#/0/IfcPropertyAbstraction"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcAdvancedBrepWithVoids" eSuperTypes="#/0/IfcAdvancedBrep">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Voids" upperBound="-1"
+          eType="#/0/IfcClosedShell"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBoundaryCurve" eSuperTypes="#/0/IfcCompositeCurveOnSurface"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFacetedBrep" eSuperTypes="#/0/IfcManifoldSolidBrep"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcSpace" eSuperTypes="#/0/IfcSpatialStructureElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcInterceptorType" eSuperTypes="#/0/IfcFlowTreatmentDeviceType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelAssignsToProduct" eSuperTypes="#/0/IfcRelAssigns"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcBSplineSurface" abstract="true"
+        eSuperTypes="#/0/IfcBoundedSurface"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcConnectionPointGeometry" eSuperTypes="#/0/IfcConnectionGeometry"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcTransformer" eSuperTypes="#/0/IfcEnergyConversionDevice"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcFeatureElementAddition" abstract="true"
+        eSuperTypes="#/0/IfcFeatureElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcLightFixtureType" eSuperTypes="#/0/IfcFlowTerminalType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcCableCarrierSegment" eSuperTypes="#/0/IfcFlowSegment"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcRelSpaceBoundary1stLevel" eSuperTypes="#/0/IfcRelSpaceBoundary">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ParentBoundary" eType="#/0/IfcRelSpaceBoundary1stLevel"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcWindowLiningProperties" eSuperTypes="#/0/IfcPreDefinedPropertySet">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ShapeAspectStyle" eType="#/0/IfcShapeAspect"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IfcMaterial" eSuperTypes="#/0/IfcMaterialDefinition"/>
+  </ecore:EPackage>
+  <ecore:EDataType name="EString" instanceClassName="java.lang.String"/>
+  <ecore:EDataType name="EString" instanceClassName="java.lang.String"/>
+  <ecore:EDataType name="EString" instanceClassName="java.lang.String"/>
+  <ecore:EDataType name="EString" instanceClassName="java.lang.String"/>
+  <ecore:EDataType name="EString" instanceClassName="java.lang.String"/>
+  <ecore:EDataType name="EString" instanceClassName="java.lang.String"/>
+  <ecore:EDataType name="EString" instanceClassName="java.lang.String"/>
+  <ecore:EDataType name="EString" instanceClassName="java.lang.String"/>
+  <ecore:EDataType name="EString" instanceClassName="java.lang.String"/>
+  <ecore:EDataType name="EString" instanceClassName="java.lang.String"/>
+  <ecore:EDataType name="EString" instanceClassName="java.lang.String"/>
+  <ecore:EDataType name="EString" instanceClassName="java.lang.String"/>
+  <ecore:EDataType name="EString" instanceClassName="java.lang.String"/>
+  <ecore:EDataType name="EString" instanceClassName="java.lang.String"/>
+  <ecore:EDataType name="EString" instanceClassName="java.lang.String"/>
+  <ecore:EDataType name="EString" instanceClassName="java.lang.String"/>
+  <ecore:EDataType name="EString" instanceClassName="java.lang.String"/>
+  <ecore:EDataType name="EString" instanceClassName="java.lang.String"/>
+</xmi:XMI>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated IFC2CityGML -->
+      <package
+            uri="platform:/resource/IFC2CityGML/model/IFC2CityGML.ecore"
+            class="IFC2CityGML.IFC2CityGMLPackage"
+            genModel="model/IFC2CityGML.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated IFC2CityGML -->
+      <package
+            uri="http://IFC4.ecore"
+            class="IFC4.IFC4Package"
+            genModel="model/IFC2CityGML.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated IFC2CityGML -->
+      <package
+            uri="http:///Model/CityGML/Core.ecore"
+            class="Core.CorePackage"
+            genModel="model/IFC2CityGML.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated IFC2CityGML -->
+      <package
+            uri="http:///Model/CityGML/Building.ecore"
+            class="Building.BuildingPackage"
+            genModel="model/IFC2CityGML.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated IFC2CityGML -->
+      <package
+            uri="platform:/plugin/org.emoflon.ibex.tgg.core.runtime/model/Runtime.ecore"
+            class="runtime.RuntimePackage"
+            genModel="model/IFC2CityGML.genmodel"/>
+   </extension>
+
+</plugin>

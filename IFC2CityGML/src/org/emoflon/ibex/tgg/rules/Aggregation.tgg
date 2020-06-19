@@ -1,0 +1,34 @@
+#using IFC2CityGML.*
+#using AttrCondDefLibrary.*
+
+
+#abstract #rule AggregationFirst #with IFC2CityGML
+
+#source { 
+	ifc1:IfcObjectDefinition
+	++ifc2:IfcObjectDefinition
+	++r:IfcRelAggregates{
+		++ -RelatingObject->ifc1
+		++ -RelatedObjects->ifc2
+	}
+}
+
+#abstract #rule AggregationSubsequent #with IFC2CityGML
+
+#source { 
+	ifc1:IfcObjectDefinition
+	++ifc2:IfcObjectDefinition
+	r:IfcRelAggregates{
+		-RelatingObject->ifc1
+		++ -RelatedObjects->ifc2
+	}
+}
+
+#nac First #for AggregationFirst
+#source{ 
+	ifc1:IfcObjectDefinition
+	ifc2:IfcObjectDefinition
+	r:IfcRelAggregates{
+		-RelatingObject->ifc2
+	}
+}

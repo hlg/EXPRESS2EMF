@@ -1,0 +1,50 @@
+#using IFC2CityGML.*
+#using AttrCondDefLibrary.*
+
+#abstract #rule Building2Building #with IFC2CityGML
+
+#source { 
+	ifc1:IfcProject
+	++ifc2:IfcBuilding
+}
+
+#target {
+	gml1:CityModel{
+		++ -cityModelMember->gml0
+	}
+	++ gml0:CityModelMember{
+		++ -cityObjectMember->gml2
+	}
+	++ gml2:Building {
+		// ++ -storeysAboveGround->gml3
+	}
+	// ++ gml3:Model.ISOTC211.ISO19103All.ISO191032015Conceptualschemalanguage.Primitivetypes.Numerics.Integer
+	    
+}
+
+#correspondence {
+	p2c:Project2CityModel{
+		#src->ifc1
+		#trg->gml1
+	}
+	++ b2b:Building2Building{
+		#src->ifc2
+		#trg->gml2
+	}
+}
+
+#attributeConditions {
+	rand_Enum(gml2.conditionOfConstruction)
+	rand_Enum(gml2.spaceType)
+	rand_Enum(gml2.relativeToTerrain)
+	rand_Enum(gml2.relativeToWater)
+}
+
+
+#rule FirstBuilding2Building #extends Building2Building, AggregationFirst #with IFC2CityGML
+
+#rule SubsequentBuilding2Building #extends Building2Building, AggregationSubsequent #with IFC2CityGML
+
+
+
+

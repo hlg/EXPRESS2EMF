@@ -1,0 +1,23 @@
+#using IFC2CityGML.*
+#using AttrCondDefLibrary.*
+
+#rule Project2CityModel #with IFC2CityGML
+
+#source { 
+	++p:IfcProject
+}
+
+#target {
+	++c:CityModel
+}
+
+#correspondence {
+	++p2c:Project2CityModel{
+		#src->p
+		#trg->c
+	}
+}
+
+#attributeConditions {
+	
+}

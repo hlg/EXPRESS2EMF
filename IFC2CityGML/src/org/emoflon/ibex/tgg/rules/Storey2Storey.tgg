@@ -1,0 +1,36 @@
+#using IFC2CityGML.*
+#using AttrCondDefLibrary.*
+
+
+#abstract #rule Storey2Storey #with IFC2CityGML
+
+#source { 
+	ifc1:IfcBuilding
+	++ifc2:IfcBuildingStorey
+}
+
+#target {
+	gml1:Building{
+		++ -buildingSubdivision -> gml2
+	}
+	++ gml2:Storey
+}
+
+#correspondence {
+	b2b:Building2Building{
+		#src->ifc1
+		#trg->gml1
+	}
+	++s2s:Storey2Storey{
+		#src->ifc2
+		#trg->gml2
+	}
+}
+
+
+
+#rule SubsequentStorey2Storey #extends Storey2Storey, AggregationSubsequent #with IFC2CityGML
+
+#rule FirstStorey2Storey #extends Storey2Storey, AggregationFirst #with IFC2CityGML 
+
+

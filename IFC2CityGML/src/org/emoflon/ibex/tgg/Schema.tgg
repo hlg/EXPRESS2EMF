@@ -1,0 +1,36 @@
+#import "platform:/resource/IFC2CityGML/model/IFC4.ecore"
+#import "platform:/resource/IFC2CityGML/model/CityGML_Model.ecore"
+
+#schema IFC2CityGML
+	
+#source {
+	IFC4
+}
+
+#target {
+	Model.CityGML // remove CityGML to get full model, will be much slower to compile 
+} 
+
+#correspondence {
+	Project2CityModel {
+		#src->IFC4.IfcProject
+		#trg->CityModel
+	}
+	Building2Building {
+		#src->IFC4.IfcBuilding
+		#trg->Building
+	}
+	Storey2Storey {
+		#src->IFC4.IfcBuildingStorey
+		#trg->Storey
+	}
+	
+}
+
+#attributeConditions {
+	#userDefined
+	rand_Enum(param: EEnumerator){
+		#sync: [B], [F]
+		#gen: [B], [F]
+	}
+}
