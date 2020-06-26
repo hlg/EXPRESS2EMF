@@ -14,7 +14,11 @@ ENTITY Type2;
 	boundSetOfType1Attr: SET [1:?] OF Type1;
 END_ENTITY;
 
+ENTITY Type3 SUBTYPE OF (Type1);
+	type3Attr: STRING;
+END_ENTITY;
+
 ENTITY Programmatic;
 END_ENTITY;
 
-END_SCHEMA;
+ENTITY Programmatic ; END_ENTITY; ENTITY Programmatic ; END_ENTITY; END_SCHEMA;
