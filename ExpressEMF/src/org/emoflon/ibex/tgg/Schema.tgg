@@ -1,4 +1,4 @@
-#import "platform:/resource/ExpressParser/model/generated/Express.ecore"
+#import "platform:/resource/ExpressParser/model/custom/Express.ecore"
 #import "platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore"
 
 #schema ExpressEMF
@@ -17,11 +17,20 @@
 		#trg->EPackage
 	}
 	EntityToClass{
-		#src->EntityDecl // NamedTypeDecl
+		#src->NamedTypeDecl // NamedTypeDecl
 		#trg->EClass     // EClassifier
 	}
-	SimpleTypeToDataType{
+	SimpleTypeToDataType {
 		#src->SimpleTypes
+		#trg->EDataType
+	}
+	StringTypeToDataType  #extends SimpleTypeToDataType Name {
+		#src->StringType
+		#trg->EDataType
+		
+	}
+	IntegerTypeToDataType{
+		#src->IntegerType
 		#trg->EDataType
 	}
 	AttributeDeclToStructuralFeature{
@@ -35,5 +44,6 @@
     eq_booleanPrimitive(param1: EBoolean, param2: EBoolean) { 
         #sync: [B B], [B F], [F B] 
         #gen:  [B B], [B F], [F B], [F F] 
-    } 
+    }
+
 }

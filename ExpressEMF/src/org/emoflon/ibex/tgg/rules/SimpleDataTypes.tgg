@@ -12,16 +12,36 @@
 	++es:EDataType // dunno
 }
 #correspondence {
-	++ is2es:SimpleTypeToDataType{
+	++ is2es:StringTypeToDataType{
 		#src->is
 		#trg->es
 	}
 }
 #attributeConditions {
-	eq_string(es.name, "EString")
+	eq_string(es.name, "STRING")
 	eq_string(es.instanceClassName, "java.lang.String")
 }
 
+#rule FirstIntegerDataType #with ExpressEMF
+#source {
+	++is:IntegerType
+}
+#target {
+	package:EPackage{
+	  ++-eClassifiers-> es
+	}
+	++es:EDataType // dunno
+}
+#correspondence {
+	++ is2es:IntegerTypeToDataType{
+		#src->is
+		#trg->es
+	}
+}
+#attributeConditions {
+	eq_string(es.name, "INTEGER")
+	eq_string(es.instanceClassName, "java.lang.Integer")
+}
 
 #rule SubsequentStringDataType #with ExpressEMF
 #source {
@@ -31,16 +51,44 @@
 	es:EDataType // dunno
 }
 #correspondence {
-	++ s2es:SimpleTypeToDataType{
+	++ s2es:StringTypeToDataType{
 		#src->is
 		#trg->es
 	}
 }
 #attributeConditions {
-	eq_string(es.name, "EString")
+	eq_string(es.name, "STRING")
 	eq_string(es.instanceClassName, "java.lang.String")
 }
 
+
+#rule SubsequentIntegerDataType #with ExpressEMF
+#source {
+	++is:IntegerType
+}
+#target {
+	es:EDataType // dunno
+}
+#correspondence {
+	++ s2es:IntegerTypeToDataType{
+		#src->is
+		#trg->es
+	}
+}
+#attributeConditions {
+	eq_string(es.name, "INTEGER")
+	eq_string(es.instanceClassName, "java.lang.Integer")
+}
+
+
+#nac IntegerSingleton #for FirstIntegerDataType 
+
+#target{
+	package:EPackage{
+		-eClassifiers->es
+	}
+	es:EDataType
+}
 
 #nac StringSingleton #for FirstStringDataType 
 
@@ -50,5 +98,4 @@
 	}
 	es:EDataType
 }
-
 

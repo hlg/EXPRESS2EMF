@@ -5,7 +5,7 @@
 
 #source { 
 	e:EntityDecl
-	++n: AttributeDecl 
+	++n: AttributeDecl
 }
 
 #target {
@@ -14,7 +14,13 @@
 	}
 	++ s:EStructuralFeature {
 		++ -eType->cf
+		++ -eAnnotations->ea
 	}
+	++ ea:EAnnotation {
+		++ -details-> det
+    }
+	++ det:EStringToStringMapEntry
+	
 	cf:EClassifier
 }
 
@@ -31,6 +37,9 @@
 }
 #attributeConditions {
 	eq_string(n.name, s.name)
+	eq_string("Express_emoflon", ea.source)
+	eq_string("position", det.key)
+	stringToInt(det.value, n.position)
 }
 
 #abstract #rule FirstExplicitAttributeToStructuralFeature #extends ExplicitAttributeToStructuralFeature #with ExpressEMF
@@ -55,7 +64,7 @@
 
 #abstract #rule ExplicitAttributeToReference #with ExpressEMF
 #source{
-	d:EntityDecl // TODO all NamedTypeDecl	
+	d:NamedTypeDecl // TODO all NamedTypeDecl	
 }
 #target {
 	++ s:EReference
@@ -84,10 +93,6 @@
 		#trg->cf
 	}
 }
-#attributeConditions {
-	
-	
-}
 
 #rule FirstExplicitAttributeToReference #extends FirstExplicitAttributeToStructuralFeature, ExplicitAttributeToReference #with ExpressEMF
 #source {
@@ -97,28 +102,38 @@
 	++ t:NamedTypes {
 		++ -decl->d
 	} 
-	d:EntityDecl // TODO all NamedTypeDecl
+	d:NamedTypeDecl // TODO all NamedTypeDecl
 }
 
 
-#rule FirstExplicitAggregateAttributeToReference #extends FirstExplicitAttributeToStructuralFeature, ExplicitAttributeToReference #with ExpressEMF
+#abstract #rule FirstExplicitAggregateAttributeToReference #extends FirstExplicitAttributeToStructuralFeature, ExplicitAttributeToReference #with ExpressEMF
 #source {
 	++a: ExplicitAttr{
 		++ -type->g
 	}
-	++ g: GeneralSetType {
+	++ g: GeneralAggregationTypes {
 		++ -type->t
 	}
 	++ t:NamedTypes {
 		++ -decl->d
 	} 
-	d:EntityDecl // TODO all NamedTypeDecl
+	d:NamedTypeDecl // TODO all NamedTypeDecl
 }
 #target{
 	++s:EReference
 }
+/*
 #attributeConditions{
 	eq_int(-1, s.upperBound)
+}
+*/
+#rule FirstExpliciteListAttributeToReference #extends FirstExplicitAggregateAttributeToReference #with ExpressEMF
+#source {
+	++ g: GeneralListType
+}
+#rule FirstExpliciteSetAttributeToReference #extends FirstExplicitAggregateAttributeToReference #with ExpressEMF
+#source {
+	++ g: GeneralSetType
 }
 
 #rule FirstExplicitAttributeToAttribute #extends FirstExplicitAttributeToStructuralFeature, ExplicitAttributeToAttribute #with ExpressEMF
@@ -129,7 +144,6 @@
 	t:SimpleTypes // TODO maybe not necessary, target side distinction enough because existing t/cf correspondence
 }
 
-/*
 #rule SubsequentExplicitAttributeToReference #extends SubsequentExplicitAttributeToStructuralFeature, ExplicitAttributeToReference #with ExpressEMF
 #source {
 	a: ExplicitAttr{
@@ -138,7 +152,7 @@
 	t:NamedTypes {
 		-decl->d
 	} 
-	d:EntityDecl // TODO all NamedTypeDecl
+	d:NamedTypeDecl // TODO all NamedTypeDecl
 }
 
 #rule SubsequentExplicitAttributeToAttribute #extends SubsequentExplicitAttributeToStructuralFeature, ExplicitAttributeToAttribute #with ExpressEMF
@@ -148,4 +162,5 @@
 	}
 	t:SimpleTypes // TODO check, maybe not necessary, target side distinction enough because existing t/cf correspondence
 }
+/*
 */
