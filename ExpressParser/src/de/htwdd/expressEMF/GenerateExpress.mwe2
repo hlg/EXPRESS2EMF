@@ -27,16 +27,7 @@ Workflow {
 		language = StandardLanguage {
 			name = "de.htwdd.expressEMF.Express"
 			fileExtensions = "exp"
-    		/* 
-			parserGenerator = {
-      			options = {
-        			ignoreCase = true // case-insensitive keywords
-      			}
-    		}
-    		scopeProvider = {
-    			ignoreCase = true // case-insensitive element names
-    		}
-    		*/
+			referencedResource = "platform:/resource/ExpressParser/model/custom/Express.genmodel"
 			serializer = {
 				generateStub = false
 			}

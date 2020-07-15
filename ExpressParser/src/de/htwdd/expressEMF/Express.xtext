@@ -2,7 +2,7 @@ grammar de.htwdd.expressEMF.Express hidden (WS, Comment)
 
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
-generate express "http://www.htw-dresden.de/expressEMF/Express"
+import "platform:/resource/ExpressParser/model/custom/Express.ecore"
 
 
 SchemaDecl: 'SCHEMA' schemaId=SimpleId schemaVersionId=SimpleStringLiteral? ';' declarations+=Declaration* 'END_SCHEMA;';
