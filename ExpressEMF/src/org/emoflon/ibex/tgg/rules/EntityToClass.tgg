@@ -8,17 +8,13 @@
 		++ -declarations->e
 	}
 	++e:EntityDecl
-	
 }
 
 #target {
 	p:EPackage{
 		++ -eClassifiers->c
 	}
-	++c:EClass {
-		// ++ -eIDAttribute->id
-	}
-	// id:EAttribute
+	++c:EClass
 }
 
 #correspondence {
@@ -33,9 +29,38 @@
 }
 
 #attributeConditions {
-	eq_string(e.name, c.name) // set instanceClassName explicitely? should be same
-	// eq_string(id.name, "name")
-	
-	// eq_boolean(id.iD, true)
+	eq_string(e.name, c.name) 
 	eq_booleanPrimitive(e.abstract, c.abstract)
 }
+
+#rule TypeToClass #with ExpressEMF
+
+#source { 
+	s:SchemaDecl{
+		++ -declarations->t
+	}
+	++t:TypeDecl
+}
+
+#target {
+	p:EPackage{
+		++ -eClassifiers->c
+	}
+	++c:EClass
+}
+
+#correspondence {
+	s2p:SchemaToPackage{
+		#src->s
+		#trg->p
+	}
+	++t2c:EntityToClass{
+		#src->t
+		#trg->c
+	}
+}
+
+#attributeConditions {
+	eq_string(t.name, c.name) 
+}
+

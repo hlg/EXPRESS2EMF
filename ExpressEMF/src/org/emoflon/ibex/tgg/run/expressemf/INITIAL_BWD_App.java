@@ -11,10 +11,7 @@ import org.emoflon.ibex.tgg.operational.strategies.modules.TGGResourceHandler;
 
 import org.emoflon.ibex.tgg.run.expressemf.config.*;
 
-import org.emoflon.ibex.tgg.operational.defaults.IbexOptions;
 import org.emoflon.ibex.tgg.operational.strategies.sync.INITIAL_BWD;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.emoflon.ibex.tgg.compiler.patterns.PatternSuffixes;
 
 public class INITIAL_BWD_App extends INITIAL_BWD {
 

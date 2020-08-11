@@ -11,7 +11,6 @@ import org.emoflon.ibex.tgg.operational.strategies.modules.TGGResourceHandler;
 
 import org.emoflon.ibex.tgg.run.expressemf.config.*;
 
-import org.emoflon.ibex.tgg.operational.defaults.IbexOptions;
 import org.emoflon.ibex.tgg.operational.strategies.opt.BWD_OPT;
 
 public class BWD_OPT_App extends BWD_OPT {

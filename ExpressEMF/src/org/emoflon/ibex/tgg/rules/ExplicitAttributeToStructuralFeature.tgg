@@ -122,11 +122,10 @@
 #target{
 	++s:EReference
 }
-/*
 #attributeConditions{
 	eq_int(-1, s.upperBound)
 }
-*/
+
 #rule FirstExpliciteListAttributeToReference #extends FirstExplicitAggregateAttributeToReference #with ExpressEMF
 #source {
 	++ g: GeneralListType

@@ -17,14 +17,14 @@
 		#trg->EPackage
 	}
 	EntityToClass{
-		#src->NamedTypeDecl // NamedTypeDecl
-		#trg->EClass     // EClassifier
+		#src->NamedTypeDecl
+		#trg->EClass
 	}
 	SimpleTypeToDataType {
 		#src->SimpleTypes
 		#trg->EDataType
 	}
-	StringTypeToDataType  #extends SimpleTypeToDataType Name {
+	StringTypeToDataType {
 		#src->StringType
 		#trg->EDataType
 		

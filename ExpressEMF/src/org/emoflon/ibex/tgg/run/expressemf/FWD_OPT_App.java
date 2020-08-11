@@ -11,7 +11,6 @@ import org.emoflon.ibex.tgg.operational.strategies.modules.TGGResourceHandler;
 
 import org.emoflon.ibex.tgg.run.expressemf.config.*;
 
-import org.emoflon.ibex.tgg.operational.defaults.IbexOptions;
 import org.emoflon.ibex.tgg.operational.strategies.opt.FWD_OPT;
 
 public class FWD_OPT_App extends FWD_OPT {
