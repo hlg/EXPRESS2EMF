@@ -51,7 +51,7 @@ public class RunParser {
 		// resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("exp", new XMLResourceFactoryImpl());
 		// load all model file to the resourceset
 		resourceSet = injector.getInstance(XtextResourceSet.class);
-		Resource meta = resourceSet.getResource(URI.createURI("IFC4.exprecore"), true);
+		Resource meta = resourceSet.getResource(URI.createURI("testdata/IFC4mod.exprecore"), true);
 		resource = resourceSet.getResource(fileURI, true);
 		Step step = (Step) resource.getContents().get(0);
 		EPackage ifc4 = (EPackage) meta.getContents().get(0);
@@ -65,11 +65,11 @@ public class RunParser {
 			System.out.println(ent.getName() + " " + ent.getType().getName());
 		}
 		List<EObject> instantiated = new InstantiationTransformation().transform(step);
-		/*
+		
 		Resource xmi = resourceSet.createResource(fileURI.trimFileExtension().appendFileExtension("inst.xmi"));
 		xmi.getContents().addAll(instantiated);
 		xmi.save(null);
-		*/
+		
 		for(EObject obj: instantiated){
 			System.out.println("=================");
 			System.out.println(obj.eClass());
