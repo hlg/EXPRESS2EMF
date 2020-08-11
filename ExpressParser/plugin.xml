@@ -5,6 +5,6 @@
 		<package 
 			uri = "http://www.htw-dresden.de/expressEMF/Express"
 			class = "de.htwdd.expressEMF.express.ExpressPackage"
-			genModel = "model/generated/Express.genmodel" />
+			genModel = "model/custom/Express.genmodel" />
 	</extension>
 </plugin>
