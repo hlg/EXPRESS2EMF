@@ -13,7 +13,7 @@
 
 ## How to
 
-### Quick start
+### Set up
 
 1. Install Eclipse modelling, Emoflon ...
     - TODO download, installation
@@ -25,7 +25,22 @@
 4. Build ExpressParser project
 5. Build ExpressEMF project
 
-work in progress to verify and document installation, build and execution
+
+### Run example
+
+1. ExpressParser:
+    - Run `de.htwwdd.expressEMF.api.RunParser` (optional: schema location as argument, default schemas/IFC4.exp).
+    - This will create an *.xmi file in the same location as the original *.exp file, for instance schemas/IFC4.xmi for the default.
+2. EXPRESSEMF: 
+    - Copy the *.xmi file generated in step 1 to instances/src.xmi to be used as input for the transformation.
+    - Run `org.emoflon.ibex.tgg.run.expressemf.INITIAL_FWD_App` to carry out the transformation.
+    - This will create a file instances/trg.xmi as result of the transformation.
+3. IFC2CityGML:
+    - Copy the *.xmi file generated in step 2 to model/IFC4.ecore
+    - TODO complete
+
+work in progress to verify and document installation, build and execution 
+
 
 
 

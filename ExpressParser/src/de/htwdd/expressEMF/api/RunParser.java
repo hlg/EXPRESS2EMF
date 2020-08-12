@@ -2,21 +2,11 @@ package de.htwdd.expressEMF.api;
 
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Optional;
 
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.resource.XtextResource;
@@ -28,10 +18,6 @@ import org.eclipse.xtext.validation.Issue;
 
 import com.google.inject.Injector;
 
-import de.htwdd.expressEMF.ExpressStandaloneSetup;
-import de.htwdd.expressEMF.express.Declaration;
-import de.htwdd.expressEMF.express.EntityDecl;
-import de.htwdd.expressEMF.express.ExpressFactory;
 import de.htwdd.expressEMF.express.ExpressPackage;
 import de.htwdd.expressEMF.express.SchemaDecl;
 
@@ -72,9 +58,11 @@ public class RunParser {
 	}
 	public static void main(String[] args) throws IOException {
 		String schemaFile = args.length > 0 ? args[0] : "schemas/IFC4.exp";
-		RunParser parser = new RunParser(schemaFile);
-		SchemaDecl schema = parser.parse().get();
-		parser.saveXmi();
+		RunParser runParser = new RunParser(schemaFile);
+		Optional<SchemaDecl> schema = runParser.parse();
+		if(schema.isPresent()) {
+			runParser.saveXmi();
+		} 
 	
 	}
 }

@@ -1,6 +1,8 @@
 #using ExpressEMF.*
 #using AttrCondDefLibrary.*
 
+ 
+
 #abstract #rule ExplicitAttributeToStructuralFeature #with ExpressEMF
 
 #source { 
@@ -94,18 +96,6 @@
 	}
 }
 
-#rule FirstExplicitAttributeToReference #extends FirstExplicitAttributeToStructuralFeature, ExplicitAttributeToReference #with ExpressEMF
-#source {
-	++ a: ExplicitAttr{
-		++ -type->t
-	}
-	++ t:NamedTypes {
-		++ -decl->d
-	} 
-	d:NamedTypeDecl // TODO all NamedTypeDecl
-}
-
-
 #abstract #rule FirstExplicitAggregateAttributeToReference #extends FirstExplicitAttributeToStructuralFeature, ExplicitAttributeToReference #with ExpressEMF
 #source {
 	++a: ExplicitAttr{
@@ -124,6 +114,17 @@
 }
 #attributeConditions{
 	eq_int(-1, s.upperBound)
+}
+
+#rule FirstExplicitAttributeToReference #extends FirstExplicitAttributeToStructuralFeature, ExplicitAttributeToReference #with ExpressEMF
+#source {
+	++ a: ExplicitAttr{
+		++ -type->t
+	}
+	++ t:NamedTypes {
+		++ -decl->d
+	} 
+	d:NamedTypeDecl // TODO all NamedTypeDecl
 }
 
 #rule FirstExpliciteListAttributeToReference #extends FirstExplicitAggregateAttributeToReference #with ExpressEMF

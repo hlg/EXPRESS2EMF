@@ -1,0 +1,37 @@
+#using ExpressEMF.*
+#using AttrCondDefLibrary.*
+
+#rule DefinedTypeToWrappedType #with ExpressEMF
+
+#source {
+	dt:TypeDecl {
+		++ -underlying -> ut
+	}
+	ut:SimpleTypes  // TODO other underlying types
+}
+
+#target {
+	ec:EClass {
+		++ -eStructuralFeatures -> ea
+	}
+	++ea:EAttribute {
+		++ -eType -> et
+	}
+	et:EDataType
+}
+
+#correspondence {
+	ec2dt:EntityToClass {
+		#src->dt
+		#trg->ec
+	}
+	ut2et:SimpleTypeToDataType {
+		#src->ut		
+		#trg->et
+	}
+}
+
+#attributeConditions {
+	eq_string(ea.name, "value")
+}
+

@@ -24,15 +24,6 @@
 		#src->SimpleTypes
 		#trg->EDataType
 	}
-	StringTypeToDataType {
-		#src->StringType
-		#trg->EDataType
-		
-	}
-	IntegerTypeToDataType{
-		#src->IntegerType
-		#trg->EDataType
-	}
 	AttributeDeclToStructuralFeature{
 		#src->AttributeDecl
 		#trg->EStructuralFeature
