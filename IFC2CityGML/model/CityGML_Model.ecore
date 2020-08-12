@@ -165,7 +165,7 @@
             upperBound="-1" eType="#//CityGML/Core/QualifiedVolume" containment="true"/>
         <eStructuralFeatures xsi:type="ecore:EReference" name="area" ordered="false"
             upperBound="-1" eType="#//CityGML/Core/QualifiedArea" containment="true"/>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="boundary" ordered="false"
+        <eStructuralFeatures xsi:type="ecore:EReference" name="baseBoundary" ordered="false"
             upperBound="-1" eType="#//CityGML/Core/AbstractSpaceBoundary"/>
         <eStructuralFeatures xsi:type="ecore:EReference" name="lod1Solid" ordered="false"
             eType="#//ISOTC211/ISO19107All/ISO191072003SpatialSchema/_Geometry/Geometricprimitive/GM_Solid"/>
@@ -311,61 +311,61 @@
       <eClassifiers xsi:type="ecore:EClass" name="RelationTypeValue"/>
       <eClassifiers xsi:type="ecore:EClass" name="ClosureSurface" eSuperTypes="#//CityGML/Core/AbstractThematicSurface"/>
       <eClassifiers xsi:type="ecore:EClass" name="DoubleBetween0and1">
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number">
+        <eOperations name="multiply" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value="*"/>
           </eAnnotations>
           <eParameters name="n" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         </eOperations>
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number">
+        <eOperations name="add" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value="+"/>
           </eAnnotations>
           <eParameters name="n" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         </eOperations>
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number">
+        <eOperations name="subtract" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value="-"/>
           </eAnnotations>
           <eParameters name="n" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         </eOperations>
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number">
+        <eOperations name="divide" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value="/"/>
           </eAnnotations>
           <eParameters name="n" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         </eOperations>
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
+        <eOperations name="lt" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value="&lt;"/>
           </eAnnotations>
           <eParameters name="n" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         </eOperations>
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
+        <eOperations name="leq" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value="&lt;="/>
           </eAnnotations>
           <eParameters name="n" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         </eOperations>
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
+        <eOperations name="neq" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value="&lt;>"/>
           </eAnnotations>
           <eParameters name="n" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         </eOperations>
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
+        <eOperations name="eq" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value="="/>
           </eAnnotations>
           <eParameters name="n" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         </eOperations>
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
+        <eOperations name="gt" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value=">"/>
           </eAnnotations>
           <eParameters name="n" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         </eOperations>
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
+        <eOperations name="geq" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value=">="/>
           </eAnnotations>
@@ -410,61 +410,61 @@
             lowerBound="1" eType="#//CityGML/Core/DoubleOrNilReason" containment="true"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="IntegerBetween0and3">
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number">
+        <eOperations name="multiply" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value="*"/>
           </eAnnotations>
           <eParameters name="n" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         </eOperations>
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number">
+        <eOperations name="add" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value="+"/>
           </eAnnotations>
           <eParameters name="n" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         </eOperations>
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number">
+        <eOperations name="subtract" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value="-"/>
           </eAnnotations>
           <eParameters name="n" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         </eOperations>
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number">
+        <eOperations name="divide" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value="/"/>
           </eAnnotations>
           <eParameters name="n" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         </eOperations>
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
+        <eOperations name="lt" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value="&lt;"/>
           </eAnnotations>
           <eParameters name="n" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         </eOperations>
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
+        <eOperations name="leq" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value="&lt;="/>
           </eAnnotations>
           <eParameters name="n" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         </eOperations>
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
+        <eOperations name="neq" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value="&lt;>"/>
           </eAnnotations>
           <eParameters name="n" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         </eOperations>
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
+        <eOperations name="eq" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value="="/>
           </eAnnotations>
           <eParameters name="n" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         </eOperations>
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
+        <eOperations name="gt" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value=">"/>
           </eAnnotations>
           <eParameters name="n" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         </eOperations>
-        <eOperations name="_" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
+        <eOperations name="geq" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Truth/Boolean">
           <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
             <details key="originalName" value=">="/>
           </eAnnotations>
@@ -472,7 +472,6 @@
         </eOperations>
         <eOperations name="abs" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Number"/>
         <eOperations name="asInteger" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Integer"/>
-        <eOperations name="asReal" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Real"/>
         <eOperations name="asReal" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Real"/>
         <eOperations name="asString" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Text/CharacterString"/>
         <eOperations name="div" ordered="false" lowerBound="1" eType="#//ISOTC211/ISO19103All/ISO191032005Conceptualschemalanguage/BasicTypes/Primitive/Numerics/Integer">

@@ -10,10 +10,13 @@
 }
 
 #target {
-	gml1:Building{
+	gml1:Model.CityGML.Building.Building{
 		++ -buildingSubdivision -> gml2
 	}
-	++ gml2:Storey
+	++ gml2:Model.CityGML.Building.Storey {
+		++ -elevation -> e
+	} 
+	++ e:Elevation  // directPosition
 }
 
 #correspondence {
@@ -26,7 +29,6 @@
 		#trg->gml2
 	}
 }
-
 
 
 #rule SubsequentStorey2Storey #extends Storey2Storey, AggregationSubsequent #with IFC2CityGML

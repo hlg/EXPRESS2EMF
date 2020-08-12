@@ -1,4 +1,4 @@
-#import "platform:/resource/IFC2CityGML/model/IFC4.ecore"
+#import "platform:/resource/IFC2CityGML/model/IFC4mod.ecore"
 #import "platform:/resource/IFC2CityGML/model/CityGML_Model.ecore"
 
 #schema IFC2CityGML
@@ -14,15 +14,15 @@
 #correspondence {
 	Project2CityModel {
 		#src->IFC4.IfcProject
-		#trg->CityModel
+		#trg->Model.CityGML.Core.CityModel
 	}
 	Building2Building {
 		#src->IFC4.IfcBuilding
-		#trg->Building
+		#trg->Model.CityGML.Building.Building
 	}
 	Storey2Storey {
 		#src->IFC4.IfcBuildingStorey
-		#trg->Storey
+		#trg->Model.CityGML.Building.Storey
 	}
 	
 }

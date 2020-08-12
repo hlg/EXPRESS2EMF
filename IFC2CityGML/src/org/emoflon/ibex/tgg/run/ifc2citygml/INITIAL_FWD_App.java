@@ -1,20 +1,18 @@
 package org.emoflon.ibex.tgg.run.ifc2citygml;
 
 import java.io.IOException;
+import java.util.Collection;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.BasicConfigurator;
-
 import org.emoflon.ibex.tgg.compiler.defaults.IRegistrationHelper;
 import org.emoflon.ibex.tgg.operational.strategies.modules.TGGResourceHandler;
 
 import org.emoflon.ibex.tgg.run.ifc2citygml.config.*;
-
-import org.emoflon.ibex.tgg.operational.defaults.IbexOptions;
+import org.moflon.core.utilities.ExtensionsUtil;
 import org.emoflon.ibex.tgg.operational.strategies.sync.INITIAL_FWD;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.emoflon.ibex.tgg.compiler.patterns.PatternSuffixes;
+import org.emoflon.ibex.tgg.ide.admin.BuilderExtension;
 
 public class INITIAL_FWD_App extends INITIAL_FWD {
 
@@ -43,6 +41,7 @@ public class INITIAL_FWD_App extends INITIAL_FWD {
 				// corr = createResource(options.project.path() + "/instances/corr.xmi");
 				// protocol = createResource(options.project.path() + "/instances/protocol.xmi");
 				
+				
 				super.loadModels();
 			}
 		}));
@@ -51,6 +50,25 @@ public class INITIAL_FWD_App extends INITIAL_FWD {
 	public static void main(String[] args) throws IOException {
 		BasicConfigurator.configure();
 		Logger.getRootLogger().setLevel(Level.INFO);
+
+		/*
+		TggPackage tgg = TggPackage.eINSTANCE;
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
+		ResourceSet resSet = new ResourceSetImpl();
+        Resource flattenedResource = resSet.getResource(URI.createURI("model/IFC2CityGML_flattened.editor.xmi"), true);
+        flattenedResource.load(null);
+        Resource editorResource = resSet.getResource(URI.createURI("model/IFC2CityGML.editor.xmi"), true);
+        editorResource.load(null);
+        TripleGraphGrammarFile flattened = (TripleGraphGrammarFile) flattenedResource.getContents().get(0);
+		TripleGraphGrammarFile editor = (TripleGraphGrammarFile) editorResource.getContents().get(0);
+		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject("IFC2CityGML");
+		new EditorTGGtoInternalTGG().generateInternalModels(editor, flattened, project).ifPresent(m -> new AttrCondDefLibraryProvider().generateAttrCondLibsAndStubs(m, project));
+		// does not work because I can not get a project if not in an eclipse context like during build in a builder
+
+		*/
+
+		// Collection<BuilderExtension> extensions = ExtensionsUtil.collectExtensions("org.emoflon.ibex.tgg.ide.IbexTGGBuilderExtension", "class", BuilderExtension.class);
+		// logger.info("Extensions: " + extensions.size());
 
 		logger.info("Starting INITIAL FWD");
 		long tic = System.currentTimeMillis();

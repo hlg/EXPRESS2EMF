@@ -4,18 +4,23 @@
 #abstract #rule Building2Building #with IFC2CityGML
 
 #source { 
-	ifc1:IfcProject
+	ifc0:IfcProject
+	ifc1:IfcSite
+	rel0:IfcRelAggregates {
+		-RelatingObject -> ifc0
+		-RelatedObjects -> ifc1
+	}
 	++ifc2:IfcBuilding
 }
 
 #target {
-	gml1:CityModel{
+	gml1:Model.CityGML.Core.CityModel{
 		++ -cityModelMember->gml0
 	}
-	++ gml0:CityModelMember{
+	++ gml0:Model.CityGML.Core.CityModelMember{
 		++ -cityObjectMember->gml2
 	}
-	++ gml2:Building {
+	++ gml2:Model.CityGML.Building.Building {
 		// ++ -storeysAboveGround->gml3
 	}
 	// ++ gml3:Model.ISOTC211.ISO19103All.ISO191032015Conceptualschemalanguage.Primitivetypes.Numerics.Integer
@@ -24,7 +29,7 @@
 
 #correspondence {
 	p2c:Project2CityModel{
-		#src->ifc1
+		#src->ifc0
 		#trg->gml1
 	}
 	++ b2b:Building2Building{
@@ -47,4 +52,11 @@
 
 
 
+#nac IsFirst #for FirstBuilding2Building
 
+#source {
+	ifc1:IfcObjectDefinition
+	r:IfcRelAggregates{
+		-RelatingObject->ifc1
+	}
+}

@@ -8,7 +8,7 @@
 }
 
 #target {
-	++c:CityModel
+	++c:Model.CityGML.Core.CityModel
 }
 
 #correspondence {

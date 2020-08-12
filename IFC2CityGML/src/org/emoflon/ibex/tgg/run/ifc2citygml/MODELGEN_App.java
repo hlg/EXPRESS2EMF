@@ -60,6 +60,9 @@ public class MODELGEN_App extends MODELGEN {
 		MODELGENStopCriterion stop = new MODELGENStopCriterion(generator.getTGG());
 		stop.setTimeOutInMS(100);
 		stop.setMaxRuleCount("Project2CityModel", 1);
+		// stop.setMaxRuleCount("FirstBuilding2Building", 1);
+		// stop.setMaxRuleCount("FirstStorey2Storey", 1);
+		
 		// stop.setMaxRuleCount("Building2Building", 5);
 		generator.setStopCriterion(stop);
 		

@@ -24,11 +24,11 @@
 	}
 }
 
-#nac First #for AggregationFirst
-#source{ 
+#nac IsFirst #for AggregationFirst
+
+#source {
 	ifc1:IfcObjectDefinition
-	ifc2:IfcObjectDefinition
 	r:IfcRelAggregates{
-		-RelatingObject->ifc2
+		-RelatingObject->ifc1
 	}
 }

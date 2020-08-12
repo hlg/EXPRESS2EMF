@@ -18,7 +18,7 @@ public class DemoclesRegistrationHelper implements IRegistrationHelper {
 	public void registerMetamodels(ResourceSet rs, IbexExecutable executable) throws IOException {
 
 		// Replace to register generated code or handle other URI-related requirements
-		executable.getResourceHandler().loadAndRegisterMetamodel("platform:/resource/IFC2CityGML/model/IFC4.ecore");
+		executable.getResourceHandler().loadAndRegisterMetamodel("platform:/resource/IFC2CityGML/model/IFC4mod.ecore");
 		executable.getResourceHandler().loadAndRegisterMetamodel("platform:/resource/IFC2CityGML/model/CityGML_Model.ecore");
 	}
 
