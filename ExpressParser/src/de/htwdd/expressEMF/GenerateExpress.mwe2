@@ -6,7 +6,6 @@ import org.eclipse.xtext.xtext.generator.model.project.*
 var rootPath = ".."
 
 Workflow {
-	
 	component = XtextGenerator {
 		configuration = {
 			project = StandardProjectConfig {
@@ -25,7 +24,7 @@ Workflow {
 			}
 		}
 		language = StandardLanguage {
-			name = "de.htwdd.expressEMF.Express"
+			name = "de.htwdd.expressEMF.express"
 			fileExtensions = "exp"
 			referencedResource = "platform:/resource/ExpressParser/model/custom/Express.genmodel"
 			serializer = {
@@ -36,6 +35,8 @@ Workflow {
 				// Generates checks for @Deprecated grammar annotations, an IssueProvider and a corresponding PropertyPage
 				// generateDeprecationValidation = true
 			}
+			
 		}
+		
 	}
 }

@@ -1,7 +1,8 @@
 package de.htwdd.expressEMF.api;
 
 
-import java.io.IOException;import java.lang.reflect.InvocationTargetException;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +14,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -45,16 +47,9 @@ public class RunParser {
 	}
 	
 	public Optional<SchemaDecl> parse() throws IOException {
-		// resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("exp", new XMLResourceFactoryImpl());
+		EPackage.Registry.INSTANCE.put(ExpressPackage.eNS_URI, ExpressPackage.eINSTANCE);
 		resourceSet = injector.getInstance(XtextResourceSet.class);
 		resource = resourceSet.getResource(fileURI, true);
-		SchemaDecl schema = (SchemaDecl) resource.getContents().get(0);
-		EntityDecl newEntityDecl = ExpressFactory.eINSTANCE.createEntityDecl();
-		newEntityDecl.setName("Programmatic");
-		schema.getDeclarations().add(newEntityDecl);
-		resource.save(null);
-
-		// Validation
 		IResourceValidator validator = ((XtextResource) resource).getResourceServiceProvider().getResourceValidator();
 		List<Issue> issues = validator.validate(resource, CheckMode.ALL, CancelIndicator.NullImpl);
 		for (Issue issue : issues) {
@@ -76,7 +71,8 @@ public class RunParser {
 
 	}
 	public static void main(String[] args) throws IOException {
-		RunParser parser = new RunParser(args[0]);
+		String schemaFile = args.length > 0 ? args[0] : "schemas/IFC4.exp";
+		RunParser parser = new RunParser(schemaFile);
 		SchemaDecl schema = parser.parse().get();
 		parser.saveXmi();
 	
