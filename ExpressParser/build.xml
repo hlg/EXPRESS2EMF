@@ -1,0 +1,14 @@
+<project name="project" default="generateCode">
+    <target name="generateCode" description="description">
+        <emf.Ecore2Java
+        	model="model/custom/Express.ecore"
+        	genmodel="model/custom/Express.genmodel"
+        	generateeditorproject="false"
+        	generateeditproject="false"
+        	generatejavacode="true"
+        	generatemodelproject="false"
+        	reconcilegenmodel="reload"
+        />
+    </target>
+
+</project>
