@@ -15,7 +15,10 @@
 
 ### Set up
 
-1. Install Eclipse modelling, Emoflon ...
+1. Install Eclipse modelling, PlantUML, Emoflon ...
+    - [Eclipse modelling tools](https://www.eclipse.org/modeling/tools.php) from <https://www.eclipse.org/downloads/packages/>
+    - [PlantUML](https://github.com/hallvard/plantuml) from update site <http://hallvard.github.io/plantuml>
+    - [Emoflon (Ibex/Democles)](https://emoflon.org) from update site <https://emoflon.org/emoflon-ibex-updatesite/snapshot/updatesite/>
     - TODO download, installation
     - TODO Emoflon perspective
 2. Checkout repository
