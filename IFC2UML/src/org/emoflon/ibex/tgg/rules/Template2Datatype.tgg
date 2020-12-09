@@ -1,0 +1,35 @@
+#using IFC2UML.*
+#using AttrCondDefLibrary.*
+
+#rule Template2Datatype #with IFC2UML
+
+#source { 
+	pr:IfcProject
+	++decl:IfcRelDeclares{
+		++ -RelatingContext->pr
+		++ -RelatedDefinitions->tmpl
+	}
+	++tmpl:IfcPropertySetTemplate
+}
+
+#target {
+	pa:Package {
+		++ -ownedType->dt
+	}
+	++dt:DataType
+}
+
+#correspondence {
+	pr2pa:Project2Package{
+		#src->pr
+		#trg->pa
+	}
+	++tmpl2dt:PsetTemplate2DataType{
+		#src->tmpl
+		#trg->dt
+	}
+}
+
+#attributeConditions {
+	
+}

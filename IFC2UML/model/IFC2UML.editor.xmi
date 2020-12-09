@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<tgg:TripleGraphGrammarFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:tgg="http://www.moflon.org/ide/tgg/mosl/TGG">
+  <imports name="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore"/>
+  <imports name="platform:/resource/IFC2CityGML/model/IFC4.ecore"/>
+  <schema name="IFC2UML">
+    <sourceTypes href="platform:/resource/IFC2CityGML/model/IFC4.ecore#/0"/>
+    <targetTypes href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+    <correspondenceTypes name="Project2Package">
+      <source href="platform:/resource/IFC2CityGML/model/IFC4.ecore#/0/IfcProject"/>
+      <target href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Package"/>
+    </correspondenceTypes>
+    <correspondenceTypes name="PsetTemplate2DataType">
+      <source href="platform:/resource/IFC2CityGML/model/IFC4.ecore#/0/IfcPropertySetTemplate"/>
+      <target href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataType"/>
+    </correspondenceTypes>
+  </schema>
+  <rules name="Project2Package">
+    <schema href="platform:/resource/IFC2UML/src/org/emoflon/ibex/tgg/rules/Project2Package.tgg#|0"/>
+  </rules>
+</tgg:TripleGraphGrammarFile>

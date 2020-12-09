@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<language:TGG xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:language="platform:/plugin/org.emoflon.ibex.tgg.language/model/Language.ecore" name="IFC2UML">
+  <src href="platform:/resource/IFC2CityGML/model/IFC4.ecore#/0"/>
+  <trg href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+  <corr href="platform:/resource/IFC2UML/model/IFC2UML.ecore#/"/>
+  <rules name="Project2Package">
+    <attributeConditionLibrary/>
+  </rules>
+  <attributeConstraintDefinitionLibrary/>
+</language:TGG>

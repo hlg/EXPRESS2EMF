@@ -1,0 +1,23 @@
+#using IFC2UML.*
+#using AttrCondDefLibrary.*
+
+#rule Project2Package #with IFC2UML
+
+#source { 
+	++pr:IfcProject
+}
+
+#target {
+	++pa:Package
+}
+
+#correspondence {
+	++pr2pa:Project2Package{
+		#src->pr
+		#trg->pa
+	}
+}
+
+#attributeConditions {
+	
+}

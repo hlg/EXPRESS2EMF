@@ -1,0 +1,27 @@
+#import "platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore"
+#import "platform:/resource/ExpressEMF/instances/IFC4.ecore"
+
+#schema IFC2UML
+	
+#source {
+	IFC4
+}
+
+#target { 
+	uml
+} 
+
+#correspondence {
+	Project2Package {
+		#src->IfcProject
+		#trg->Package
+	}
+	PsetTemplate2DataType{
+		#src->IfcPropertySetTemplate
+		#trg->DataType
+	}
+}
+
+#attributeConditions {
+	
+}
