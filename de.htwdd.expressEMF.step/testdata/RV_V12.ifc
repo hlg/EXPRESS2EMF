@@ -1,0 +1,12 @@
+ISO-10303-21;
+HEADER;
+FILE_DESCRIPTION((''),'2;1');
+FILE_NAME('','2018-12-21T13:07:44',(''),(''),'BuildingSmart IfcKit by Constructivity','IfcDoc 12.0.0.0','');
+FILE_SCHEMA(('IFC'));
+ENDSEC;
+DATA;
+#1= IFCSIMPLEPROPERTYTEMPLATE('36T0J90GnF1AFJynwsfDWJ',$,'Reference',$,$,'IfcIdentifier',$,$,$,$,$,$);
+#994= IFCSIMPLEPROPERTYTEMPLATE('36T0J90GnF1AFJynwsfDWJ',$,'Reference',$,.P_SINGLEVALUE.,'IfcIdentifier',$,$,$,$,$,$);
+ENDSEC;
+
+END-ISO-10303-21;
