@@ -63,6 +63,7 @@ class InstantiationTransformation {
 	}
 	
 	def EObject instantiate(SimpleEntityInstance entity){
+		System.out.println(entity.type.name)
 		EcoreUtil.create(entity.type as EClass)
 	}
 	

@@ -3,9 +3,16 @@
  */
 package de.htwdd.expressEMF.step;
 
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.naming.SimpleNameProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class StepRuntimeModule extends AbstractStepRuntimeModule {
+	@Override
+	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
+		return SimpleNameProvider.class;
+	}
+
 }

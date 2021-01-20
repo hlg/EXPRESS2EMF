@@ -3,6 +3,8 @@
  */
 package de.htwdd.expressEMF.step;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 /**
  * Initialization support for running Xtext languages without Equinox extension registry.
@@ -12,4 +14,5 @@ public class StepStandaloneSetup extends StepStandaloneSetupGenerated {
 	public static void doSetup() {
 		new StepStandaloneSetup().createInjectorAndDoEMFRegistration();
 	}
+
 }

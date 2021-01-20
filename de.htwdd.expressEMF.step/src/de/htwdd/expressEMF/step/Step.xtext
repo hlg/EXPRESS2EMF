@@ -2,6 +2,7 @@ grammar de.htwdd.expressEMF.step.Step hidden (WS, Comment)
 
 generate step "http://www.htw-dresden.de/geoinformation/expressEMF/Step"
 // import "http://www.eclipse.org/uml2/5.0.0/UML" as uml
+// import "platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore" as ecore
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 
@@ -23,11 +24,14 @@ DataSection:
 	// only simple records in IFC
 	'DATA' (parameters=ParameterList)? ';' (entities+=SimpleEntityInstance)* 'ENDSEC' ';';
 // SimpleEntityInstance:  name=ENTITY_INSTANCE_NAME '=' type=[uml::Class|KEYWORD]  parameters=ParameterList ';';  
-SimpleEntityInstance:  name=ENTITY_INSTANCE_NAME '=' type=[ecore::EClass|KEYWORD]  parameters=ParameterList  ';';
+SimpleEntityInstance:  name=ENTITY_INSTANCE_NAME '=' type=[ecore::EClass|TypeRef]  parameters=ParameterList  ';';
 
 
 terminal KEYWORD:  UPPER ( UPPER|DIGIT)*; // no user-defined Keywords in IFC
+
 terminal REAL: SIGN? DIGIT+ '.' DIGIT* ('E' SIGN? DIGIT+)?;
+terminal TypeRef: KEYWORD '.' KEYWORD;
+
 terminal INTEGER: ('+'|'-')? ('0'..'9')+;
 // terminal STRING: "'" ( SPECIAL | DIGIT | SPACE | LOWER | UPPER | HIGH_CODEPOINT | "''" | '\\\\'  )* "'" ; // no control directives
 terminal STRING: "'" (!"'")* "'";

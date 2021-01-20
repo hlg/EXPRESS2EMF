@@ -8,7 +8,7 @@
 package de.htwdd.expressEMF.step
 
 import org.eclipse.xtext.resource.generic.AbstractGenericResourceRuntimeModule
-import org.eclipse.xtext.naming.DefaultDeclarativeQualifiedNameProvider
+import org.eclipse.xtext.naming.SimpleNameProvider
 
 /**
  * This class is used to configure the runtime dependency injection (DI) container for the UML language.
@@ -24,6 +24,6 @@ class EcoreRuntimeModule extends AbstractGenericResourceRuntimeModule {
 	}
 
 	override bindIQualifiedNameProvider() {
-		DefaultDeclarativeQualifiedNameProvider
+		SimpleNameProvider
 	}
 }
