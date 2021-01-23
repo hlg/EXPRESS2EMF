@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="ASCII"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="IFC4">
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="IFC4" nsURI="http://IFC4.exprecore" nsPrefix="ifc4">
   <eClassifiers xsi:type="ecore:EDataType" name="EInt" instanceClassName="java.lang.Integer"/>
   <eClassifiers xsi:type="ecore:EClass" name="IfcWindowPanelProperties" eSuperTypes="//IfcPreDefinedPropertySet">
     <eStructuralFeatures xsi:type="ecore:EReference" name="OperationType" eType="//IfcWindowPanelOperationEnum">

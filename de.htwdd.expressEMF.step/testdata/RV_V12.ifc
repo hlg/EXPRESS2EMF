@@ -5,9 +5,10 @@ FILE_NAME('','2018-12-21T13:07:44',(''),(''),'BuildingSmart IfcKit by Constructi
 FILE_SCHEMA(('IFC4'));
 ENDSEC;
 DATA;
-#1= IFC4.IFCPROJECT('0Ib9rYYyj0xQUne58MrgzK',$,'IFC Templates',$,$,$,$,$,$);
-#2= IFC4.IFCSIMPLEPROPERTYTEMPLATE('36T0J90GnF1AFJynwsfDWJ',$,'Reference',$,$,'IfcIdentifier',$,$,$,$,$,$);
-#994= IFC4.IFCSIMPLEPROPERTYTEMPLATE('36T0J90GnF1AFJynwsfDWJ',$,'Reference',$,.P_SINGLEVALUE.,'IfcIdentifier',$,$,$,$,$,$);
+#1= IFCPROJECT('0Ib9rYYyj0xQUne58MrgzK',$,'IFC Templates',$,$,$,$,$,$);
+#2= IFCRELDECLARES('2hZ8ONazD7nQQGets2LgKR',$,$,$,#1,(#3));
+#3= IFCPROPERTYSETTEMPLATE('3hQNE0qUWHuO00025QrE$V',$,'Pset_FurnitureTypeCommon','Common properties for all types of furniture such as chair, desk, table, and file cabinet. HISTORY: First issued in IFC Release R1.5. Renamed from Pset_FurnitureCommon. IFC 2x4: IsBuiltIn property added',.PSET_TYPEDRIVENOVERRIDE.,'IfcFurniture',(#3));
+#4= IFCSIMPLEPROPERTYTEMPLATE('36T0J90GnF1AFJynwsfDWJ',$,'Reference',$,.P_SINGLEVALUE.,'IfcIdentifier',$,$,$,$,$,$);
 ENDSEC;
 
 END-ISO-10303-21;

@@ -3,7 +3,6 @@
  */
 package de.htwdd.expressEMF.step;
 
-import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 /**
@@ -15,4 +14,11 @@ public class StepStandaloneSetup extends StepStandaloneSetupGenerated {
 		new StepStandaloneSetup().createInjectorAndDoEMFRegistration();
 	}
 
+	@Override
+	public Injector createInjectorAndDoEMFRegistration() {
+		EcoreStandaloneSetup.doSetup();
+		return super.createInjectorAndDoEMFRegistration();
+	}
+
+	
 }

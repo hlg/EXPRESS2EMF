@@ -24,13 +24,13 @@ DataSection:
 	// only simple records in IFC
 	'DATA' (parameters=ParameterList)? ';' (entities+=SimpleEntityInstance)* 'ENDSEC' ';';
 // SimpleEntityInstance:  name=ENTITY_INSTANCE_NAME '=' type=[uml::Class|KEYWORD]  parameters=ParameterList ';';  
-SimpleEntityInstance:  name=ENTITY_INSTANCE_NAME '=' type=[ecore::EClass|TypeRef]  parameters=ParameterList  ';';
+SimpleEntityInstance:  name=ENTITY_INSTANCE_NAME '=' type=[ecore::EClass|KEYWORD]  parameters=ParameterList  ';';
 
 
 terminal KEYWORD:  UPPER ( UPPER|DIGIT)*; // no user-defined Keywords in IFC
 
 terminal REAL: SIGN? DIGIT+ '.' DIGIT* ('E' SIGN? DIGIT+)?;
-terminal TypeRef: KEYWORD '.' KEYWORD;
+terminal TypeRef: KEYWORD '.' KEYWORD; // for testing
 
 terminal INTEGER: ('+'|'-')? ('0'..'9')+;
 // terminal STRING: "'" ( SPECIAL | DIGIT | SPACE | LOWER | UPPER | HIGH_CODEPOINT | "''" | '\\\\'  )* "'" ; // no control directives
