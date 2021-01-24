@@ -1,7 +1,9 @@
 package de.htwdd.expressEMF.step.api;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -14,6 +16,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
@@ -44,14 +47,13 @@ public class RunParser {
 	private boolean debug = false;
 	
 	public RunParser(String filePath) {
-		fileURI = URI.createFileURI(filePath);
+		fileURI = URI.createFileURI(new File(filePath).getAbsolutePath());
 	}
 
 	public Optional<Step> parse() throws IOException {
-		// EcoreStandaloneSetup.doSetup();
 		Injector stepInjector = new StepStandaloneSetup().createInjectorAndDoEMFRegistration();
 		resourceSet = stepInjector.getInstance(XtextResourceSet.class);
-		Resource meta = resourceSet.getResource(URI.createFileURI("testdata/IFC4mod.exprecore"), true);
+		Resource meta = resourceSet.getResource(URI.createFileURI(new File("testdata/IFC4.ecore").getAbsolutePath()), true);
 		resource = resourceSet.getResource(fileURI, true);
 		EPackage ifc4 = (EPackage) meta.getContents().get(0);
 		Step step = (Step) resource.getContents().get(0);
@@ -69,8 +71,9 @@ public class RunParser {
 
 		Resource xmi = resourceSet.createResource(fileURI.trimFileExtension().appendFileExtension("inst.xmi"));
 		xmi.getContents().addAll(instantiated);
+		Map<Object, Object> options = ((XMIResource)xmi).getDefaultSaveOptions();
+		options.put(XMIResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 		xmi.save(null);
-
 		for (EObject obj : instantiated) {
 			System.out.println("=================");
 			System.out.println(obj.eClass());
