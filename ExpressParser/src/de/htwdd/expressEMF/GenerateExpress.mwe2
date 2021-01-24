@@ -24,7 +24,7 @@ Workflow {
 			}
 		}
 		language = StandardLanguage {
-			name = "de.htwdd.expressEMF.express"
+			name = "de.htwdd.expressEMF.Express"
 			fileExtensions = "exp"
 			referencedResource = "platform:/resource/ExpressParser/model/custom/Express.genmodel"
 			serializer = {
