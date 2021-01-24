@@ -19,7 +19,8 @@
 }
 
 #attributeConditions {
-	// concat(" ", s.schemaId, s.schemaVersionId, p.name)
 	eq_string(s.schemaId, p.name)
+	eq_string(s.schemaId, p.nsPrefix)
+	concat(s.schemaId, "http://", ".ecore", p.nsURI) // this is abuse I guess
 }
 

@@ -79,7 +79,6 @@
 	}
 }
 
-
 #abstract #rule ExplicitAttributeToAttribute #with ExpressEMF
 
 #source {
@@ -116,7 +115,7 @@
 	eq_int(-1, s.upperBound)
 }
 
-#rule FirstExplicitAttributeToReference #extends FirstExplicitAttributeToStructuralFeature, ExplicitAttributeToReference #with ExpressEMF
+#abstract #rule FirstExplicitAttributeToReference #extends FirstExplicitAttributeToStructuralFeature, ExplicitAttributeToReference #with ExpressEMF
 #source {
 	++ a: ExplicitAttr{
 		++ -type->t
@@ -124,8 +123,31 @@
 	++ t:NamedTypes {
 		++ -decl->d
 	} 
-	d:NamedTypeDecl // TODO all NamedTypeDecl
+	d:NamedTypeDecl
 }
+
+#rule FirstExplicitAttributeToContainedReference #extends FirstExplicitAttributeToReference, ContainedReference #with ExpressEMF
+
+#rule FirstExplicitAttributeToSelfcontainedReference #extends FirstExplicitAttributeToReference, SelfcontainedReference #with ExpressEMF
+
+#abstract #rule SelfcontainedReference #with ExpressEMF
+
+#source {
+	d:EntityDecl
+}
+
+#abstract #rule ContainedReference #with ExpressEMF
+#source {
+	d:TypeDecl
+}
+#target {
+	++s:EReference
+}
+#attributeConditions{
+	eq_boolean(true, s.containment)
+}
+
+
 
 #rule FirstExpliciteListAttributeToReference #extends FirstExplicitAggregateAttributeToReference #with ExpressEMF
 #source {
@@ -144,7 +166,7 @@
 	t:SimpleTypes // TODO maybe not necessary, target side distinction enough because existing t/cf correspondence
 }
 
-#rule SubsequentExplicitAttributeToReference #extends SubsequentExplicitAttributeToStructuralFeature, ExplicitAttributeToReference #with ExpressEMF
+#abstract #rule SubsequentExplicitAttributeToReference #extends SubsequentExplicitAttributeToStructuralFeature, ExplicitAttributeToReference #with ExpressEMF
 #source {
 	a: ExplicitAttr{
 		-type->t
@@ -152,8 +174,13 @@
 	t:NamedTypes {
 		-decl->d
 	} 
-	d:NamedTypeDecl // TODO all NamedTypeDecl
+	d:NamedTypeDecl
 }
+
+#rule SubsequentExplicitAttributeToContainedReference #extends SubsequentExplicitAttributeToReference, ContainedReference #with ExpressEMF
+
+#rule SubsequentExplicitAttributeToSelfcontainedReference #extends SubsequentExplicitAttributeToReference, SelfcontainedReference #with ExpressEMF
+
 
 #rule SubsequentExplicitAttributeToAttribute #extends SubsequentExplicitAttributeToStructuralFeature, ExplicitAttributeToAttribute #with ExpressEMF
 #source {
