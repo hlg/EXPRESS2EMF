@@ -1,0 +1,11 @@
+emf-gen
+src-gen
+xtend-gen
+bin
+debug
+
+ExpressEMF/model
+
+// IFC2UML/model      // cleanup first
+// Ifc2CityGML/model  // cleanup first
+
