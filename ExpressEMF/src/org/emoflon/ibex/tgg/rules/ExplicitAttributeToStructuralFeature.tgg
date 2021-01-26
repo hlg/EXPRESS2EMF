@@ -27,7 +27,7 @@
 }
 
 #correspondence {
-	e2c: EntityToClass{
+	e2c: TypeToClassifier{
 		#src->e
 		#trg->c
 	}
@@ -66,14 +66,14 @@
 
 #abstract #rule ExplicitAttributeToReference #with ExpressEMF
 #source{
-	d:NamedTypeDecl // TODO all NamedTypeDecl	
+	d:NamedTypeDecl
 }
 #target {
 	++ s:EReference
 	cf:EClass	
 }
 #correspondence {
-	t2cf:EntityToClass{
+	t2cf:TypeToClassifier{
 		#src->d
 		#trg->cf
 	}
@@ -82,7 +82,7 @@
 #abstract #rule ExplicitAttributeToAttribute #with ExpressEMF
 
 #source {
-	t:SimpleTypes 
+	t:SimpleTypes
 }
 #target {
 	++ s:EAttribute
@@ -91,6 +91,25 @@
 #correspondence {
 	t2cf:SimpleTypeToDataType {
 		#src->t
+		#trg->cf
+	}
+}
+
+#abstract #rule ExplicitAttributeToAttributeEnum #with ExpressEMF
+
+#source {
+	ut:TypeDecl {
+		-underlying->ue
+	}
+	ue:EnumerationType
+}
+#target {
+	++ s:EAttribute
+	cf:EEnum
+}
+#correspondence {
+	t2cf:TypeToClassifier {
+		#src->ut
 		#trg->cf
 	}
 }
@@ -106,7 +125,7 @@
 	++ t:NamedTypes {
 		++ -decl->d
 	} 
-	d:NamedTypeDecl // TODO all NamedTypeDecl
+	d:NamedTypeDecl
 }
 #target{
 	++s:EReference
@@ -163,7 +182,17 @@
 	++ a: ExplicitAttr{
 		++ -type->t
 	}
-	t:SimpleTypes // TODO maybe not necessary, target side distinction enough because existing t/cf correspondence
+	t:SimpleTypes
+}
+
+#rule FirstExplicitAttributeToAttributeEnum #extends FirstExplicitAttributeToStructuralFeature, ExplicitAttributeToAttributeEnum #with ExpressEMF
+#source {
+	++ a: ExplicitAttr{
+		++ -type->t
+	}
+	++t:NamedTypes{
+		++-decl->ut
+	}
 }
 
 #abstract #rule SubsequentExplicitAttributeToReference #extends SubsequentExplicitAttributeToStructuralFeature, ExplicitAttributeToReference #with ExpressEMF
@@ -189,5 +218,16 @@
 	}
 	t:SimpleTypes // TODO check, maybe not necessary, target side distinction enough because existing t/cf correspondence
 }
+
+#rule SubsequentExplicitAttributeToAttributeEnum #extends SubsequentExplicitAttributeToStructuralFeature, ExplicitAttributeToAttributeEnum #with ExpressEMF
+#source {
+	a: ExplicitAttr{
+		-type->t
+	}
+	t:NamedTypes{
+		-decl->ut
+	}
+}
+
 /*
 */

@@ -18,11 +18,11 @@
 }
 
 #correspondence {
-	e2cSup:EntityToClass {
+	e2cSup:TypeToClassifier {
 		#src->eSup
 		#trg->cSup		
 	}
-	e2cSub:EntityToClass {
+	e2cSub:TypeToClassifier {
 		#src->eSub
 		#trg->cSub		
 	}

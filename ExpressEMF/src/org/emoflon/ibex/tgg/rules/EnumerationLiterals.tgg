@@ -1,0 +1,29 @@
+#using ExpressEMF.*
+#using AttrCondDefLibrary.*
+
+#rule EnumerationLiterals #with ExpressEMF
+
+#source {
+	dt:TypeDecl {
+		-underlying -> ut
+	}
+	ut:EnumerationType
+}
+
+#target {
+	ee:EEnum {
+		++ -eLiterals -> el
+	}
+	++el:EEnumLiteral
+}
+
+#correspondence {
+	dt2ee:TypeToClassifier {
+		#src->dt
+		#trg->ee
+	}
+	
+}
+#attributeConditions {
+	eq_string(ut.items, el.literal) // will not work, how to access single item?
+}

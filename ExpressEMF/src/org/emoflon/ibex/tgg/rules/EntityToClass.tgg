@@ -1,52 +1,20 @@
 #using ExpressEMF.*
 #using AttrCondDefLibrary.*
 
-#rule EntityToClass #with ExpressEMF
-
-#source { 
-	s:SchemaDecl{
-		++ -declarations->e
-	}
-	++e:EntityDecl
-}
-
-#target {
-	p:EPackage{
-		++ -eClassifiers->c
-	}
-	++c:EClass
-}
-
-#correspondence {
-	s2p:SchemaToPackage{
-		#src->s
-		#trg->p
-	}
-	++e2c:EntityToClass{
-		#src->e
-		#trg->c
-	}
-}
-
-#attributeConditions {
-	eq_string(e.name, c.name) 
-	eq_booleanPrimitive(e.abstract, c.abstract)
-}
-
-#rule TypeToClass #with ExpressEMF
+#abstract #rule NamedTypeToClassifier #with ExpressEMF
 
 #source { 
 	s:SchemaDecl{
 		++ -declarations->t
 	}
-	++t:TypeDecl
+	++t:NamedTypeDecl
 }
 
 #target {
 	p:EPackage{
 		++ -eClassifiers->c
 	}
-	++c:EClass
+	++c:EClassifier
 }
 
 #correspondence {
@@ -54,7 +22,7 @@
 		#src->s
 		#trg->p
 	}
-	++t2c:EntityToClass{
+	++e2c:TypeToClassifier{
 		#src->t
 		#trg->c
 	}
@@ -63,4 +31,78 @@
 #attributeConditions {
 	eq_string(t.name, c.name) 
 }
+
+
+#rule EntityToClass #extends NamedTypeToClassifier #with ExpressEMF
+
+#source { 
+	++t:EntityDecl
+}
+
+#target {
+	++c:EClass
+}
+
+#attributeConditions {
+	eq_booleanPrimitive(t.abstract, c.abstract)
+}
+
+
+#rule SimpleTypeToClass #extends NamedTypeToClassifier #with ExpressEMF
+
+#source { 
+	++t:TypeDecl {
+		++-underlying->ut
+	}
+	ut:SimpleTypes
+}
+
+#target {
+	++c:EClass
+}
+
+#rule DeclaredTypeToClass #extends NamedTypeToClassifier #with ExpressEMF
+
+#source { 
+	++t:TypeDecl {
+		++-underlying->ut
+	}
+	++ut:DeclaredType
+}
+
+#target {
+	++c:EClass
+}
+
+#rule AggregationTypeToClass #extends NamedTypeToClassifier #with ExpressEMF
+
+#source { 
+	++t:TypeDecl {
+		++-underlying->ut
+	}
+	++ut:AggregationTypes
+}
+
+#target {
+	++c:EClass
+}
+
+
+#rule EnumTypeToEnum #extends NamedTypeToClassifier #with ExpressEMF
+
+#source { 
+	++t:TypeDecl {
+		++-underlying->ut
+	}
+	++ut:EnumerationType
+}
+
+#target {
+	++c:EEnum
+}
+
+
+
+
+
 
