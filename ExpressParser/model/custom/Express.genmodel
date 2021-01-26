@@ -14,12 +14,10 @@
     </genClasses>
     <genClasses ecoreClass="Express.ecore#//Declaration"/>
     <genClasses ecoreClass="Express.ecore#//TypeDecl">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Express.ecore#//TypeDecl/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Express.ecore#//TypeDecl/underlying"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Express.ecore#//TypeDecl/where"/>
     </genClasses>
     <genClasses ecoreClass="Express.ecore#//EntityDecl">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Express.ecore#//EntityDecl/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Express.ecore#//EntityDecl/abstract"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Express.ecore#//EntityDecl/subTypes"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Express.ecore#//EntityDecl/superType"/>
@@ -51,7 +49,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Express.ecore#//AttributeDecl/position"/>
     </genClasses>
     <genClasses ecoreClass="Express.ecore#//Attribute"/>
-    <genClasses ecoreClass="Express.ecore#//NamedTypeDecl"/>
+    <genClasses ecoreClass="Express.ecore#//NamedTypeDecl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Express.ecore#//NamedTypeDecl/name"/>
+    </genClasses>
     <genClasses ecoreClass="Express.ecore#//NamedTypes">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Express.ecore#//NamedTypes/decl"/>
     </genClasses>

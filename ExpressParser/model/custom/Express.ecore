@@ -9,14 +9,12 @@
         eType="#//Declaration" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Declaration"/>
-  <eClassifiers xsi:type="ecore:EClass" name="TypeDecl" eSuperTypes="#//Declaration #//NamedTypeDecl">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeDecl" eSuperTypes="#//NamedTypeDecl">
     <eStructuralFeatures xsi:type="ecore:EReference" name="underlying" eType="#//UnderlyingType"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="where" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EntityDecl" eSuperTypes="#//Declaration #//NamedTypeDecl">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityDecl" eSuperTypes="#//NamedTypeDecl">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="abstract" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subTypes" eType="#//SuperTypeTerm"
         containment="true"/>
@@ -56,7 +54,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Attribute"/>
-  <eClassifiers xsi:type="ecore:EClass" name="NamedTypeDecl"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedTypeDecl" eSuperTypes="#//Declaration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedTypes" eSuperTypes="#//ParameterType #//InstantiableType">
     <eStructuralFeatures xsi:type="ecore:EReference" name="decl" eType="#//NamedTypeDecl"/>
   </eClassifiers>
