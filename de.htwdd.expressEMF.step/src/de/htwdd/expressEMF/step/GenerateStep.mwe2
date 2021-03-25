@@ -71,7 +71,10 @@ Workflow {
 	 */
 			
 	}
-	component = org.eclipse.xtext.ecore.EcoreSupport{}
+	component = org.eclipse.xtext.ecore.EcoreSupport{
+		guiceModule = EcoreRuntimeModule {}
+	} 
+	
 	component = XtextGenerator {
 		configuration = {
 			project = StandardProjectConfig {
@@ -80,6 +83,12 @@ Workflow {
 				eclipsePlugin = {
 					enabled = true
 				}
+            	eclipsePluginTest = {
+                	enabled = false
+            	}
+            	runtimeTest = {
+                	enabled = true
+            	}
 				createEclipseMetaData = true
 			}
 			code = {

@@ -4938,7 +4938,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IfcGeometricSetSelect"/>
   <eClassifiers xsi:type="ecore:EClass" name="IfcStructuralCurveMemberVarying" eSuperTypes="#//IfcStructuralCurveMember"/>
-  <eClassifiers xsi:type="ecore:EClass" name="IFCPROJECT" eSuperTypes="#//IfcContext"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IfcProject" eSuperTypes="#//IfcContext"/>
   <eClassifiers xsi:type="ecore:EClass" name="IfcTransportElement" eSuperTypes="#//IfcElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="PredefinedType" eType="#//IfcTransportElementTypeEnum">
       <eAnnotations source="Express_emoflon">

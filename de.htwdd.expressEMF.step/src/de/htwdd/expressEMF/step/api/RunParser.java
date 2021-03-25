@@ -13,13 +13,9 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMIResource;
-import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescription;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
@@ -34,7 +30,6 @@ import com.google.inject.Injector;
 
 import de.htwdd.expressEMF.step.api.RunParser;
 import de.htwdd.expressEMF.step.postprocessing.InstantiationTransformation;
-import de.htwdd.expressEMF.step.EcoreStandaloneSetup;
 import de.htwdd.expressEMF.step.StepStandaloneSetup;
 import de.htwdd.expressEMF.step.step.SimpleEntityInstance;
 import de.htwdd.expressEMF.step.step.Step;
@@ -44,7 +39,7 @@ public class RunParser {
 	private URI fileURI;
 	private Resource resource;
 	private XtextResourceSet resourceSet;
-	private boolean debug = false;
+	private boolean debug = true;
 	
 	public RunParser(String filePath) {
 		fileURI = URI.createFileURI(new File(filePath).getAbsolutePath());
@@ -53,11 +48,11 @@ public class RunParser {
 	public Optional<Step> parse() throws IOException {
 		Injector stepInjector = new StepStandaloneSetup().createInjectorAndDoEMFRegistration();
 		resourceSet = stepInjector.getInstance(XtextResourceSet.class);
-		Resource meta = resourceSet.getResource(URI.createFileURI(new File("testdata/IFC4.ecore").getAbsolutePath()), true);
+		Resource meta = resourceSet.getResource(URI.createFileURI(new File("testdata/IFC4.exprecore").getAbsolutePath()), true);
 		resource = resourceSet.getResource(fileURI, true);
 		EPackage ifc4 = (EPackage) meta.getContents().get(0);
 		Step step = (Step) resource.getContents().get(0);
-		
+
 		if (debug) for (EClassifier classifier : ifc4.getEClassifiers()) {
 			if (classifier instanceof EClass) {
 				System.out.println(classifier.getName() + ": " + ((EClass) classifier).getEAllStructuralFeatures()

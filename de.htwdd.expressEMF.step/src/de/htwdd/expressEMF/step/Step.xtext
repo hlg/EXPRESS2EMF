@@ -13,8 +13,10 @@ Step:
 HeaderSection:
 	'HEADER' ';' headerEntity+=HeaderEntity headerEntity+=HeaderEntity (headerEntity+=HeaderEntity)+ 'ENDSEC' ';';
 
-HeaderEntity: ModelHeaderEntity | keyword=KEYWORD parameters=ParameterList ';' ;
-ModelHeaderEntity: "Schema" "(" importedNamespace=Parameter ")";
+HeaderEntity: keyword=KEYWORD parameters=ParameterList ';' ;
+// HeaderEntity: ModelHeaderEntity | CatchAllHeaderEntitiy;
+// CatchAllHeaderEntity: keyword=KEYWORD parameters=ParameterList ';' ;
+// ModelHeaderEntity: 'Schema' '(' importedNamespace=STRING ')' ';';
 Parameter: 	TypedParameter | UntypedParameter | OmittedParameter;
 TypedParameter: type=KEYWORD '(' parameter=Parameter ')' ;
 UntypedParameter: v=STRING | v=REAL | v='$' | v=INTEGER | v=ENUMERATION | v=BINARY | ParameterList | e=[SimpleEntityInstance|ENTITY_INSTANCE_NAME] ;
@@ -30,7 +32,7 @@ SimpleEntityInstance:  name=ENTITY_INSTANCE_NAME '=' type=[ecore::EClass|KEYWORD
 terminal KEYWORD:  UPPER ( UPPER|DIGIT)*; // no user-defined Keywords in IFC
 
 terminal REAL: SIGN? DIGIT+ '.' DIGIT* ('E' SIGN? DIGIT+)?;
-terminal TypeRef: KEYWORD '.' KEYWORD; // for testing
+terminal TYPEREF: KEYWORD '.' KEYWORD; // for testing
 
 terminal INTEGER: ('+'|'-')? ('0'..'9')+;
 // terminal STRING: "'" ( SPECIAL | DIGIT | SPACE | LOWER | UPPER | HIGH_CODEPOINT | "''" | '\\\\'  )* "'" ; // no control directives
@@ -43,7 +45,7 @@ terminal Comment: ('/*' -> '*/' | '//' !('\n'|'\r')* ('\r'? '\n')?); /* remark t
 terminal fragment HEX: DIGIT | 'A'..'F' ;
 terminal fragment SIGN: '+'|'-';
 terminal fragment UPPER: 'A'..'Z'|'_';
-// terminal fragment LOWER: 'a'..'z';
+terminal fragment LOWER: 'a'..'z';
 // terminal fragment SPACE: ' ';
 terminal fragment DIGIT: '0'..'9';
 // terminal fragment SPECIAL: '!' | '""' | '*' | '$' | '%' | '&' | '.' | '#' | '+' | ','  | '-' | '(' | ')' | '?' | '/' | ':' | ';' | '<'  | '=' | '>' | '@' | '[' | ']' | '{' | '|' | '}'  | '^' | '`' | '~' ;

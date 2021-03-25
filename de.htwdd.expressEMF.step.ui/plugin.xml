@@ -8,7 +8,7 @@
 			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
 			default="true"
 			extensions="ifc,spf,p21"
-			id="de.htwdd.expressEMF.Step"
+			id="de.htwdd.expressEMF.step.Step"
 			name="Step Editor">
 		</editor>
 	</extension>
@@ -19,16 +19,16 @@
 			commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
 			<activeWhen>
 				<reference
-					definitionId="de.htwdd.expressEMF.Step.Editor.opened">
+					definitionId="de.htwdd.expressEMF.step.Step.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
 		<handler
 			class="de.htwdd.expressEMF.step.ui.StepExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-			commandId="de.htwdd.expressEMF.Step.validate">
+			commandId="de.htwdd.expressEMF.step.Step.validate">
 		<activeWhen>
 			<reference
-					definitionId="de.htwdd.expressEMF.Step.Editor.opened">
+					definitionId="de.htwdd.expressEMF.step.Step.Editor.opened">
 			</reference>
 		</activeWhen>
 		</handler>
@@ -37,7 +37,7 @@
 			class="de.htwdd.expressEMF.step.ui.StepExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
 			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
 			<activeWhen>
-				<reference definitionId="de.htwdd.expressEMF.Step.Editor.opened" />
+				<reference definitionId="de.htwdd.expressEMF.step.Step.Editor.opened" />
 			</activeWhen>
 		</handler>
 		<handler
@@ -45,7 +45,7 @@
 			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
 			<activeWhen>
 				<and>
-					<reference definitionId="de.htwdd.expressEMF.Step.XtextEditor.opened" />
+					<reference definitionId="de.htwdd.expressEMF.step.Step.XtextEditor.opened" />
 					<iterate>
 						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 					</iterate>
@@ -54,22 +54,22 @@
 		</handler>
 	</extension>
 	<extension point="org.eclipse.core.expressions.definitions">
-		<definition id="de.htwdd.expressEMF.Step.Editor.opened">
+		<definition id="de.htwdd.expressEMF.step.Step.Editor.opened">
 			<and>
 				<reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
-						value="de.htwdd.expressEMF.Step"
+						value="de.htwdd.expressEMF.step.Step"
 						forcePluginActivation="true"/>
 				</with>
 			</and>
 		</definition>
-		<definition id="de.htwdd.expressEMF.Step.XtextEditor.opened">
+		<definition id="de.htwdd.expressEMF.step.Step.XtextEditor.opened">
 			<and>
 				<reference definitionId="isXtextEditorActive"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
-						value="de.htwdd.expressEMF.Step"
+						value="de.htwdd.expressEMF.step.Step"
 						forcePluginActivation="true"/>
 				</with>
 			</and>
@@ -79,21 +79,21 @@
 			point="org.eclipse.ui.preferencePages">
 		<page
 			class="de.htwdd.expressEMF.step.ui.StepExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="de.htwdd.expressEMF.Step"
+			id="de.htwdd.expressEMF.step.Step"
 			name="Step">
 			<keywordReference id="de.htwdd.expressEMF.step.ui.keyword_Step"/>
 		</page>
 		<page
-			category="de.htwdd.expressEMF.Step"
+			category="de.htwdd.expressEMF.step.Step"
 			class="de.htwdd.expressEMF.step.ui.StepExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-			id="de.htwdd.expressEMF.Step.coloring"
+			id="de.htwdd.expressEMF.step.Step.coloring"
 			name="Syntax Coloring">
 			<keywordReference id="de.htwdd.expressEMF.step.ui.keyword_Step"/>
 		</page>
 		<page
-			category="de.htwdd.expressEMF.Step"
+			category="de.htwdd.expressEMF.step.Step"
 			class="de.htwdd.expressEMF.step.ui.StepExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-			id="de.htwdd.expressEMF.Step.templates"
+			id="de.htwdd.expressEMF.step.Step.templates"
 			name="Templates">
 			<keywordReference id="de.htwdd.expressEMF.step.ui.keyword_Step"/>
 		</page>
@@ -102,7 +102,7 @@
 			point="org.eclipse.ui.propertyPages">
 		<page
 			class="de.htwdd.expressEMF.step.ui.StepExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="de.htwdd.expressEMF.Step"
+			id="de.htwdd.expressEMF.step.Step"
 			name="Step">
 			<keywordReference id="de.htwdd.expressEMF.step.ui.keyword_Step"/>
 			<enabledWhen>
@@ -121,7 +121,7 @@
 		point="org.eclipse.ui.commands">
 	<command
 			description="Trigger expensive validation"
-			id="de.htwdd.expressEMF.Step.validate"
+			id="de.htwdd.expressEMF.step.Step.validate"
 			name="Validate">
 	</command>
 	<!-- copy qualified name -->
@@ -142,12 +142,12 @@
 		<menuContribution
 			locationURI="popup:#TextEditorContext?after=group.edit">
 			 <command
-				 commandId="de.htwdd.expressEMF.Step.validate"
+				 commandId="de.htwdd.expressEMF.step.Step.validate"
 				 style="push"
 				 tooltip="Trigger expensive validation">
 			<visibleWhen checkEnabled="false">
 				<reference
-					definitionId="de.htwdd.expressEMF.Step.Editor.opened">
+					definitionId="de.htwdd.expressEMF.step.Step.Editor.opened">
 				</reference>
 			</visibleWhen>
 		</command>
@@ -157,7 +157,7 @@
 			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.htwdd.expressEMF.Step.Editor.opened" />
+					<reference definitionId="de.htwdd.expressEMF.step.Step.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -165,7 +165,7 @@
 			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.htwdd.expressEMF.Step.Editor.opened" />
+					<reference definitionId="de.htwdd.expressEMF.step.Step.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -174,7 +174,7 @@
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
 					<and>
-						<reference definitionId="de.htwdd.expressEMF.Step.XtextEditor.opened" />
+						<reference definitionId="de.htwdd.expressEMF.step.Step.XtextEditor.opened" />
 						<iterate>
 							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 						</iterate>
@@ -187,7 +187,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.htwdd.expressEMF.Step.Editor.opened">
+					<reference definitionId="de.htwdd.expressEMF.step.Step.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -199,7 +199,7 @@
 			commandId="org.eclipse.xtext.ui.editor.FindReferences">
 			<activeWhen>
 				<reference
-					definitionId="de.htwdd.expressEMF.Step.Editor.opened">
+					definitionId="de.htwdd.expressEMF.step.Step.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -208,7 +208,7 @@
 		<content-type
 			base-type="org.eclipse.core.runtime.text"
 			file-extensions="ifc,spf,p21"
-			id="de.htwdd.expressEMF.Step.contenttype"
+			id="de.htwdd.expressEMF.step.Step.contenttype"
 			name="Step File"
 			priority="normal">
 		</content-type>
@@ -227,6 +227,7 @@
 			uriExtension="ifc">
 		</resourceServiceProvider>
 	</extension>
+
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
@@ -253,7 +254,7 @@
 			uriExtension="p21">
 		</resourceServiceProvider>
 	</extension>
-	<!-- marker definitions for de.htwdd.expressEMF.Step -->
+	<!-- marker definitions for de.htwdd.expressEMF.step.Step -->
 	<extension
 			id="step.check.fast"
 			name="Step Problem"
@@ -277,9 +278,9 @@
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="de.htwdd.expressEMF.Step"
+			category="de.htwdd.expressEMF.step.Step"
 			class="de.htwdd.expressEMF.step.ui.StepExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
-			id="de.htwdd.expressEMF.Step.validator.preferencePage"
+			id="de.htwdd.expressEMF.step.Step.validator.preferencePage"
 			name="Errors/Warnings">
 			<keywordReference id="de.htwdd.expressEMF.step.ui.keyword_Step"/>
 		</page>
@@ -291,18 +292,18 @@
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="de.htwdd.expressEMF.Step"
+			category="de.htwdd.expressEMF.step.Step"
 			class="de.htwdd.expressEMF.step.ui.StepExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-			id="de.htwdd.expressEMF.Step.compiler.preferencePage"
+			id="de.htwdd.expressEMF.step.Step.compiler.preferencePage"
 			name="Compiler">
 			<keywordReference id="de.htwdd.expressEMF.step.ui.keyword_Step"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.ui.propertyPages">
 		<page
-			category="de.htwdd.expressEMF.Step"
+			category="de.htwdd.expressEMF.step.Step"
 			class="de.htwdd.expressEMF.step.ui.StepExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-			id="de.htwdd.expressEMF.Step.compiler.propertyPage"
+			id="de.htwdd.expressEMF.step.Step.compiler.propertyPage"
 			name="Compiler">
 			<keywordReference id="de.htwdd.expressEMF.step.ui.keyword_Step"/>
 			<enabledWhen>
@@ -315,10 +316,10 @@
 		<menuContribution locationURI="popup:#TextEditorContext?after=xtext.ui.openDeclaration">
 			<command
 				commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand"
-				id="de.htwdd.expressEMF.Step.OpenGeneratedCode"
+				id="de.htwdd.expressEMF.step.Step.OpenGeneratedCode"
 				style="push">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.htwdd.expressEMF.Step.Editor.opened" />
+					<reference definitionId="de.htwdd.expressEMF.step.Step.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -328,7 +329,7 @@
 			class="de.htwdd.expressEMF.step.ui.StepExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
 			commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand">
 			<activeWhen>
-				<reference definitionId="de.htwdd.expressEMF.Step.Editor.opened" />
+				<reference definitionId="de.htwdd.expressEMF.step.Step.Editor.opened" />
 			</activeWhen>
 		</handler>
 	</extension>
@@ -340,7 +341,7 @@
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="de.htwdd.expressEMF.Step.Editor.opened">
+					definitionId="de.htwdd.expressEMF.step.Step.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -360,12 +361,12 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.htwdd.expressEMF.Step.Editor.opened"/>
+					<reference definitionId="de.htwdd.expressEMF.step.Step.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
-	<!-- quickfix marker resolution generator for de.htwdd.expressEMF.Step -->
+	<!-- quickfix marker resolution generator for de.htwdd.expressEMF.step.Step -->
 	<extension
 			point="org.eclipse.ui.ide.markerResolution">
 		<markerResolutionGenerator
@@ -400,7 +401,7 @@
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="de.htwdd.expressEMF.Step.Editor.opened">
+					definitionId="de.htwdd.expressEMF.step.Step.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -412,7 +413,7 @@
 				style="push">
 				<visibleWhen checkEnabled="false">
 					<reference
-						definitionId="de.htwdd.expressEMF.Step.Editor.opened">
+						definitionId="de.htwdd.expressEMF.step.Step.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -420,33 +421,33 @@
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="de.htwdd.expressEMF.Step"
+			category="de.htwdd.expressEMF.step.Step"
 			class="de.htwdd.expressEMF.step.ui.StepExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-			id="de.htwdd.expressEMF.Step.refactoring"
+			id="de.htwdd.expressEMF.step.Step.refactoring"
 			name="Refactoring">
 			<keywordReference id="de.htwdd.expressEMF.step.ui.keyword_Step"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.compare.contentViewers">
-		<viewer id="de.htwdd.expressEMF.Step.compare.contentViewers"
+		<viewer id="de.htwdd.expressEMF.step.Step.compare.contentViewers"
 			class="de.htwdd.expressEMF.step.ui.StepExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="ifc,spf,p21">
 		</viewer>
 		<contentTypeBinding
-			contentTypeId="de.htwdd.expressEMF.Step.contenttype"
-			contentViewerId="de.htwdd.expressEMF.Step.compare.contentViewers" />
+			contentTypeId="de.htwdd.expressEMF.step.Step.contenttype"
+			contentViewerId="de.htwdd.expressEMF.step.Step.compare.contentViewers" />
 	</extension>
 	<extension point="org.eclipse.compare.contentMergeViewers">
-		<viewer id="de.htwdd.expressEMF.Step.compare.contentMergeViewers"
+		<viewer id="de.htwdd.expressEMF.step.Step.compare.contentMergeViewers"
 			class="de.htwdd.expressEMF.step.ui.StepExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="ifc,spf,p21" label="Step Compare">
 		</viewer>
 		<contentTypeBinding
-			contentTypeId="de.htwdd.expressEMF.Step.contenttype"
-			contentMergeViewerId="de.htwdd.expressEMF.Step.compare.contentMergeViewers" />
+			contentTypeId="de.htwdd.expressEMF.step.Step.contenttype"
+			contentMergeViewerId="de.htwdd.expressEMF.step.Step.compare.contentMergeViewers" />
 	</extension>
 	<extension point="org.eclipse.ui.editors.documentProviders">
-		<provider id="de.htwdd.expressEMF.Step.editors.documentProviders"
+		<provider id="de.htwdd.expressEMF.step.Step.editors.documentProviders"
 			class="de.htwdd.expressEMF.step.ui.StepExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
 			extensions="ifc,spf,p21">
 		</provider>

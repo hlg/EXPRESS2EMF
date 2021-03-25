@@ -1,4 +1,4 @@
-#import "platform:/resource/IFC2CityGML/model/IFC4mod.ecore"
+#import "platform:/resource/IFC2CityGML/model/IFC4.ecore"
 #import "platform:/resource/IFC2CityGML/model/CityGML_Model.ecore"
 
 #schema IFC2CityGML
