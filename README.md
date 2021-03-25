@@ -34,18 +34,36 @@
 
 This run-trough may seem tedious, but shall walk you through the different projects in this repository and demonstrate how they play together. An application integrating the workflow will render these manual steps unnecessary.
 
-1. ExpressParser:
+1. Express Parser:
     - Run `de.htwwdd.expressEMF.api.RunParser` (optional: schema location as argument, default schemas/IFC4.exp).
     - This will create an \*.xmi file in the same location as the original \*.exp file, for instance schemas/IFC4.xmi for the default.
-2. ExpressEMF: 
+2. Express EMF: 
     - Copy the \*.xmi file generated in step 1 to instances/src.xmi to be used as input for the transformation.
     - Run `org.emoflon.ibex.tgg.run.expressemf.INITIAL_FWD_App` to carry out the transformation.
     - This will create a file instances/trg.xmi as result of the transformation.
-3. StepParser:
-    - Copy the trg.xmi file from the previous step to testdata/IFC4.ecore (or use the one that's already there after assuring yourself that it has the same content as the trg.xmi from step 2)
-    - Run `de.htwdd.expressEMF.step.api.RunParser` with the project-relative or absolute location of an IFC SPF file as argument
-    - This will create two files \*.xmi and \*.inst.xmi named similar to the input \*.ifc file. The first contains the XText parsed SPF file conforming to Step.ecore and referencing into the meta model, e.g. IFC4.ecore. The second file contains the same model, but transformed to instantiate the meta model, e.g. IFC4.ecore. That is, the transformation has bound the meta model references.
-4. IFC2CityGML:
+3. STEP Parser:
+    - Copy the trg.xmi file from the previous step to testdata/IFC4.exprecore (or
+      use the one that's already there after assuring yourself that it has the
+      same content as the trg.xmi from step 2)
+    - Run `de.htwdd.expressEMF.step.api.RunParser` with the project-relative or
+      absolute location of an IFC SPF file as argument
+    - This will create two files \*.xmi and \*.inst.xmi named similar to the
+      input \*.ifc file. The first contains the XText parsed SPF file
+      conforming to Step.ecore and referencing into the meta model, e.g. IFC4.ecore.
+      The second file contains the same model, but transformed to instantiate the
+      meta model, e.g. IFC4.ecore. That is, the transformation has bound the meta
+      model references.
+4. STEP editor:
+    - Run the project `de.htwdd.expressEMF.step.ui` as Eclipse application.
+    - Copy the IFC4.exprecore from step 2 into the runtime workspace, plus any IFC
+      you like to edit.
+    - XText will currently link to whatever schema it finds (with extension
+      \*.exprecore) regardless of the schema specified in the IFC. If there are
+      multiple schemas, there is not yet a way to distinguish, for example during
+      autocompletion.
+    - Try autocompletion and navigation for entity instances and types. Constraints
+      on the SPF are still very incomplete and work in progress.
+5. IFC2CityGML:
     - Copy the \*.xmi file generated in step 2 to model/IFC4.ecore
     - Copy the \*.inst.xmi file generated in step 3 to ...
     - TODO complete
